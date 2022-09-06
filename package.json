@@ -1,0 +1,39 @@
+{
+  "name": "@rtidatascience/harness-vue-bootstrap",
+  "author": "RTI CDS <alexharding@rti.org>",
+  "private": false,
+  "version": "0.0.4",
+  "type": "module",
+  "main": "./dist/harness-vue-bootstrap.es.js",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "test:unit": "vitest --environment jsdom",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "@rtidatascience/harness-vue": "^0.1.1",
+    "bootstrap": "^4.3.1",
+    "bootstrap-icons": "^1.9.1",
+    "corejs-typeahead": "^1.3.1",
+    "jquery": "^3.6.1",
+    "vue": "^3.2.38"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.1.4",
+    "@vitejs/plugin-vue": "^3.0.3",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/test-utils": "^2.0.2",
+    "eslint": "^8.22.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "jsdom": "^20.0.0",
+    "prettier": "^2.7.1",
+    "vite": "^3.0.9",
+    "vitest": "^0.23.0"
+  }
+}
