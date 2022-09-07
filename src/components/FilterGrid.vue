@@ -29,7 +29,7 @@
         <button
           v-if="synchronous"
           class="btn btn-primary btn-sm harness-ui-filtergrid-applybutton"
-          @click="LOAD_DATA"
+          @click="loadData"
           role="button"
         >
           Apply Filters
@@ -84,13 +84,13 @@ export default {
   },
   methods: {
     initializeDefaultsLoadData() {
-      this.INITIALIZE_DEFAULTS(
-        this.subset(this.filters)
-          ? Object.keys(this.subset(this.filters))
+      this.initializeDefaults(
+        this.subset(this.getFilters)
+          ? Object.keys(this.subset(this.getFilters))
           : null
       );
-      if (!this.synchronous && this.pageDefinition.retrieveData) {
-        this.LOAD_DATA();
+      if (!this.synchronous && this.pageDefinition.loadData) {
+        this.loadData();
       }
     },
   },

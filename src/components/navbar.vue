@@ -17,7 +17,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <slot name="beforepages"></slot>
-        <li class="nav-item" v-for="page in harnessStore.pages" :key="page">
+        <li
+          class="nav-item"
+          v-for="page in harnessVueStore.getPages"
+          :key="page"
+        >
           <router-link :to="page" class="nav-link">
             {{ page }}
           </router-link>
@@ -31,12 +35,12 @@
 import { mapStores } from "pinia";
 import { harnessStore } from "@rtidatascience/harness-vue";
 export default {
-  name: "navbar",
+  name: "navBar",
   props: {
     title: {
       type: String,
       required: false,
-      default: "dataVue",
+      default: "Harness-Vue",
     },
     classes: {
       type: String,
