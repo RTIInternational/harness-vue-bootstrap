@@ -12,7 +12,6 @@ import HarnessVueBootstrapSelect from "./components/inputs/HarnessVueBootstrapSe
 import HarnessVueBootstrapRadioGroup from "./components/inputs/HarnessVueBootstrapRadioGroup.vue";
 import HarnessVueBootstrapCheckboxGroup from "./components/inputs/HarnessVueBootstrapCheckboxGroup.vue";
 import HarnessVueBootstrapMultiselectListbox from "./components/inputs/HarnessVueBootstrapMultiselectListbox.vue";
-import navBar from "./components/navBar.vue";
 const components = {
   FilterGrid,
   ChartGrid,
@@ -27,7 +26,6 @@ const components = {
   HarnessVueBootstrapRadioGroup,
   HarnessVueBootstrapCheckboxGroup,
   HarnessVueBootstrapMultiselectListbox,
-  navBar,
 };
 
 export default components;
