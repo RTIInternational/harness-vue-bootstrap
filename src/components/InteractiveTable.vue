@@ -6,7 +6,7 @@
           <div class="row form-row">
             <div class="offset-1 col-4">
               <select
-                class="form-control harness-ui-interactivetable-select"
+                class="form-control harness-vue-bootstrap-interactivetable-select"
                 :id="chart.key + 'NumRowsSelect'"
                 aria-label="Amount of rows to paginate by"
                 v-model="paginationAmount"
@@ -27,7 +27,7 @@
             <div class="offset-4 col-8 pr-4">
               <input
                 type="text"
-                class="form-control harness-ui-interactivetable-text-input"
+                class="form-control harness-vue-bootstrap-interactivetable-text-input"
                 :id="chart.key + 'SearchQueryInput'"
                 aria-label="Table search"
                 v-model="searchText"
@@ -40,9 +40,9 @@
       <div
         v-if="validatedChartData && validatedChartData.length"
         :id="chart.key + '_data_table'"
-        class="harness-ui-interactivetable-datatable"
+        class="harness-vue-bootstrap-interactivetable-datatable"
       >
-        <table :class="'harness-ui-interactivetable-table table ' + tableClass">
+        <table :class="'harness-vue-bootstrap-interactivetable-table table ' + tableClass">
           <thead :class="headerClass">
             <tr>
               <th
@@ -52,7 +52,7 @@
                 :class="'table-header ' + labelClass"
                 @click="setColumnFilter(column)"
               >
-                <button class="harness-ui-interactivetable-column-header">
+                <button class="harness-vue-bootstrap-interactivetable-column-header">
                   {{ column }}
                 </button>
                 <span
@@ -96,9 +96,9 @@
       <div class="col-md-2 text-center">
         <nav
           aria-label="Table pagination navigation"
-          class="navigation text-center harness-ui-interactivetable-pagination-navigation"
+          class="navigation text-center harness-vue-bootstrap-interactivetable-pagination-navigation"
         >
-          <ul class="pagination harness-ui-interactivetable-pagination">
+          <ul class="pagination harness-vue-bootstrap-interactivetable-pagination">
             <li
               :class="`page-link ${pageNumber <= 1 ? 'disabled' : ''}`"
               @click="setPageNum(1)"
@@ -116,7 +116,7 @@
               :key="index"
               :class="[
                 'page-item',
-                'harness-ui-interactivetable-pagination-pageitem',
+                'harness-vue-bootstrap-interactivetable-pagination-pageitem',
                 index === pageNumber ? ' active' : '',
               ]"
             >
@@ -209,7 +209,7 @@ export default {
         ]);
       }
       if (!this.isSearchable || !this.isSortable || !this.isPaginated) {
-        this.LOAD_DATA();
+        this.loadData();
       }
     },
     setPageNum(index) {
@@ -225,7 +225,7 @@ export default {
         });
       }
       if (!this.isSearchable || !this.isSortable || !this.isPaginated) {
-        this.LOAD_DATA();
+        this.loadData();
       }
     },
     isActiveAndDescending(columnName) {
@@ -389,7 +389,7 @@ export default {
           });
         }
         if (!this.isSearchable || !this.isSortable || !this.isPaginated) {
-          this.LOAD_DATA();
+          this.loadData();
         }
       },
     },
@@ -417,18 +417,18 @@ export default {
           numberOfPages: this.numberOfPages,
         });
       }
-      this.LOAD_DATA();
+      this.loadData();
     }
   },
 };
 </script>
 <style scoped>
-.harness-ui-interactivetable-column-header {
+.harness-vue-bootstrap-interactivetable-column-header {
   background-color: inherit;
   border: none;
 }
-.harness-ui-interactivetable-column-header:focus,
-.harness-ui-interactivetable-column-header:hover {
+.harness-vue-bootstrap-interactivetable-column-header:focus,
+.harness-vue-bootstrap-interactivetable-column-header:hover {
   outline: none;
   border-bottom: 2px solid gray;
 }

@@ -71,11 +71,11 @@
               :clear-button="false"
             />
             <div
-              class="row button-row harness-ui-filtergrid-row harness-ui-filtergrid-buttonrow"
+              class="row button-row harness-vue-bootstrap-filtergrid-row harness-vue-bootstrap-filtergrid-buttonrow"
             >
               <div class="col-md-12 text-center">
                 <button
-                  class="btn btn-primary btn-sm harness-ui-filtergrid-clearbutton"
+                  class="btn btn-primary btn-sm harness-vue-bootstrap-filtergrid-clearbutton"
                   role="button"
                   @click="clearFilterTypeFilters(filterType)"
                 >

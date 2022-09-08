@@ -1,13 +1,13 @@
 <template>
   <div>
     <div
-      :class="'row harness-ui-filtergrid-row ' + rowClass"
+      :class="'row harness-vue-bootstrap-filtergrid-row ' + rowClass"
       v-for="(row, idx) in rows(this.filters)"
       :key="idx"
     >
       <div
         :class="
-          'harness-ui-filtergrid-col col-sm-' + 12 / columns + ' ' + colClass
+          'harness-vue-bootstrap-filtergrid-col col-sm-' + 12 / columns + ' ' + colClass
         "
         v-for="(filter, filterKey) in row"
         :key="pageDefinition.key + '-' + filterKey"
@@ -22,13 +22,13 @@
       </div>
     </div>
     <div
-      class="row button-row harness-ui-filtergrid-row harness-ui-filtergrid-buttonrow"
+      class="row button-row harness-vue-bootstrap-filtergrid-row harness-vue-bootstrap-filtergrid-buttonrow"
       v-if="(synchronous || clearButton) && buttonPosition !== 'none'"
     >
       <div :class="'col-md-12 text-' + buttonPosition">
         <button
           v-if="synchronous"
-          class="btn btn-primary btn-sm harness-ui-filtergrid-applybutton"
+          class="btn btn-primary btn-sm harness-vue-bootstrap-filtergrid-applybutton"
           @click="loadData"
           role="button"
         >
@@ -38,7 +38,7 @@
         <button
           v-if="clearButton"
           role="button"
-          class="btn btn-primary btn-sm harness-ui-filtergrid-clearbutton"
+          class="btn btn-primary btn-sm harness-vue-bootstrap-filtergrid-clearbutton"
           @click="initializeDefaultsLoadData"
         >
           Clear Filters

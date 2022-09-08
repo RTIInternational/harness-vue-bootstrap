@@ -1,6 +1,6 @@
 <template>
   <input
-    class="form-check-input harness-ui-radiogroup-input"
+    class="form-check-input harness-vue-bootstrap-radiogroup-input"
     type="radio"
     :name="filter.key"
     :id="filter.key + option.key"

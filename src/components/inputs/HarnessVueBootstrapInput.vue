@@ -16,7 +16,7 @@
           <label
             :for="filter.key"
             :class="
-              'col-form-label harness-ui-select-label harness-ui-select-label-horizontal ' +
+              'col-form-label harness-vue-bootstrap-select-label harness-vue-bootstrap-select-label-horizontal ' +
               (isFilterDirty(filter.key) ? 'dirty-filter-label' : '')
             "
             :id="filter.key + '-label'"
@@ -36,7 +36,7 @@
             v-if="helperText"
             v-html="helperText"
             :class="
-              'form-text harness-ui-helper-text harness-ui-input-helper-text ' +
+              'form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-input-helper-text ' +
               helperTextClass
             "
           ></small>
@@ -50,7 +50,7 @@
       <label
         :for="filter.key"
         :class="
-          'col-form-label harness-ui-select-label harness-ui-select-label-vertical ' +
+          'col-form-label harness-vue-bootstrap-select-label harness-vue-bootstrap-select-label-vertical ' +
           (isFilterDirty(filter.key) ? 'dirty-filter-label' : '')
         "
         :id="filter.key + '-label'"
@@ -61,7 +61,7 @@
         v-if="helperText"
         v-html="helperText"
         :class="
-          'form-text harness-ui-helper-text harness-ui-input-helper-text ' +
+          'form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-input-helper-text ' +
           helperTextClass
         "
       ></small>
@@ -78,7 +78,7 @@
         v-if="helperText"
         v-html="helperText"
         :class="
-          'form-text harness-ui-helper-text harness-ui-input-helper-text ' +
+          'form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-input-helper-text ' +
           helperTextClass
         "
       ></small>
@@ -91,7 +91,7 @@ import inputFilter from "../mixins/inputFilter";
 import InputPartial from "./partials/InputPartial.vue";
 import jquery from "jquery";
 export default {
-  name: "harness-ui-input",
+  name: "harness-vue-bootstrap-input",
   mixins: [inputProps, inputFilter],
   components: { InputPartial },
   props: {
@@ -202,7 +202,7 @@ export default {
         "cursor",
         "highlight",
       ].reduce((acc, cn) => {
-        acc[cn] = `harness-ui-typeahead-${cn}`;
+        acc[cn] = `harness-vue-bootstrap-typeahead-${cn}`;
         return acc;
       }, {});
 
@@ -257,15 +257,15 @@ export default {
 };
 </script>
 <style>
-.harness-ui-typeahead-input {
+.harness-vue-bootstrap-typeahead-input {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-.harness-ui-typeahead-hint {
+.harness-vue-bootstrap-typeahead-hint {
   color: #999;
 }
 
-.harness-ui-typeahead-menu {
+.harness-vue-bootstrap-typeahead-menu {
   max-width: 100%;
   margin-top: 5px;
   padding: 5px 0;
@@ -276,15 +276,15 @@ export default {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-.harness-ui-typeahead-suggestion {
+.harness-vue-bootstrap-typeahead-suggestion {
   padding: 5px 10px;
 }
 
-.harness-ui-typeahead-suggestion.harness-ui-typeahead-cursor {
+.harness-vue-bootstrap-typeahead-suggestion.harness-vue-bootstrap-typeahead-cursor {
   color: #fff;
   background-color: #0097cf;
 }
-.harness-ui-typeahead-suggestion p {
+.harness-vue-bootstrap-typeahead-suggestion p {
   margin: 0;
 }
 </style>

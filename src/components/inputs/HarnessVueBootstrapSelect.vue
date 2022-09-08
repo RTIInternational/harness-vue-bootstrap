@@ -9,7 +9,7 @@
           <label
             :for="filter.key"
             :class="
-              'col-form-label harness-ui-select-label harness-ui-select-label-horizontal ' +
+              'col-form-label harness-vue-bootstrap-select-label harness-vue-bootstrap-select-label-horizontal ' +
               (isFilterDirty(filter.key) ? 'dirty-filter-label' : '')
             "
             :id="filter.key + '-label'"
@@ -22,7 +22,7 @@
             v-if="helperText"
             v-html="helperText"
             :class="
-              'form-text harness-ui-select-helper-text harness-ui-helper-text ' +
+              'form-text harness-vue-bootstrap-select-helper-text harness-vue-bootstrap-helper-text ' +
               helperTextClass
             "
           ></small>
@@ -36,7 +36,7 @@
       <label
         :for="filter.key"
         :class="
-          'col-form-label harness-ui-select-label harness-ui-select-label-vertical ' +
+          'col-form-label harness-vue-bootstrap-select-label harness-vue-bootstrap-select-label-vertical ' +
           (isFilterDirty(filter.key) ? 'dirty-filter-label' : '')
         "
         :id="filter.key + '-label'"
@@ -47,7 +47,7 @@
         v-if="helperText"
         v-html="helperText"
         :class="
-          'form-text harness-ui-select-helper-text harness-ui-helper-text ' +
+          'form-text harness-vue-bootstrap-select-helper-text harness-vue-bootstrap-helper-text ' +
           helperTextClass
         "
       ></small>
@@ -64,7 +64,7 @@
         v-if="helperText"
         v-html="helperText"
         :class="
-          'form-text harness-ui-select-helper-text harness-ui-helper-text ' +
+          'form-text harness-vue-bootstrap-select-helper-text harness-vue-bootstrap-helper-text ' +
           helperTextClass
         "
       ></small>
@@ -76,7 +76,7 @@ import inputProps from "../mixins/inputProps";
 import inputFilter from "../mixins/inputFilter";
 import SelectPartial from "./partials/SelectPartial.vue";
 export default {
-  name: "harness-ui-select",
+  name: "harness-vue-bootstrap-select",
   mixins: [inputProps, inputFilter],
   components: { SelectPartial },
   props: {

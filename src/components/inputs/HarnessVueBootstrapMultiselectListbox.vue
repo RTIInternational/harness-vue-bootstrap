@@ -1,15 +1,15 @@
 <template>
   <div>
     <label
-      class="harness-ui-select-label harness-ui-multiselect-listbox-top-label"
+      class="harness-vue-bootstrap-select-label harness-vue-bootstrap-multiselect-listbox-top-label"
       >{{ this.filter.label }}</label
     >
     <div class="row" v-if="searchable">
       <div class="col">
         <input
           type="text"
-          :id="`harness-ui-multiselect-listbox-search-${filter.key}`"
-          class="form-control harness-ui-input harness-ui-multiselect-listbox-search-input"
+          :id="`harness-vue-bootstrap-multiselect-listbox-search-${filter.key}`"
+          class="form-control harness-vue-bootstrap-input harness-vue-bootstrap-multiselect-listbox-search-input"
           :disabled="searchDisabled"
           v-model="search"
         />
@@ -18,11 +18,11 @@
     <div class="row align-items-center">
       <div class="col-5">
         <label
-          class="col-form-label harness-ui-select-label harness-ui-multiselect-listbox-select-label harness-ui-select-label-vertical"
+          class="col-form-label harness-vue-bootstrap-select-label harness-vue-bootstrap-multiselect-listbox-select-label harness-vue-bootstrap-select-label-vertical"
           >Options</label
         >
         <select
-          class="form-control harness-ui-select harness-ui-multiselect-listbox-select harness-ui-multiselect-listbox-select-left"
+          class="form-control harness-vue-bootstrap-select harness-vue-bootstrap-multiselect-listbox-select harness-vue-bootstrap-multiselect-listbox-select-left"
           multiple="true"
           v-model="leftBox"
         >
@@ -48,11 +48,11 @@
       </div>
       <div class="col-5">
         <label
-          class="col-form-label harness-ui-select-label harness-ui-multiselect-listbox-select-label harness-ui-select-label-vertical"
+          class="col-form-label harness-vue-bootstrap-select-label harness-vue-bootstrap-multiselect-listbox-select-label harness-vue-bootstrap-select-label-vertical"
           >Selected</label
         >
         <select
-          class="form-control harness-ui-select harness-ui-multiselect-listbox-select harness-ui-multiselect-listbox-select-right"
+          class="form-control harness-vue-bootstrap-select harness-vue-bootstrap-multiselect-listbox-select harness-vue-bootstrap-multiselect-listbox-select-right"
           multiple="true"
           v-model="rightBox"
         >
@@ -162,13 +162,13 @@ export default {
         "cursor",
         "highlight",
       ].reduce((acc, cn) => {
-        acc[cn] = `harness-ui-multiselect-listbox-typeahead-${cn}`;
+        acc[cn] = `harness-vue-bootstrap-multiselect-listbox-typeahead-${cn}`;
         return acc;
       }, {});
 
       // instantiate typeahead
       window
-        .$(`#harness-ui-multiselect-listbox-search-${this.filter.key}`)
+        .$(`#harness-vue-bootstrap-multiselect-listbox-search-${this.filter.key}`)
         .typeahead(
           {
             highlight: true,
@@ -197,16 +197,16 @@ export default {
 };
 </script>
 <style>
-.harness-ui-multiselect-listbox-typeahead-input {
+.harness-vue-bootstrap-multiselect-listbox-typeahead-input {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   width: 100%;
 }
 
-.harness-ui-multiselect-listbox-typeahead-hint {
+.harness-vue-bootstrap-multiselect-listbox-typeahead-hint {
   color: #999;
 }
 
-.harness-ui-multiselect-listbox-typeahead-menu {
+.harness-vue-bootstrap-multiselect-listbox-typeahead-menu {
   max-width: 100%;
   margin-top: 5px;
   padding: 5px 0;
@@ -217,22 +217,22 @@ export default {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-.harness-ui-multiselect-listbox-typeahead-suggestion {
+.harness-vue-bootstrap-multiselect-listbox-typeahead-suggestion {
   padding: 5px 10px;
 }
 
-.harness-ui-multiselect-listbox-typeahead-suggestion.harness-ui-multiselect-listbox-typeahead-cursor {
+.harness-vue-bootstrap-multiselect-listbox-typeahead-suggestion.harness-vue-bootstrap-multiselect-listbox-typeahead-cursor {
   color: #fff;
   background-color: #0097cf;
 }
-.harness-ui-multiselect-listbox-typeahead-suggestion p {
+.harness-vue-bootstrap-multiselect-listbox-typeahead-suggestion p {
   margin: 0;
 }
 .twitter-typeahead {
   width: 100%;
 }
 
-.harness-ui-multiselect-listbox-select-label {
+.harness-vue-bootstrap-multiselect-listbox-select-label {
   font-size: 80% !important;
 }
 </style>

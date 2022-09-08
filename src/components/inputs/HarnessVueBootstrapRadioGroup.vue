@@ -2,7 +2,7 @@
   <div>
     <fieldset v-if="labelPosition === 'vertical'">
       <legend
-        class="col-form-label harness-ui-radiogroup-legend"
+        class="col-form-label harness-vue-bootstrap-radiogroup-legend"
         :for="filter.key"
         v-html="filter.label"
       />
@@ -13,7 +13,7 @@
       >
         <RadioGroupPartial v-bind="{ ...$props, ...$attrs, option }" />
         <label
-          class="form-check-label harness-ui-radiogroup-label"
+          class="form-check-label harness-vue-bootstrap-radiogroup-label"
           :id="filter.key + option.key + '-label'"
           :for="filter.key + option.key"
           :disabled="option.disabled"
@@ -24,7 +24,7 @@
         v-if="helperText"
         v-html="helperText"
         :class="
-          'form-text harness-ui-helper-text harness-ui-radiogroup-helper-text ' +
+          'form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-radiogroup-helper-text ' +
           helperTextClass
         "
       ></small>
@@ -33,7 +33,7 @@
       <div class="row form-row">
         <div :class="'col-' + labelColumnSize">
           <legend
-            class="col-form-label harness-ui-radiogroup-legend"
+            class="col-form-label harness-vue-bootstrap-radiogroup-legend"
             :for="filter.key"
             v-html="filter.label"
           />
@@ -46,7 +46,7 @@
           >
             <RadioGroupPartial v-bind="{ ...$props, ...$attrs, option }" />
             <label
-              class="form-check-label harness-ui-radiogroup-label"
+              class="form-check-label harness-vue-bootstrap-radiogroup-label"
               :id="filter.key + option.key + '-label'"
               :for="filter.key + option.key"
               :disabled="option.disabled"
@@ -57,7 +57,7 @@
             v-if="helperText"
             v-html="helperText"
             :class="
-              'form-text harness-ui-helper-text harness-ui-radiogroup-helper-text ' +
+              'form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-radiogroup-helper-text ' +
               helperTextClass
             "
           ></small>
@@ -71,7 +71,7 @@ import inputProps from "../mixins/inputProps";
 import inputFilter from "../mixins/inputFilter";
 import RadioGroupPartial from "./partials/RadioGroupPartial.vue";
 export default {
-  name: "harness-ui-radiogroup",
+  name: "harness-vue-bootstrap-radiogroup",
   components: { RadioGroupPartial },
   mixins: [inputProps, inputFilter],
   props: {

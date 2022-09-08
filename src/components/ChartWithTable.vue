@@ -1,13 +1,13 @@
 <template>
   <div
     :id="chart.key + '_container'"
-    :class="(card ? 'card' : '') + ' harness-ui-chartwithtable'"
+    :class="(card ? 'card' : '') + ' harness-vue-bootstrap-chartwithtable'"
   >
     <div :class="card ? 'card-header' : ''">
       <div class="row">
         <div :class="buttonPosition === 'top' ? 'col-md-6' : 'col-md-12'">
           <h3 :class="card ? 'card-title' : ''">
-            <div class="harness-ui-chartwithtable-title">
+            <div class="harness-vue-bootstrap-chartwithtable-title">
               <div>
                 <slot name="title" v-html="chart.title"></slot>
                 <button
@@ -24,7 +24,7 @@
                   {{ collapsed ? "+" : "-" }}
                 </button>
               </div>
-              <div class="harness-ui-chartwithtable-subtitle">
+              <div class="harness-vue-bootstrap-chartwithtable-subtitle">
                 <slot name="subtitle"></slot>
               </div>
             </div>
@@ -33,7 +33,7 @@
         <div v-if="buttonPosition === 'top'" class="col-md-6">
           <h3
             :class="
-              'harness-ui-chartwithtable-buttonrow' +
+              'harness-vue-bootstrap-chartwithtable-buttonrow' +
               (card ? ' card-title' : '')
             "
           >
@@ -44,7 +44,7 @@
                 role="button"
                 :aria-label="'Show Table: ' + (chart.title || chart.key)"
                 @click="toggleView"
-                class="btn btn-sm btn-primary harness-ui-togglebutton"
+                class="btn btn-sm btn-primary harness-vue-bootstrap-togglebutton"
               >
                 <span v-html="showTableButtonText" />
               </button>
@@ -53,7 +53,7 @@
                 role="button"
                 :aria-label="'Show Chart: ' + (chart.title || chart.key)"
                 @click="toggleView"
-                class="btn btn-sm btn-primary harness-ui-togglebutton"
+                class="btn btn-sm btn-primary harness-vue-bootstrap-togglebutton"
               >
                 <span v-html="showChartButtonText" />
               </button>
@@ -62,7 +62,7 @@
                 role="button"
                 :aria-label="'Download Table: ' + (chart.title || chart.key)"
                 @click="downloadCSV(chart.key)"
-                class="btn btn-sm btn-primary harness-ui-downloadbutton"
+                class="btn btn-sm btn-primary harness-vue-bootstrap-downloadbutton"
               >
                 Download CSV
               </button>
@@ -71,7 +71,7 @@
                 role="button"
                 :aria-label="'Download Table: ' + (chart.title || chart.key)"
                 @click="saveImageButton()"
-                class="btn btn-sm btn-primary harness-ui-downloadbutton"
+                class="btn btn-sm btn-primary harness-vue-bootstrap-downloadbutton"
               >
                 Save Image
               </button>
@@ -84,12 +84,12 @@
     <div
       :id="chart.key + 'ChartTableBody'"
       :class="
-        'card-body harness-ui-chartwithtable-body' +
+        'card-body harness-vue-bootstrap-chartwithtable-body' +
         (collapsible ? ' ' + chart.key + '-multi-collapse' : '') +
         (collapsed ? ' collapse' : ' show')
       "
     >
-      <div class="harness-ui-chartwithtable-abovechart">
+      <div class="harness-vue-bootstrap-chartwithtable-abovechart">
         <slot name="above-chart"></slot>
       </div>
 
@@ -100,7 +100,7 @@
         :key="'chartwithtable' + chart.key + 'chart'"
       />
       <br />
-      <div class="harness-ui-chartwithtable-belowchart">
+      <div class="harness-vue-bootstrap-chartwithtable-belowchart">
         <slot name="below-chart"></slot>
       </div>
       <DataTable508
@@ -113,7 +113,7 @@
     <h3
       :id="chart.key + 'Buttons'"
       :class="
-        'harness-ui-chartwithtable-buttonrow' +
+        'harness-vue-bootstrap-chartwithtable-buttonrow' +
         (collapsible ? ' ' + chart.key + '-multi-collapse' : '') +
         (collapsed ? ' collapse' : ' show') +
         (card ? ' card-title' : '')
@@ -127,7 +127,7 @@
           role="button"
           :aria-label="'Show Table: ' + (chart.title || chart.key)"
           @click="toggleView"
-          class="btn btn-sm btn-primary harness-ui-togglebutton"
+          class="btn btn-sm btn-primary harness-vue-bootstrap-togglebutton"
         >
           <span v-html="showTableButtonText" />
         </button>
@@ -136,7 +136,7 @@
           role="button"
           :aria-label="'Show Chart: ' + (chart.title || chart.key)"
           @click="toggleView"
-          class="btn btn-sm btn-primary harness-ui-togglebutton"
+          class="btn btn-sm btn-primary harness-vue-bootstrap-togglebutton"
         >
           <span v-html="showChartButtonText" />
         </button>
@@ -145,7 +145,7 @@
             role="button"
             :aria-label="'Download Table: ' + (chart.title || chart.key)"
             @click="downloadCSV(chart.key, labels || null)"
-            class="btn btn-sm btn-primary harness-ui-downloadbutton"
+            class="btn btn-sm btn-primary harness-vue-bootstrap-downloadbutton"
           >
             Download CSV
           </button>
@@ -156,7 +156,7 @@
             role="button"
             :aria-label="'Download Image: ' + (chart.title || chart.key)"
             @click="saveImageButton()"
-            class="btn btn-sm btn-primary harness-ui-downloadbutton"
+            class="btn btn-sm btn-primary harness-vue-bootstrap-downloadbutton"
           >
             Save Image
           </button>

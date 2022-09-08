@@ -10,7 +10,7 @@
     </div>
     <input
       :type="type"
-      :class="`form-control harness-ui-${type}-input ${
+      :class="`form-control harness-vue-bootstrap-${type}-input ${
         isFilterDirty(filter.key) ? 'dirty-filter-input' : ''
       } ${strictError ? 'typeahead-strict-error' : ''}`"
       :placeholder="placeholder"
@@ -27,7 +27,7 @@
       <span class="input-group-text" v-html="appendHTML" v-if="appendHTML" />
       <button
         v-if="inputClearButton"
-        class="btn btn-outline-secondary harness-ui-input-group-clear-button"
+        class="btn btn-outline-secondary harness-vue-bootstrap-input-group-clear-button"
         @click="initDefault()"
       >
         <i class="bi bi-x"></i>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      :class="'row harness-ui-chartgrid-row ' + rowClass"
+      :class="'row harness-vue-bootstrap-chartgrid-row ' + rowClass"
       v-for="(row, rowidx) in chartRows"
       :key="rowidx"
     >

@@ -2,7 +2,7 @@
   <select
     :multiple="multiple"
     :class="
-      'form-control harness-ui-select ' +
+      'form-control harness-vue-bootstrap-select ' +
       (isFilterDirty(filter.key) ? 'dirty-filter-select' : '')
     "
     v-model="boundValue"

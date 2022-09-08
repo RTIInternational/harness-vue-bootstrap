@@ -1,6 +1,6 @@
 <template>
   <input
-    class="form-check-input harness-ui-checkboxgroup-input"
+    class="form-check-input harness-vue-bootstrap-checkboxgroup-input"
     type="checkbox"
     :name="filter.key + option.key"
     :id="filter.key + option.key"

@@ -2,9 +2,9 @@
   <div
     v-if="validatedChartData && validatedChartData.length"
     :id="chart.key + '_data_table'"
-    class="harness-ui-datatable"
+    class="harness-vue-bootstrap-datatable"
   >
-    <table :class="'harness-ui-table table ' + tableClass">
+    <table :class="'harness-vue-bootstrap-table table ' + tableClass">
       <thead :class="headerClass">
         <tr>
           <th
@@ -83,7 +83,7 @@ export default {
 .card {
   min-height: 100%;
 }
-.harness-ui-table {
+.harness-vue-bootstrap-table {
   overflow: auto;
 }
 </style>

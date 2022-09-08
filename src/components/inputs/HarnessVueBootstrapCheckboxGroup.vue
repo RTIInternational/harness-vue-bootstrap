@@ -2,18 +2,18 @@
   <div>
     <fieldset v-if="labelPosition === 'vertical'">
       <legend
-        class="col-form-label harness-ui-checkboxgroup-legend"
+        class="col-form-label harness-vue-bootstrap-checkboxgroup-legend"
         :for="filter.key"
         :data-toggle="collapse ? 'collapse' : ''"
-        :href="collapse ? '#harness-ui-checkbox-collapse-' + filter.key : ''"
+        :href="collapse ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''"
         :role="collapse ? 'button' : ''"
         @click="collapsed = !collapsed"
       >
         <span v-html="filter.label" />
         <button
-          class="harness-ui-collapse-toggle-button"
+          class="harness-vue-bootstrap-collapse-toggle-button"
           :data-toggle="collapse ? 'collapse' : ''"
-          :href="collapse ? '#harness-ui-checkbox-collapse-' + filter.key : ''"
+          :href="collapse ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''"
           :role="collapse ? 'button' : ''"
           @click="collapsed = !collapsed"
           v-if="collapse"
@@ -27,9 +27,9 @@
       <div
         v-if="collapse"
         data-toggle="collapse"
-        :href="collapse ? '#harness-ui-checkbox-collapse-' + filter.key : ''"
+        :href="collapse ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''"
         role="button"
-        class="harness-ui-checkboxgroup-collapse-label"
+        class="harness-vue-bootstrap-checkboxgroup-collapse-label"
         @click="collapsed = !collapsed"
       >
         <span
@@ -48,7 +48,7 @@
       </div>
       <div
         :class="collapse ? 'collapse' : ''"
-        :id="collapse ? 'harness-ui-checkbox-collapse-' + filter.key : ''"
+        :id="collapse ? 'harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''"
       >
         <div
           :class="'form-check' + (inline ? ' form-check-inline' : '')"
@@ -59,7 +59,7 @@
             v-bind="{ ...$props, ...$attrs, collapsed, option }"
           />
           <label
-            class="form-check-label harness-ui-checkboxgroup-label"
+            class="form-check-label harness-vue-bootstrap-checkboxgroup-label"
             :id="filter.key + option.key + '-label'"
             :for="filter.key + option.key"
             v-html="option.label"
@@ -69,7 +69,7 @@
           v-if="helperText"
           v-html="helperText"
           :class="
-            'form-text harness-ui-helper-text harness-ui-checkboxgroup-helper-text ' +
+            'form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-checkboxgroup-helper-text ' +
             helperTextClass
           "
         ></small>
@@ -79,10 +79,10 @@
       <div class="row form-row">
         <div :class="'col-' + labelColumnSize">
           <legend
-            class="col-form-label harness-ui-checkboxgroup-legend"
+            class="col-form-label harness-vue-bootstrap-checkboxgroup-legend"
             :data-toggle="collapse ? 'collapse' : ''"
             :href="
-              collapse ? '#harness-ui-checkbox-collapse-' + filter.key : ''
+              collapse ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''
             "
             :role="collapse ? 'button' : ''"
             :for="filter.key"
@@ -90,10 +90,10 @@
           >
             <span v-html="filter.label" />
             <button
-              class="harness-ui-collapse-toggle-button"
+              class="harness-vue-bootstrap-collapse-toggle-button"
               :data-toggle="collapse ? 'collapse' : ''"
               :href="
-                collapse ? '#harness-ui-checkbox-collapse-' + filter.key : ''
+                collapse ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''
               "
               :role="collapse ? 'button' : ''"
               @click="collapsed = !collapsed"
@@ -109,9 +109,9 @@
         <div :class="'col-' + (12 - labelColumnSize)">
           <div
             v-if="collapse"
-            class="col-form-label harness-ui-checkboxgroup-collapse-label"
+            class="col-form-label harness-vue-bootstrap-checkboxgroup-collapse-label"
             data-toggle="collapse"
-            :href="'#harness-ui-checkbox-collapse-' + filter.key"
+            :href="'#harness-vue-bootstrap-checkbox-collapse-' + filter.key"
             role="button"
             @click="collapsed = !collapsed"
           >
@@ -131,7 +131,7 @@
           </div>
           <div
             :class="collapse ? 'collapse' : ''"
-            :id="collapse ? 'harness-ui-checkbox-collapse-' + filter.key : ''"
+            :id="collapse ? 'harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''"
           >
             <div
               :class="'form-check' + (inline ? ' form-check-inline' : '')"
@@ -142,7 +142,7 @@
                 v-bind="{ ...$props, ...$attrs, collapsed, option }"
               />
               <label
-                class="form-check-label harness-ui-checkboxgroup-label"
+                class="form-check-label harness-vue-bootstrap-checkboxgroup-label"
                 :id="filter.key + option.key + '-label'"
                 :for="filter.key + option.key"
                 v-html="option.label"
@@ -152,7 +152,7 @@
               v-if="helperText"
               v-html="helperText"
               :class="
-                'form-text harness-ui-helper-text harness-ui-checkboxgroup-helper-text ' +
+                'form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-checkboxgroup-helper-text ' +
                 helperTextClass
               "
             ></small>
@@ -168,7 +168,7 @@
       >
         <CheckboxPartial v-bind="{ ...$props, ...$attrs, collapsed, option }" />
         <label
-          class="form-check-label harness-ui-checkboxgroup-label"
+          class="form-check-label harness-vue-bootstrap-checkboxgroup-label"
           :id="filter.key + option.key + '-label'"
           :for="filter.key + option.key"
           v-html="option.label"
@@ -178,7 +178,7 @@
         v-if="helperText"
         v-html="helperText"
         :class="
-          'form-text harness-ui-helper-text harness-ui-checkboxgroup-helper-text ' +
+          'form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-checkboxgroup-helper-text ' +
           helperTextClass
         "
       ></small>
@@ -191,7 +191,7 @@ import inputProps from "../mixins/inputProps";
 import inputFilter from "../mixins/inputFilter";
 import CheckboxPartial from "./partials/CheckboxPartial.vue";
 export default {
-  name: "harness-ui-checkboxgroup",
+  name: "harness-vue-bootstrap-checkboxgroup",
   mixins: [inputProps, inputFilter],
   components: { CheckboxPartial },
   data: () => {
@@ -213,7 +213,7 @@ export default {
 };
 </script>
 <style>
-.harness-ui-collapse-toggle-button {
+.harness-vue-bootstrap-collapse-toggle-button {
   background-color: transparent;
   border: 0px solid transparent;
   box-shadow: none;

@@ -1,12 +1,12 @@
 <template>
-  <div class="harness-ui-filterpicker">
+  <div class="harness-vue-bootstrap-filterpicker">
     <div class="row">
       <div :class="'col-' + columnSize">
-        <div class="row harness-ui-filtergrid-row">
+        <div class="row harness-vue-bootstrap-filtergrid-row">
           <div class="col">
-            <slot class="harness-ui-filterpicker-label">Add Filter</slot>
+            <slot class="harness-vue-bootstrap-filterpicker-label">Add Filter</slot>
             <select
-              class="form-control harness-ui-filterpicker-select"
+              class="form-control harness-vue-bootstrap-filterpicker-select"
               name="filterPicker"
               id="filterPicker"
               @change="addFilter"
@@ -18,9 +18,9 @@
             </select>
           </div>
           <div class="col">
-            <slot class="harness-ui-filterpicker-label">Remove Filter</slot>
+            <slot class="harness-vue-bootstrap-filterpicker-label">Remove Filter</slot>
             <select
-              class="form-control harness-ui-filterpicker-select"
+              class="form-control harness-vue-bootstrap-filterpicker-select"
               name="filterPicker"
               id="filterPicker"
               @change="removeFilter"
@@ -33,12 +33,12 @@
           </div>
         </div>
         <div
-          class="row button-row harness-ui-filtergrid-row harness-ui-filtergrid-buttonrow pt-3"
+          class="row button-row harness-vue-bootstrap-filtergrid-row harness-vue-bootstrap-filtergrid-buttonrow pt-3"
         >
           <div :class="'col-md-12 text-' + removeButtonPosition">
             <button
               role="button"
-              class="btn btn-primary btn-sm harness-ui-filtergrid-clearbutton"
+              class="btn btn-primary btn-sm harness-vue-bootstrap-filtergrid-clearbutton"
               @click="
                 active = [];
                 initializeDefaults();
