@@ -5,8 +5,9 @@ import { harnessPlugin, harnessMixin, harnessStore } from "@rtidatascience/harne
 import { harnessVueBootstrap } from "../../../src/harness-vue-bootstrap"
 import pages from "../../harness-pages/manifest"
 import 'bootstrap'
-import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
-import '../../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 export default {
   ...DefaultTheme,

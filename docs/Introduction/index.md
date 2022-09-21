@@ -5,8 +5,6 @@ Harness Vue Bootstrap is a Bootstrap 4.x component library for building web dash
 ## Prerequisites and Dependencies
 This library requires your Vue 3.x application to use [Harness Vue](https://next.harnessjs.org). Additionally, this library uses [Bootstrap 4.6.x](https://getbootstrap.com/docs/4.6/getting-started/introduction/) and [Bootstrap Icons 1.x](https://icons.getbootstrap.com/).
 
-This library also requires jquery for the input typeahead feature. If you are not using this feature, you do not need to install jquery.
-
 ## Installation
 
 Download Harness Vue Bootstrap with your package manager of choice:
@@ -17,7 +15,7 @@ npm install -S @rtidatascience/harness-vue-bootstrap
 yarn add @rtidatascience/harness-vue-bootstrap
 ```
 
-## Usage
+## Plugin Installation
 The Harness Vue Bootstrap package exports a Vue plugin and a component manifest. Installing the plugin will globally register all Harness Vue Bootstrap components:
 
 ```js
@@ -31,10 +29,33 @@ const app = createApp(App);
 app.use(harnessVueBootstrap)
 ```
 
-If you would not like to globally register components, you can access the component manifest at any time by importing `components` from `@rtidatascience/harness-vue-bootstrap`.
+If you would not like to globally register components, you can access the component manifest at any time by importing `components` from `@rtidatascience/harness-vue-bootstrap`. This manifest includes each component by key. For example, if you'd like to use `HarnessVueBootstrapSelect` without installing all components globally, you can access it this way: 
+
+```js
+import { components } from "@rtidatascience/harness-vue-bootstrap"
+
+const select = components["HarnessVueBootstrapSelect"]
+```
 
 ## Styles and Interactivity
-Three stylesheets are required for this library. These can be retrieved from the following locations and can be installed using the CSS importer or preprocessor of your choice:
+This library includes component styles that require importing. These components additionally depend on bootstrap and bootstrap-icons. You can import these stylesheets as well as the library's stylesheets like so:
 
+```js
+// in your main.js file
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import '@rtidatascience/harness-vue-bootstrap/dist/style.css'
+```
 
-If your application will leverage components with interactivity such as the `ChartWithTable`, `MultiSelectListbox` or `InteractiveTable` components, make sure to also add `import "bootstrap"` to your Vue application to include the bootstrap javascript functionality.
+```scss
+// in sass
+@import 'bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import '@rtidatascience/harness-vue-bootstrap/dist/style.css';
+```
+
+Additionally, if using any features that rely on bootstrap interactivity such as `ChartWithTable`, certain configurations of `HarnessVueBootstrapCheckboxGroup` or `HarnessVueInput`, make sure that you import bootstrap's Javascript:
+
+```js
+import 'bootstrap'
+```

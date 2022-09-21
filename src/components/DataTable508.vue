@@ -61,7 +61,12 @@ export default {
       if (chartData) {
         if (tableAdapter) {
           try {
-            return tableAdapter(this.chart, this.filters, chartData);
+            return tableAdapter(
+              this.chart,
+              this.filters,
+              chartData,
+              this.pageStore
+            );
           } catch (error) {
             throw String(
               "There was an error in the formatted text from your tableAdapter function: " +
