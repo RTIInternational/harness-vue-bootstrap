@@ -45,7 +45,7 @@ export default {
   methods: {
     setFilterLoadData(key, value) {
       this.setFilter(key, value);
-      if (!this.synchronous && this.pageDefinition.retrieveData) {
+      if (!this.synchronous && this.pageDefinition.loadData) {
         this.loadData();
       }
     },

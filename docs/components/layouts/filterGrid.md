@@ -3,7 +3,7 @@
 ## Basic Example
 A basic `<FilterGrid>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/forms/) for styling. The `FilterGrid` component automatically lays out all of your filters defined in harness, bound to the appopriate getters/actions. This component can accept a subset of filters, and can be made synchronous/asynchronous. Each filter and label is classed and given an id based on the name of the filter it represents.
 
-<!-- loadDataShim is a necessary component to trigger the retrieveData function in examplePage.js -->
+<!-- loadDataShim is a necessary component to trigger the loadData function in examplePage.js -->
 <loadDataShim  />
 
 <FilterGrid :only="['exampleCheckboxGroup-0', 'exampleInput-0', 'exampleRadioGroup-0', 'exampleSelect-0']" :columns="2"/>

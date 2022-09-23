@@ -5,7 +5,7 @@ A basic `<FilterAccordion>` element using [Bootstrap 4](https://getbootstrap.com
 
 \* Please note that we are currently working on a bug that is preventing us from rendering this component in VuePress. In the meantime, we are providing screenshots so you can at least get an idea of what the component looks like.
 
-<!-- loadDataShim is a necessary component to trigger the retrieveData function in examplePage.js -->
+<!-- loadDataShim is a necessary component to trigger the loadData function in examplePage.js -->
 <loadDataShim  />
 
 ![FilterAccordion Collapsed](../component_images/filter_accordion_collapsed.png)

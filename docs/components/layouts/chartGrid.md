@@ -3,7 +3,7 @@
 ## Basic Example
 A basic `<ChartGrid>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/) for styling. The `ChartGrid` component works largely the same as the [FilterGrid](/components/layouts/filterGrid) - it renders the components specified for each chart in the page definition into a bootstrap grid. It can also accept a subset and a number of columns.
 
-<!-- loadDataShim is a necessary component to trigger the retrieveData function in examplePage.js -->
+<!-- loadDataShim is a necessary component to trigger the loadData function in examplePage.js -->
 <loadDataShim  />
 
 <ChartGrid :only="['exampleChartWithTable', 'exampleTable']"/>
