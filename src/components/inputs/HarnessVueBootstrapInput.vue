@@ -89,7 +89,8 @@
 import inputProps from "../mixins/inputProps";
 import inputFilter from "../mixins/inputFilter";
 import InputPartial from "./partials/InputPartial.vue";
-import jquery from "jquery";
+import $ from "jquery";
+import Bloodhound from "corejs-typeahead/dist/bloodhound";
 export default {
   name: "harness-vue-bootstrap-input",
   mixins: [inputProps, inputFilter],
@@ -179,11 +180,7 @@ export default {
         .includes(val);
     },
     initTypeahead() {
-      if (window) {
-        window.$ = window.jQuery = jquery;
-      }
       // lazy-loading corejs
-      const Bloodhound = require("corejs-typeahead");
       // create Bloodhound instance with flattened/tokenized list of option labels
       this.bloodhound = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.ngram,
@@ -207,8 +204,8 @@ export default {
       }, {});
 
       // instantiate typeahead
-      window
-        .$(`#${this.filter.key}-${this.type}-input`)
+      console.log($(`#${this.filter.key}-${this.type}-input`));
+      $(`#${this.filter.key}-${this.type}-input`)
         .typeahead(
           {
             highlight: true,
@@ -232,25 +229,25 @@ export default {
   mounted() {
     if (this.typeahead) {
       this.initTypeahead();
-      this.subscription = this.$store.subscribeAction({
-        before: (action, state) => {},
-        after: (action, state) => {
-          // respond to options changing
-          if (
-            action.type.includes(`SET_${this.filter.key.toUpperCase()}_OPTIONS`)
-          ) {
-            this.bloodhound.clear();
-            this.bloodhound.add(
-              this.getOptionsForFilter(this.filter.key).map((f) => f.key)
-            );
-          }
-        },
-      });
+      // this.subscription = this.$store.subscribeAction({
+      //   before: (action, state) => {},
+      //   after: (action, state) => {
+      //     // respond to options changing
+      //     if (
+      //       action.type.includes(`SET_${this.filter.key.toUpperCase()}_OPTIONS`)
+      //     ) {
+      //       this.bloodhound.clear();
+      //       this.bloodhound.add(
+      //         this.getOptionsForFilter(this.filter.key).map((f) => f.key)
+      //       );
+      //     }
+      //   },
+      // });
     }
   },
   beforeUnmount() {
     if (this.typeahead) {
-      this.subscription();
+      // this.subscription();
       this.bloodhound.clear();
     }
   },

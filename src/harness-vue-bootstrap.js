@@ -1,8 +1,4 @@
 import components from "./manifest";
-import jquery from "jquery";
-if (typeof window !== "undefined") {
-  window.$ = window.jQuery = jquery;
-}
 
 export const harnessVueBootstrap = {
   // eslint-disable-next-line

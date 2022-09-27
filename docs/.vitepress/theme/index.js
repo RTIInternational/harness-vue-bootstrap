@@ -4,10 +4,14 @@ import { createPinia } from "pinia";
 import { harnessPlugin, harnessMixin, harnessStore } from "@rtidatascience/harness-vue"
 import { harnessVueBootstrap } from "../../../src/harness-vue-bootstrap"
 import pages from "../../harness-pages/manifest"
+
+import "corejs-typeahead";
 import 'bootstrap'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
+
+import './main.css'
 
 export default {
   ...DefaultTheme,

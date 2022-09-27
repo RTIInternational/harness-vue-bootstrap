@@ -8,7 +8,6 @@ export default {
                 collapsible: true,
                 items: [
                     {text: 'About', link: '/introduction/'},
-                    {text: 'Getting Started', link: '/introduction/getting-started'},
                     {text: 'Usage', link: '/introduction/usage'}
                 ]
             },
@@ -42,6 +41,16 @@ export default {
                     {text: 'Chart with Table', link: '/components/charts-and-tables/chartWithTable'}
                 ]
             }
+        ],
+        footer: {
+            message: 'Released under the MIT License.',
+            copyright: 'Built by <span class="vp-doc"><a href="https://www.rti.org">RTI International</a></span> Center for Data Science'
+        },
+        nav: [
+            { text: 'Guide', link: '/introduction/' },
+        ],
+        socialLinks: [
+            { icon: 'github', link: 'https://github.com/RTIInternational/harness-vue-bootstrap' }
         ]
     }
   }

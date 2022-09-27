@@ -3,9 +3,6 @@
 ## Basic Example
 A basic `<FilterGrid>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/forms/) for styling. The `FilterGrid` component automatically lays out all of your filters defined in harness, bound to the appopriate getters/actions. This component can accept a subset of filters, and can be made synchronous/asynchronous. Each filter and label is classed and given an id based on the name of the filter it represents.
 
-<!-- loadDataShim is a necessary component to trigger the loadData function in examplePage.js -->
-<loadDataShim  />
-
 <FilterGrid :only="['exampleCheckboxGroup-0', 'exampleInput-0', 'exampleRadioGroup-0', 'exampleSelect-0']" :columns="2"/>
 
 ## Usage
@@ -32,7 +29,9 @@ If true, includes a button to clear all filters and set them to their defaults. 
 ```html
 <FilterGrid :columns="2" :clearButton="false"/>
 ```
+
 ***
+
 ### buttonPosition
 Sets the button alignment in the bottom row. If `none`, it will not display any buttons.
 * **Type**: `String`
@@ -81,7 +80,9 @@ The number of columns to use in each row of the grid. Must be a divisor of 12, a
 ```html
 <FilterGrid />
 ```
+
 ***
+
 ### labelPosition
 Controls the position of the label in respect to the input. If this is set on the grid, it will be used as the default for any input that does not specify it.
 * **Type**: `String`
@@ -118,7 +119,7 @@ This property controls whether or not the filters automatically triggers harness
 
 ***
 
-### labelColumnSize
+### labelColumnSize 
 When used with `:labelPosition="'horizontal'"`, this controls the width of the label in respect to the input. Horizontal layouts use the [Bootstrap Grid](https://getbootstrap.com/docs/4.0/layout/grid/), which functions on subdivisions of 12. The number given to this property will be the subdivision of 12 used to control the label portion of the row - for example, a `labelColumnSize="4"` would use `col-4` for the label and `col-8` for the input.
 
 * **Type**: `Number`

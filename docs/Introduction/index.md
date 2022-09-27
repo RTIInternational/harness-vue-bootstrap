@@ -58,4 +58,5 @@ Additionally, if using any features that rely on bootstrap interactivity such as
 
 ```js
 import 'bootstrap'
+import "corejs-typeahead";
 ```

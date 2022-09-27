@@ -72,7 +72,8 @@
 <script>
 import inputProps from "../mixins/inputProps";
 import inputFilter from "../mixins/inputFilter";
-import jquery from "jquery";
+import $ from "jquery";
+import Bloodhound from "corejs-typeahead/dist/bloodhound";
 export default {
   name: "HarnessVueBootstrapMultiselectListbox",
   mixins: [inputProps, inputFilter],
@@ -141,9 +142,6 @@ export default {
       }
     },
     initTypeahead() {
-      // lazy-loading corejs
-      window.$ = window.jQuery = jquery;
-      const Bloodhound = require("corejs-typeahead");
       // create Bloodhound instance with flattened/tokenized list of option labels
       this.bloodhound = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.ngram,
@@ -167,8 +165,7 @@ export default {
       }, {});
 
       // instantiate typeahead
-      window
-        .$(`#harness-vue-bootstrap-multiselect-listbox-search-${this.filter.key}`)
+      $(`#harness-vue-bootstrap-multiselect-listbox-search-${this.filter.key}`)
         .typeahead(
           {
             highlight: true,
