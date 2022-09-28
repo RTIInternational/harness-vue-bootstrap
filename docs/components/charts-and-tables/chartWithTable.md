@@ -46,7 +46,7 @@ Toggle shows the chart, and allows the user to toggle between the chart and tabl
 * **Default**: `'toggle'`
 
 #### Example tableDisplay bottom
-<chart-with-table :chart="{key: 'exampleChartWithTable'}" :chartComponent="'barchart'" :refName="'table-display-bottom-example'" :tableDisplay="'bottom'"/>
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'table-display-bottom-example'" :tableDisplay="'bottom'"/>
 
 ```html
 <ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :tableDisplay="'bottom'"/>
@@ -59,7 +59,7 @@ Adds a download button that downloads a CSV representation of the chart data.
 * **Default**: `true`
 
 #### Example downloadable false
-<chart-with-table :chart="{key: 'exampleChartWithTable'}" :chartComponent="'barchart'" :refName="'downloadable-false-example'" :downloadable="false"/>
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'downloadable-false-example'" :downloadable="false"/>
 
 ```html
 <ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :downloadable="false"/>
@@ -73,7 +73,7 @@ Renders this component as a [bootstrap card](https://getbootstrap.com/docs/4.0/c
 
 #### Example card false
 
-<chart-with-table :chart="{key: 'exampleChartWithTable'}" :chartComponent="'barchart'" :refName="'card-false-example'" :card="false"/>
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'card-false-example'" :card="false"/>
 
 ```html
 <ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :card="false"/>
@@ -89,7 +89,7 @@ Puts buttons as part of the header or footer.
 * **Default**: `'top'`
 
 #### Example button bottom
-<chart-with-table :chart="{key: 'exampleChartWithTable'}" :chartComponent="'barchart'" :refName="'button-bottom-example'" :buttonPosition="'bottom'"/>
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'button-bottom-example'" :buttonPosition="'bottom'"/>
 
 ```html
 <ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :buttonPosition="'bottom'"/>
@@ -107,7 +107,7 @@ Renders a button to the right of the title that will collapse the chart and tabl
 * **Default**: `false`
 
 #### Example collapsible true
-<chart-with-table :chart="{key: 'exampleChartWithTable'}" :chartComponent="'barchart'" :refName="'collapsible-example'" :collapsible="true"/>
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'collapsible-example'" :collapsible="true"/>
 
 ```html
 <ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :collapsible="true"/>
@@ -120,7 +120,7 @@ If this exists, the function will run each time the collapse button is clicked. 
 * **Default**: `() => true`
 
 #### Example collapsibleFunc alert
-<chart-with-table :chart="{key: 'exampleChartWithTable'}" :chartComponent="'barchart'" :refName="'collapse-func-example'" :collapsible="true" :collapsibleFunc="() => alert('Chart has been collapsed')"/>
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'collapse-func-example'" :collapsible="true" :collapsibleFunc="() => alert('Chart has been collapsed')"/>
 
 ```html
 <ChartWithTable
@@ -138,7 +138,7 @@ If this exists, the function will run each time the collapse button is clicked. 
 * **Default**: `false`
 
 #### Example startCollapsed true
-<chart-with-table :chart="{key: 'exampleChartWithTable'}" :chartComponent="'barchart'"
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'"
     :refName="'start-collapsed-example'"
     :collapsible="true"
     :startCollapsed="true"

@@ -393,6 +393,7 @@ export default class ExamplePage {
       component: "ChartWithTable",
       props: {
         chartComponent: "barchart",
+        title: "Example Chart",
         tableAdapter: function (chart, filters, data) {
           let newData = {};
           data.labels.forEach((label, idx) => {

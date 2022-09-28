@@ -9,7 +9,9 @@
           <h3 :class="card ? 'card-title' : ''">
             <div class="harness-vue-bootstrap-chartwithtable-title">
               <div>
-                <slot name="title" v-html="chart.title"></slot>
+                <slot name="title">
+                  {{ chart.title }}
+                </slot>
                 <button
                   v-if="collapsible"
                   id="collapseButton"

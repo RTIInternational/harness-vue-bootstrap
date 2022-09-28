@@ -1,6 +1,5 @@
 <template>
     <div>
-        {{chart.key}}
         <Bar 
             :chart-data="getChartData(chart.key)"
             :chart-options="{responsive: true}"
