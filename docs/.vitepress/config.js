@@ -1,5 +1,5 @@
 export default {
-    title: 'Harness Vue Bootstrap',
+    title: 'Harness-Vue-Bootstrap',
     description: '',
     themeConfig: {
         sidebar: [

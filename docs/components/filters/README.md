@@ -17,7 +17,7 @@ All harness-UI filters expect a `filter` prop that contains an object. As a conv
 <harnessVueBootstrapSelect :filter="{ key: 'exampleFilter', ...filter }" />
 ```
 
-Additionally, you can include the `key` field in your filter definition in your page file to avoid having to re-pack this functionality. Many projects have also chosen to use `FilterGrid` components for their layouts, which abstracts the implementation of components in templates and avoids this process as well.
+Additionally, you can include the `key` field in your filter definition in your Page Definition to avoid having to re-pack this functionality. Many projects have also chosen to use `FilterGrid` components for their layouts, which abstracts the implementation of components in templates and avoids this process as well.
 
 For more information on this convention, see the [filterGrid]() component for how this is used programattically.
 

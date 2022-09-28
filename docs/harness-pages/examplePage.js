@@ -1,3 +1,5 @@
+import { compileScript } from "vue/compiler-sfc";
+
 export default class ExamplePage {
   title = "Example Page";
   key = "examplePage";
@@ -5,56 +7,19 @@ export default class ExamplePage {
   pageProps = {};
   loadData = async (state, pageObject, hs) => {
     return {
-      exampleChartWithTable: [
-        {
-          network: "Facebook",
-          MAU: 2255250000,
-        },
-        {
-          network: "Google+",
-          MAU: 430000000,
-        },
-        {
-          network: "Instagram",
-          MAU: 1000000000,
-        },
-        {
-          network: "Pinterest",
-          MAU: 246500000,
-        },
-        {
-          network: "Reddit",
-          MAU: 355000000,
-        },
-        {
-          network: "TikTok",
-          MAU: 500000000,
-        },
-        {
-          network: "Tumblr",
-          MAU: 624000000,
-        },
-        {
-          network: "Twitter",
-          MAU: 329500000,
-        },
-        {
-          network: "WeChat",
-          MAU: 1000000000,
-        },
-        {
-          network: "Weibo",
-          MAU: 431000000,
-        },
-        {
-          network: "Whatsapp",
-          MAU: 1433333333,
-        },
-        {
-          network: "YouTube",
-          MAU: 1900000000,
-        },
-      ],
+      exampleChartWithTable: {
+        labels: Array(5)
+          .fill("Category")
+          .map((cat, idx) => `${cat} ${idx + 1}`),
+        datasets: [
+          {
+            label: "Example Data",
+            data: Array(5)
+              .fill(1)
+              .map((c) => Math.floor(Math.random() * 100 * c)),
+          },
+        ],
+      },
       exampleTable: [
         { key: "value", key2: "value2" },
         { key: "value3", key2: "value4" },
@@ -148,7 +113,7 @@ export default class ExamplePage {
         component: "HarnessVueBootstrapSelect",
         props: {
           multiple: true,
-          filterType: "internal",
+          filterType: "MultiSelect Group",
         },
         options: [
           {
@@ -172,7 +137,7 @@ export default class ExamplePage {
         label: "Example Input",
         component: "HarnessVueBootstrapInput",
         props: {
-          filterType: "internal",
+          filterType: "Input Group",
         },
         options: [],
       },
@@ -208,7 +173,7 @@ export default class ExamplePage {
         label: "Example Radio Group",
         component: "HarnessVueBootstrapRadioGroup",
         props: {
-          filterType: "internal",
+          filterType: "Radio Group",
         },
         options: [
           {
@@ -399,7 +364,7 @@ export default class ExamplePage {
         title: "",
         component: "ChartWithTable",
         props: {
-          chartComponent: {},
+          chartComponent: "barchart",
           tableAdapter: function (chart, filters, data) {
             let map = {
               network: "Transformed network",
@@ -427,25 +392,13 @@ export default class ExamplePage {
       title: "Example Chart",
       component: "ChartWithTable",
       props: {
-        chartComponent: {},
+        chartComponent: "barchart",
         tableAdapter: function (chart, filters, data) {
-          let map = {
-            network: "Transformed network",
-            MAU: "Transformed MAU",
-          };
-          let newData = [];
-          data.forEach((datum) => {
-            newData.push(
-              Object.keys(datum).reduce((acc, key) => {
-                acc[map[key]] =
-                  typeof datum[key] === "string"
-                    ? datum[key].toUpperCase() + " TRANSFORMED UPPERCASE"
-                    : datum[key].toLocaleString();
-                return acc;
-              }, {})
-            );
+          let newData = {};
+          data.labels.forEach((label, idx) => {
+            newData[label] = data.datasets[0].data[idx];
           });
-          return newData;
+          return [newData];
         },
         refName: "exampleChartWithTable",
       },
@@ -454,7 +407,7 @@ export default class ExamplePage {
       title: "Example Table",
       component: "DataTable508",
       props: {
-        chartComponent: {},
+        chartComponent: "barchart",
         tableAdapter: function (chart, filters, data) {
           let map = {
             key: "Transformed key",
@@ -479,7 +432,7 @@ export default class ExamplePage {
       title: "Example Table 2",
       component: "DataTable508",
       props: {
-        chartComponent: {},
+        chartComponent: "barchart",
         tableAdapter: function (chart, filters, data) {
           let map = {
             key: "Transformed key",

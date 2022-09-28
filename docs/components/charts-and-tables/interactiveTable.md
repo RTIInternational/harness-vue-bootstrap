@@ -1,7 +1,7 @@
 # Interactive Table
 [[toc]]
 ## Basic Example
-A basic `<InteractiveTable>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/forms/) for styling. This component takes an array of objects and renders a 508-compliant data table where each key/value pair corresponds to a column header/value. If the data is not in this format, you can include a `tableAdapter` function that accepts your data and transforms it into the necessary format. This tabular data is searchable, sortable, and paginated, either through the built-in functionality or through developer-defined functionality in the `loadData()` function. For more information on the `tablleAdapter` function, check out the harness documentation on [Defining Charts](https://www.harnessjs.org/getting-started/usage.html#defining-charts)
+A basic `<InteractiveTable>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/forms/) for styling. This component takes an array of objects and renders a 508-compliant data table where each key/value pair corresponds to a column header/value. If the data is not in this format, you can include a `tableAdapter` function that accepts your data and transforms it into the necessary format. This tabular data is searchable, sortable, and paginated, either through the built-in functionality or through developer-defined functionality in the `loadData()` function. For more information on Harness-Vue `tableAdapter` functions see the [section on Structured Data and Tables](https://next.harnessjs.org/usage/charts.html#structured-data-and-tables) in the Harness-Vue documentation.
 
 
 <InteractiveTable :chart="{ key: 'exampleTable2' }" :numRowOptions="[5, 10, 25]" :defaultSortColumn="'Transformed key'" />
@@ -15,7 +15,7 @@ A basic `<InteractiveTable>` element using [Bootstrap 4](https://getbootstrap.co
 ```html
 <InteractiveTable :chart="{ key: 'exampleTable2' }" :numRowOptions="[5, 10, 25]" :defaultSortColumn="'Transformed key'" />
 ```
-### Page File
+### Page Definition
 ```js
 import { components } from '@rtidatascience/harness-vue-bootstrap'
 components['InteractiveTable'] // array syntax
@@ -28,7 +28,7 @@ Object that sets whether harness or the developer will handle the search, sort, 
 * **Type**: `Object`
 * **Required**: No
 
-### Example Page File With local Prop
+### Example Page Definition With local Prop
 ```js
 charts = function () {
   return {
@@ -49,7 +49,7 @@ charts = function () {
 
 If any of the `local` properties are set to false, the developer will need to define a filter for the chart in order for the necessary values to be assigned and accessed. The filter should follow the naming convention of `chart.key + 'TableOptions'`. 
 
-### Example Page File With exampleTable2TableOptions Filter
+### Example Page Definition With exampleTable2TableOptions Filter
 ```js
 filters = function () {
   return {

@@ -1,8 +1,8 @@
 # Data Table 508
 [[toc]]
 ## Basic Example
-A basic `<DataTable508>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/forms/) for styling. This component takes an array of objects and renders a 508-compliant data table where each key/value pair corresponds to a column header/value. If the data is not in this format, you can include a `tableAdapter` function that accepts your data and transforms it into the necessary format.
-**TODO: Link to harness tableAdapter docs**
+A basic `<DataTable508>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/forms/) for styling. This component takes an array of objects and renders a 508-compliant data table where each key/value pair corresponds to a column header/value. If the data is not in this format, you can include a `tableAdapter` function that accepts your data and transforms it into the necessary format. For more information on Harness-Vue `tableAdapter` functions see the [section on Structured Data and Tables](https://next.harnessjs.org/usage/charts.html#structured-data-and-tables) in the Harness-Vue documentation.
+
 
 <DataTable508 :chart="{ key: 'exampleTable' }"  />
 
@@ -15,11 +15,12 @@ A basic `<DataTable508>` element using [Bootstrap 4](https://getbootstrap.com/do
 ```html
     <DataTable508 :chart="{ key: 'exampleTable' }" />
 ```
-### Page File
+### Page Definition
 ```js
 import { components } from '@rtidatascience/harness-vue-bootstrap'
 components['DataTable508'] // array syntax
 components.DataTable508 // object syntax
+'DataTable508' // string syntax if mixin installed
 ```
 ## Props
 

@@ -111,7 +111,7 @@ Controls the position of the label in respect to the input. If this is set on th
 
 ### synchronous
 
-This property controls whether or not the filters automatically triggers harness's `loadData` lifecycle hook on change. A 'synchronous' filter is 'in sync' with harness's lifecycle, and therefore does trigger `loadData` when it changes.
+This property controls whether or not the filters automatically triggers Harness-Vue's `loadData` lifecycle hook on change. A 'synchronous' filter is 'in sync' with Harness-Vue's lifecycle, and therefore does trigger `loadData` when it changes.
 
 * **Type**: `Boolean`
 * **Required**: No

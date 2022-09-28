@@ -14,11 +14,12 @@ This Multiselect-Listbox component allows a user to choose from their options (t
 ```html
     <harnessVueBootstrapMultiselectListbox :filter="{'key': 'exampleInput', ...}" />
 ```
-### Page File
+### Page Definition
 ```js
 import { components } from '@rtidatascience/harness-vue-bootstrap'
 components['harnessVueBootstrapMultiselectListbox'] // array syntax
 components.harnessVueBootstrapMultiselectListbox // object syntax
+'harnessVueBootstrapMultiselectListbox' // string syntax if mixin is installed
 ```
 ## Props
 
@@ -40,7 +41,7 @@ If the search bar is enabled, includes bloodhound typeahead functionality.
 <harness-vue-bootstrap-multiselect-listbox :filter="{'key': 'exampleMultiselectListboxSearchable', 'label': 'Example Multiselect Listbox (Searchable)'}" :searchable="true" :typeahead="true" />
 
 ### synchronous
-This property controls whether or not the filter automatically triggers harness's `loadData` lifecycle hook on change. A 'synchronous' filter is 'in sync' with harness's lifecycle, and therefore does trigger `loadData` when it changes.
+This property controls whether or not the filter automatically triggers Harness-Vue's `loadData` lifecycle hook on change. A 'synchronous' filter is 'in sync' with Harness-Vue's lifecycle, and therefore does trigger `loadData` when it changes.
 * **Type**: `Boolean`
 * **Required**: No
 * **Default**: `true`

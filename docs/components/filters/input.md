@@ -5,7 +5,7 @@ Error in render: "TypeError: Cannot read property '_modulesNamespaceMap' of unde
 -->
 
 ## Basic Example
-A basic `<input>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/forms/) for styling. This component binds the input to a harness filter. The harness-vue-bootstrap-input component is flexible and can accept various HTML5 `<input>` types.
+A basic `<input>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/forms/) for styling. This component binds the input to a Harness-Vue filter. The harness-vue-bootstrap-input component is flexible and can accept various HTML5 `<input>` types.
 
 <harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput')" />
 
@@ -18,11 +18,12 @@ A basic `<input>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/
 ```html
     <harnessVueBootstrapInput :filter="{'key': 'exampleInput', ...}" />
 ```
-### Page File
+### Page Definition
 ```js
 import { components } from '@rtidatascience/harness-vue-bootstrap'
 components['harnessVueBootstrapInput'] // array syntax
 components.harnessVueBootstrapInput // object syntax
+'harnessVueBootstrapInput' // string syntax if mixin is installed
 ```
 
 ### Include Single Option 
@@ -197,7 +198,7 @@ Specify a component to be prepended to the input using a [bootstrap input group]
 ```
 ***
 ### synchronous
-This property controls whether or not the filter automatically triggers harness's `loadData` lifecycle hook on change. A 'synchronous' filter is 'in sync' with harness's lifecycle, and therefore does trigger `loadData` when it changes.
+This property controls whether or not the filter automatically triggers Harness-Vue's `loadData` lifecycle hook on change. A 'synchronous' filter is 'in sync' with Harness-Vue's lifecycle, and therefore does trigger `loadData` when it changes.
 * **Type**: `Boolean`
 * **Required**: No
 * **Default**: `true`

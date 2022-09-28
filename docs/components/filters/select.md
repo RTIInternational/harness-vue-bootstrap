@@ -5,10 +5,9 @@ Error in render: "TypeError: Cannot read property '_modulesNamespaceMap' of unde
 -->
 [[toc]]
 ## Basic Example
-A basic `<select>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/forms/) for styling. This component binds the select element to a harness filter, and the `<option>` elements to the options for that filter. 
-**TODO: Link to harness filter/options docs**
+A basic `<select>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/forms/) for styling. This component binds the select element to a harness filter, and the `<option>` elements to the options for that filter. For more on Harness-Vue filter options, see the [Harness-Vue page definition documentation](https://next.harnessjs.org/introduction/page-definitions.html#filters).
 
-All filter values and option values are treated as strings (unless `multiple`, see below).
+All filter values and option values are treated as strings (unless the prop `multiple` is `true`, see examples below).
 
 
 <harness-vue-bootstrap-select :filter="{'key': 'exampleSelect', 'label': 'Example Select'}"  />
@@ -22,11 +21,12 @@ All filter values and option values are treated as strings (unless `multiple`, s
 ```html
     <harnessVueBootstrapSelect :filter="{'key': 'exampleSelect', ...filter}" />
 ```
-### Page File
+### Page Definition
 ```js
 import { components } from '@rtidatascience/harness-vue-bootstrap'
 components['harnessVueBootstrapSelect'] // array syntax
 components.harnessVueBootstrapSelect // object syntax
+'harnessVueBootstrapSelect' // string syntax if mixin installed
 ```
 ## Props
 
@@ -81,7 +81,7 @@ When used with `:labelPosition="'horizontal'"`, this controls the width of the l
 ```
 
 ### synchronous
-This property controls whether or not the filter automatically triggers harness's `loadData` lifecycle hook on change. A 'synchronous' filter is 'in sync' with harness's lifecycle, and therefore does trigger `loadData` when it changes.
+This property controls whether or not the filter automatically triggers Harness-Vue's `loadData` lifecycle hook on change. A 'synchronous' filter is 'in sync' with Harness-Vue's lifecycle, and therefore does trigger `loadData` when it changes.
 * **Type**: `Boolean`
 * **Required**: No
 * **Default**: `true`

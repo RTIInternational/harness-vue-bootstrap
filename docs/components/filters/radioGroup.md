@@ -18,11 +18,12 @@ A basic radio group element using [Bootstrap 4](https://getbootstrap.com/docs/4.
 ```html
     <harnessVueBootstrapRadioGroup :filter="{'key': 'exampleRadioGroup', ...}" />
 ```
-### Page File
+### Page Definition
 ```js
 import { components } from '@rtidatascience/harness-vue-bootstrap'
 components['harnessVueBootstrapRadioGroup'] // array syntax
 components.harnessVueBootstrapRadioGroup // object syntax
+'harnessVueBootstrapRadioGroup' // string syntax if mixin is installed
 ```
 
 ## Props
@@ -81,7 +82,7 @@ When used with `:labelPosition="'horizontal'"`, this controls the width of the l
 ```
 
 ### synchronous
-This property controls whether or not the filter automatically triggers harness's `loadData` lifecycle hook on change. A 'synchronous' filter is 'in sync' with harness's lifecycle, and therefore does trigger `loadData` when it changes.
+This property controls whether or not the filter automatically triggers Harness-Vue's `loadData` lifecycle hook on change. A 'synchronous' filter is 'in sync' with Harness-Vue's lifecycle, and therefore does trigger `loadData` when it changes.
 * **Type**: `Boolean`
 * **Required**: No
 * **Default**: `true`
