@@ -60,7 +60,7 @@ Sets the button alignment in the bottom row. If `none`, it will not display any 
 ## Mixin Props
 
 ### columns
-The number of columns to use in each row of the grid. Must be a divisor of 12, as this uses the [Bootstrap Grid](https://getbootstrap.com/docs/4.0/layout/grid/). Default is 1.
+The number of columns to use in each row of the grid. Must be a divisor of 12, as this uses the [Bootstrap Grid](https://getbootstrap.com/docs/4.0/layout/grid/). Default is `1`.
 * **Type**: `Number`
 * **Required**: No
 * **Options:**
@@ -127,18 +127,20 @@ When used with `:labelPosition="'horizontal'"`, this controls the width of the l
 * **Default**: 6
 
 #### Example 4
-<FilterGrid :only="['exampleCheckboxGroup-8', 'exampleInput-8', 'exampleRadioGroup-8', 'exampleSelect-8']" :columns="2" :labelColumnSize="4"/>
+<FilterGrid :only="['exampleCheckboxGroup-8', 'exampleInput-8', 'exampleRadioGroup-8', 'exampleSelect-8']" :columns="2" :labelColumnSize="4" />
 
 ```html
-<FilterGrid :columns="2" :labelColumnSize="4"/>
+<FilterGrid :columns="2" :labelColumnSize="4" />
 ```
 #### Example 8
-<FilterGrid :only="['exampleCheckboxGroup-9', 'exampleInput-9', 'exampleRadioGroup-9', 'exampleSelect-9']":columns="2" :labelColumnSize="8"/>
+<FilterGrid :only="['exampleCheckboxGroup-9', 'exampleInput-9', 'exampleRadioGroup-9', 'exampleSelect-9']" :columns="2" :labelColumnSize="8" />
 
 ```html
-<FilterGrid :columns="2" :labelColumnSize="8"/>
+<FilterGrid :columns="2" :labelColumnSize="8" />
 ```
+
 ***
+
 ### only
 Only filters with keys in this array will be rendered. Filters will be rendered in the order created on the harness page.
 * **Type**: `Array`

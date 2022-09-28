@@ -7,7 +7,10 @@
     >
       <div
         :class="
-          'harness-vue-bootstrap-filtergrid-col col-sm-' + 12 / columns + ' ' + colClass
+          'harness-vue-bootstrap-filtergrid-col col-sm-' +
+          12 / columns +
+          ' ' +
+          colClass
         "
         v-for="(filter, filterKey) in row"
         :key="pageDefinition.key + '-' + filterKey"
@@ -85,8 +88,8 @@ export default {
   methods: {
     initializeDefaultsLoadData() {
       this.initializeDefaults(
-        this.subset(this.getFilters)
-          ? Object.keys(this.subset(this.getFilters))
+        this.subset(this.filters)
+          ? Object.keys(this.subset(this.filters))
           : null
       );
       if (!this.synchronous && this.pageDefinition.loadData) {
