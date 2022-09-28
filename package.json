@@ -13,9 +13,10 @@
     "url": "https://github.com/RTIInternational/harness-vue-bootstrap/issues"
   },
   "homepage": "https://bootstrap.harnessjs.org",
-  "main": "./dist/harness-vue-bootstrap.es.js",
+  "main": "./src/harness-vue-bootstrap.js",
   "files": [
-    "dist/*"
+    "dist/*",
+    "src/*"
   ],
   "scripts": {
     "dev": "vite",
