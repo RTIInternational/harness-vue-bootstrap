@@ -1,5 +1,4 @@
 import components from "./manifest";
-import "corejs-typeahead";
 
 export const harnessVueBootstrap = {
   // eslint-disable-next-line

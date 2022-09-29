@@ -89,8 +89,6 @@
 import inputProps from "../mixins/inputProps";
 import inputFilter from "../mixins/inputFilter";
 import InputPartial from "./partials/InputPartial.vue";
-import $ from "jquery";
-import Bloodhound from "corejs-typeahead/dist/bloodhound";
 export default {
   name: "harness-vue-bootstrap-input",
   mixins: [inputProps, inputFilter],
@@ -118,16 +116,6 @@ export default {
         return validOptions.includes(value);
       },
     },
-    typeahead: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    strict: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
     placeholder: {
       required: false,
       type: String,
@@ -150,138 +138,5 @@ export default {
       type: String,
     },
   },
-  data() {
-    return {
-      bloodhound: null,
-      subscription: null,
-      strictError: false,
-    };
-  },
-  computed: {
-    boundValue: {
-      get() {
-        return this.getFilter(this.filter.key);
-      },
-      set(value) {
-        // if strict is enabled, only allow options that are in the list
-        if (!this.strict || this.evaluateStrict) {
-          this.strictError = false;
-          this.setFilterLoadData(this.filter.key, value);
-        } else if (this.strict && !this.evaluateStrict) {
-          this.strictError = true;
-        }
-      },
-    },
-  },
-  methods: {
-    evaluateStrict(val) {
-      return this.getOptionsForFilter(this.filter.key)
-        .map((f) => f.key)
-        .includes(val);
-    },
-    initTypeahead() {
-      // lazy-loading corejs
-      // create Bloodhound instance with flattened/tokenized list of option labels
-      this.bloodhound = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.ngram,
-        queryTokenizer: Bloodhound.tokenizers.ngram,
-        local: this.getOptionsForFilter(this.filter.key).map((f) => f.key),
-      });
-
-      const classnames = [
-        "input",
-        "hint",
-        "menu",
-        "dataset",
-        "suggestion",
-        "empty",
-        "open",
-        "cursor",
-        "highlight",
-      ].reduce((acc, cn) => {
-        acc[cn] = `harness-vue-bootstrap-typeahead-${cn}`;
-        return acc;
-      }, {});
-
-      // instantiate typeahead
-      console.log($(`#${this.filter.key}-${this.type}-input`));
-      $(`#${this.filter.key}-${this.type}-input`)
-        .typeahead(
-          {
-            highlight: true,
-            minLength: 1,
-            classNames: classnames,
-          },
-          {
-            name: this.filter.key,
-            limit: 10,
-            source: this.bloodhound,
-          }
-        )
-        .bind("typeahead:select", (ev, selection) => {
-          this.setFilter(this.filter.key, selection);
-        })
-        .bind("typeahead:autocomplete", (ev, selection) => {
-          this.setFilter(this.filter.key, selection);
-        });
-    },
-  },
-  mounted() {
-    if (this.typeahead) {
-      this.initTypeahead();
-      // this.subscription = this.$store.subscribeAction({
-      //   before: (action, state) => {},
-      //   after: (action, state) => {
-      //     // respond to options changing
-      //     if (
-      //       action.type.includes(`SET_${this.filter.key.toUpperCase()}_OPTIONS`)
-      //     ) {
-      //       this.bloodhound.clear();
-      //       this.bloodhound.add(
-      //         this.getOptionsForFilter(this.filter.key).map((f) => f.key)
-      //       );
-      //     }
-      //   },
-      // });
-    }
-  },
-  beforeUnmount() {
-    if (this.typeahead) {
-      // this.subscription();
-      this.bloodhound.clear();
-    }
-  },
 };
 </script>
-<style>
-.harness-vue-bootstrap-typeahead-input {
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-}
-
-.harness-vue-bootstrap-typeahead-hint {
-  color: #999;
-}
-
-.harness-vue-bootstrap-typeahead-menu {
-  max-width: 100%;
-  margin-top: 5px;
-  padding: 5px 0;
-  background-color: white;
-  border: 1px solid black;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-}
-
-.harness-vue-bootstrap-typeahead-suggestion {
-  padding: 5px 10px;
-}
-
-.harness-vue-bootstrap-typeahead-suggestion.harness-vue-bootstrap-typeahead-cursor {
-  color: #fff;
-  background-color: #0097cf;
-}
-.harness-vue-bootstrap-typeahead-suggestion p {
-  margin: 0;
-}
-</style>

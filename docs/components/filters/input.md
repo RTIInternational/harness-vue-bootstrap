@@ -221,35 +221,3 @@ You may specify the type of input the harness-vue-bootstrap-input accepts with t
     :type="password"
     />
 ```
-***
-### typeahead
-By including `typeahead: true` as a prop to your text input, this input becomes a typeahead component using [corejs-typeahead](https://github.com/corejavascript/typeahead.js/) and [Bloodhound](https://github.com/corejavascript/typeahead.js/blob/master/doc/bloodhound.md). Currently, the bloodhound search index is created based on the `key` of each option passed to the filter. Additionally, including `strict: true` enforces the filter set function to only trigger `setFilter` and `loadData` (if synchronous) if the value is an valid option. Without `strict` enabled, typing in `h` then `a` then `r` would run `setFilter(key, 'h')` then `setFilter(key, 'ha')` then `setFilter(key, 'har')` before a user selects `harness` from the typeahead. With `strict` enabled, it would not set the filter until the user has selected `harness` via typing/hinting/selecting.
-
-#### Example
-
-<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInputTypeahead')" :typeahead="true" :strict="true" />
-
-Hint: try searching `RTI`, `harness`, `data science`, `data` etc.
-
-```html
-<harness-vue-bootstrap-input 
-    :type="text"
-    :typeahead="true"
-    :strict="true"
-    />
-```
-
-#### Note on styling
-Because this feature uses the typeahead library, it creates a number of classes for styling. The library includes some basic styles, but these classes are available for styles:
-* `harness-vue-bootstrap-typeahead-input`
-* `harness-vue-bootstrap-typeahead-hint`
-* `harness-vue-bootstrap-typeahead-menu`
-* `harness-vue-bootstrap-typeahead-dataset`
-* `harness-vue-bootstrap-typeahead-suggestion`
-* `harness-vue-bootstrap-typeahead-empty`
-* `harness-vue-bootstrap-typeahead-open`
-* `harness-vue-bootstrap-typeahead-cursor`
-* `harness-vue-bootstrap-typeahead-highlight`
-
-
-

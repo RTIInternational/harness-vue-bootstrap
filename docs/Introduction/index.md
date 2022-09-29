@@ -44,19 +44,16 @@ This library includes component styles that require importing. These components 
 // in your main.js file
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import '@rtidatascience/harness-vue-bootstrap/dist/style.css'
 ```
 
 ```scss
 // in sass
 @import 'bootstrap/dist/css/bootstrap.css';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
-@import '@rtidatascience/harness-vue-bootstrap/dist/style.css';
 ```
 
 Additionally, if using any features that rely on bootstrap interactivity such as `ChartWithTable`, certain configurations of `HarnessVueBootstrapCheckboxGroup` or `HarnessVueInput`, make sure that you import bootstrap's Javascript:
 
 ```js
 import 'bootstrap'
-import "corejs-typeahead";
 ```

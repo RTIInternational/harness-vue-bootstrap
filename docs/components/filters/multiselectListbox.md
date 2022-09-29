@@ -31,14 +31,8 @@ Enables a text input that filters the values in the left-hand box.
 * **Required**: No
 * **Default**: `false`
 
-### typeahead
-If the search bar is enabled, includes bloodhound typeahead functionality.
-* **Type**: `Boolean`
-* **Required**: No
-* **Default**: `false`
-
-#### Searchable Example with Typeahead
-<harness-vue-bootstrap-multiselect-listbox :filter="{'key': 'exampleMultiselectListboxSearchable', 'label': 'Example Multiselect Listbox (Searchable)'}" :searchable="true" :typeahead="true" />
+#### Searchable Example
+<harness-vue-bootstrap-multiselect-listbox :filter="{'key': 'exampleMultiselectListboxSearchable', 'label': 'Example Multiselect Listbox (Searchable)'}" :searchable="true" />
 
 ### synchronous
 This property controls whether or not the filter automatically triggers Harness-Vue's `loadData` lifecycle hook on change. A 'synchronous' filter is 'in sync' with Harness-Vue's lifecycle, and therefore does trigger `loadData` when it changes.
