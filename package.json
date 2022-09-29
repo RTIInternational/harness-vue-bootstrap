@@ -15,7 +15,6 @@
   "homepage": "https://bootstrap.harnessjs.org",
   "main": "./src/harness-vue-bootstrap.js",
   "files": [
-    "dist/*",
     "src/*"
   ],
   "scripts": {
