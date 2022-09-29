@@ -42,7 +42,11 @@
         :id="chart.key + '_data_table'"
         class="harness-vue-bootstrap-interactivetable-datatable"
       >
-        <table :class="'harness-vue-bootstrap-interactivetable-table table ' + tableClass">
+        <table
+          :class="
+            'harness-vue-bootstrap-interactivetable-table table ' + tableClass
+          "
+        >
           <thead :class="headerClass">
             <tr>
               <th
@@ -52,7 +56,9 @@
                 :class="'table-header ' + labelClass"
                 @click="setColumnFilter(column)"
               >
-                <button class="harness-vue-bootstrap-interactivetable-column-header">
+                <button
+                  class="harness-vue-bootstrap-interactivetable-column-header"
+                >
                   {{ column }}
                 </button>
                 <span
@@ -98,7 +104,9 @@
           aria-label="Table pagination navigation"
           class="navigation text-center harness-vue-bootstrap-interactivetable-pagination-navigation"
         >
-          <ul class="pagination harness-vue-bootstrap-interactivetable-pagination">
+          <ul
+            class="pagination harness-vue-bootstrap-interactivetable-pagination"
+          >
             <li
               :class="`page-link ${pageNumber <= 1 ? 'disabled' : ''}`"
               @click="setPageNum(1)"

@@ -4,7 +4,9 @@
       <div :class="'col-' + columnSize">
         <div class="row harness-vue-bootstrap-filtergrid-row">
           <div class="col">
-            <slot class="harness-vue-bootstrap-filterpicker-label">Add Filter</slot>
+            <slot class="harness-vue-bootstrap-filterpicker-label"
+              >Add Filter</slot
+            >
             <select
               class="form-control harness-vue-bootstrap-filterpicker-select"
               name="filterPicker"
@@ -18,7 +20,9 @@
             </select>
           </div>
           <div class="col">
-            <slot class="harness-vue-bootstrap-filterpicker-label">Remove Filter</slot>
+            <slot class="harness-vue-bootstrap-filterpicker-label"
+              >Remove Filter</slot
+            >
             <select
               class="form-control harness-vue-bootstrap-filterpicker-select"
               name="filterPicker"

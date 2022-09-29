@@ -1,19 +1,12 @@
 <template>
     <div>
-        <Bar 
-            :chart-data="getChartData(chart.key)"
-            :chart-options="{responsive: true}"
-        />
+        ![Chart Placeholder Image](./chart.png)
+        <img src="/chart.png" />
     </div>    
 </template>
 <script>
-    import { Bar } from 'vue-chartjs'
-    import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-    ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
-    
     export default {
         name: 'barchart',
-        components: {Bar},
         props: {
             chart: {
                 required: true,

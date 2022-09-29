@@ -7,6 +7,7 @@ export default defineConfig({
   // https://vitejs.dev/guide/build.html#library-mode
   build: {
     lib: {
+      //eslint-disable-next-line
       entry: resolve(__dirname, "src/harness-vue-bootstrap.js"),
       name: "harness-vue-bootstrap",
       fileName: (format) => `harness-vue-bootstrap.${format}.js`,

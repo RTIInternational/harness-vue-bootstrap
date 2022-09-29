@@ -5,7 +5,11 @@
         class="col-form-label harness-vue-bootstrap-checkboxgroup-legend"
         :for="filter.key"
         :data-toggle="collapse ? 'collapse' : ''"
-        :href="collapse ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''"
+        :href="
+          collapse
+            ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
+            : ''
+        "
         :role="collapse ? 'button' : ''"
         @click="collapsed = !collapsed"
       >
@@ -13,7 +17,11 @@
         <button
           class="harness-vue-bootstrap-collapse-toggle-button"
           :data-toggle="collapse ? 'collapse' : ''"
-          :href="collapse ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''"
+          :href="
+            collapse
+              ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
+              : ''
+          "
           :role="collapse ? 'button' : ''"
           @click="collapsed = !collapsed"
           v-if="collapse"
@@ -27,7 +35,11 @@
       <div
         v-if="collapse"
         data-toggle="collapse"
-        :href="collapse ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''"
+        :href="
+          collapse
+            ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
+            : ''
+        "
         role="button"
         class="harness-vue-bootstrap-checkboxgroup-collapse-label"
         @click="collapsed = !collapsed"
@@ -48,7 +60,11 @@
       </div>
       <div
         :class="collapse ? 'collapse' : ''"
-        :id="collapse ? 'harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''"
+        :id="
+          collapse
+            ? 'harness-vue-bootstrap-checkbox-collapse-' + filter.key
+            : ''
+        "
       >
         <div
           :class="'form-check' + (inline ? ' form-check-inline' : '')"
@@ -82,7 +98,9 @@
             class="col-form-label harness-vue-bootstrap-checkboxgroup-legend"
             :data-toggle="collapse ? 'collapse' : ''"
             :href="
-              collapse ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''
+              collapse
+                ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
+                : ''
             "
             :role="collapse ? 'button' : ''"
             :for="filter.key"
@@ -93,7 +111,9 @@
               class="harness-vue-bootstrap-collapse-toggle-button"
               :data-toggle="collapse ? 'collapse' : ''"
               :href="
-                collapse ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''
+                collapse
+                  ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
+                  : ''
               "
               :role="collapse ? 'button' : ''"
               @click="collapsed = !collapsed"
@@ -131,7 +151,11 @@
           </div>
           <div
             :class="collapse ? 'collapse' : ''"
-            :id="collapse ? 'harness-vue-bootstrap-checkbox-collapse-' + filter.key : ''"
+            :id="
+              collapse
+                ? 'harness-vue-bootstrap-checkbox-collapse-' + filter.key
+                : ''
+            "
           >
             <div
               :class="'form-check' + (inline ? ' form-check-inline' : '')"

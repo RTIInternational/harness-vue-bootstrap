@@ -9,7 +9,7 @@ hero:
   text: Building blocks for Harness-Vue.
   tagline: A component library of common-use dashboard elements built with Harness-Vue and Bootstrap.
   image:
-    src: ./images/harness-vue-bootstrap.png
+    src: ./harness-vue-bootstrap.png
     alt: Harness-Vue Logo
   actions:
     - theme: brand
