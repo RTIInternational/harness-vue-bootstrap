@@ -2,7 +2,7 @@
   "name": "@rtidatascience/harness-vue-bootstrap",
   "author": "RTI CDS <alexharding@rti.org>",
   "private": false,
-  "version": "0.5.0",
+  "version": "1.0.0",
   "type": "module",
   "repository": {
     "type": "git",
