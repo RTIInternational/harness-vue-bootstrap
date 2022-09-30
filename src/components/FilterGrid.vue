@@ -2,7 +2,7 @@
   <div>
     <div
       :class="'row harness-vue-bootstrap-filtergrid-row ' + rowClass"
-      v-for="(row, idx) in rows(this.filters)"
+      v-for="(row, idx) in rows(filters)"
       :key="idx"
     >
       <div

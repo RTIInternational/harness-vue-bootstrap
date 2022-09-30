@@ -325,8 +325,9 @@ export default {
     isSearchable() {
       if (this.local) {
         return (
-          !this.local.hasOwnProperty("search") ||
-          (this.local.hasOwnProperty("search") && this.local.search !== false)
+          !Object.keys(this.local).includes("search") ||
+          (Object.keys(this.local).includes("search") &&
+            this.local.search !== false)
         );
       }
       return true;
@@ -334,8 +335,9 @@ export default {
     isSortable() {
       if (this.local) {
         return (
-          !this.local.hasOwnProperty("sort") ||
-          (this.local.hasOwnProperty("sort") && this.local.sort !== false)
+          !Object.keys(this.local).includes("sort") ||
+          (Object.keys(this.local).includes("sort") &&
+            this.local.sort !== false)
         );
       }
       return true;
@@ -343,8 +345,8 @@ export default {
     isPaginated() {
       if (this.local) {
         return (
-          !this.local.hasOwnProperty("paginate") ||
-          (this.local.hasOwnProperty("paginate") &&
+          !Object.keys(this.local).includes("paginate") ||
+          (Object.keys(this.local).includes("paginate") &&
             this.local.paginate !== false)
         );
       }

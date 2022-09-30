@@ -2,7 +2,7 @@
   <div>
     <label
       class="harness-vue-bootstrap-select-label harness-vue-bootstrap-multiselect-listbox-top-label"
-      >{{ this.filter.label }}</label
+      >{{ filter.label }}</label
     >
     <div class="row" v-if="searchable">
       <div class="col">
