@@ -52,8 +52,10 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 ```
 
-Additionally, if using any features that rely on bootstrap interactivity such as `ChartWithTable`, certain configurations of `HarnessVueBootstrapCheckboxGroup` or `HarnessVueInput`, make sure that you import bootstrap's Javascript:
+Additionally, if using any features that rely on bootstrap interactivity such as `ChartWithTable` or the `collapse` functionality in the `HarnessVueCheckboxGroup` or `HarnessVueInput`, make sure that you import bootstrap's Javascript and add the jquery instance to the window. This allows us to make use of Bootstrap 4's native jquery functionality without running into circular jquery import issues.
 
 ```js
+import $ from 'bootstrap'
 import 'bootstrap'
+window.$ = $
 ```
