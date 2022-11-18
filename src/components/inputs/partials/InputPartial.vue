@@ -17,6 +17,9 @@
       v-model="boundValue"
       :id="`${filter.key}-${type}-input`"
       :aria-labelledby="`${filter.key}-label`"
+      :min="min"
+      :max="max"
+      :step="step"
     />
     <component
       :is="appendComponent"
@@ -75,6 +78,18 @@ export default {
       required: false,
       type: Boolean,
       default: false,
+    },
+    min: {
+      required: false,
+      type: Number,
+    },
+    max: {
+      required: false,
+      type: Number,
+    },
+    step: {
+      required: false,
+      type: Number,
     },
   },
   methods: {

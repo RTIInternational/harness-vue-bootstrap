@@ -137,6 +137,18 @@ export default {
       required: false,
       type: String,
     },
+    min: {
+      required: false,
+      type: Number,
+    },
+    max: {
+      required: false,
+      type: Number,
+    },
+    step: {
+      required: false,
+      type: Number,
+    },
   },
 };
 </script>

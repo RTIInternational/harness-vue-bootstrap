@@ -141,6 +141,19 @@ export default class ExamplePage {
         },
         options: [],
       },
+      exampleInputMinMaxStep: {
+        key: "exampleInputMinMaxStep",
+        label: "Example Input",
+        component: "HarnessVueBootstrapInput",
+        props: {
+          type: 'number',
+          min: 0.05,
+          max: 0.24,
+          step: 0.001
+        },
+        options: [],
+
+      },
       exampleOptionInput: {
         key: "exampleOptionInput",
         label: "Example Input with Option",

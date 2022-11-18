@@ -214,10 +214,41 @@ You may specify the type of input the harness-vue-bootstrap-input accepts with t
 #### Example
 <!-- Password type looks no different? Looks just like a text input-->
 
-<harness-vue-bootstrap-input :filter="getFilterDefinition('examplePasswordInput')" />
+<harness-vue-bootstrap-input :filter="getFilterDefinition('examplePasswordInput')" :type="'password'"/>
 
 ```html
 <harness-vue-bootstrap-input 
     :type="password"
+    />
+```
+
+***
+### min
+For number inputs, this sets the minimum allowed value.
+* **Type**: `Number`
+* **Required**: No
+
+### max
+For number inputs, this sets the maximum allowed value.
+* **Type**: `Number`
+* **Required**: No
+
+### step
+For number inputs, this sets the step on click.
+* **Type**: `Number`
+* **Required**: No
+
+#### Example
+<!-- Password type looks no different? Looks just like a text input-->
+
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInputMinMaxStep')" :type="'number'" :min="0.05" :max="0.24" :step="0.001"/>
+
+```html
+<harness-vue-bootstrap-input 
+    :type="number"
+    :type="'number'"
+    :min="0.05"
+    :max="0.24"
+    :step="0.001"
     />
 ```
