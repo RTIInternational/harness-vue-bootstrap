@@ -11,7 +11,6 @@
             : ''
         "
         :role="collapse ? 'button' : ''"
-        @click="collapsed = !collapsed"
       >
         <span v-html="filter.label" />
         <button
@@ -23,7 +22,6 @@
               : ''
           "
           :role="collapse ? 'button' : ''"
-          @click="collapsed = !collapsed"
           v-if="collapse"
           aria-expanded="false"
           aria-label="Collapse Toggle"
@@ -42,7 +40,6 @@
         "
         role="button"
         class="harness-vue-bootstrap-checkboxgroup-collapse-label"
-        @click="collapsed = !collapsed"
       >
         <span
           v-if="
@@ -104,7 +101,6 @@
             "
             :role="collapse ? 'button' : ''"
             :for="filter.key"
-            @click="collapsed = !collapsed"
           >
             <span v-html="filter.label" />
             <button
@@ -116,7 +112,6 @@
                   : ''
               "
               :role="collapse ? 'button' : ''"
-              @click="collapsed = !collapsed"
               v-if="collapse"
               aria-expanded="false"
               aria-label="Collapse Toggle"
@@ -133,7 +128,6 @@
             data-toggle="collapse"
             :href="'#harness-vue-bootstrap-checkbox-collapse-' + filter.key"
             role="button"
-            @click="collapsed = !collapsed"
           >
             <span
               v-if="
@@ -233,6 +227,30 @@ export default {
       required: false,
       default: false,
     },
+  },
+  mounted() {
+    if (this.collapse) {
+      // adding event listener that closes the collapse
+      // when clicking anywhere but the checkboxes themselves
+      document.addEventListener("click", (e) => {
+        if (!e.target.id.includes(this.filter.key)) {
+          window
+            .$(`#harness-vue-bootstrap-checkbox-collapse-${this.filter.key}`)
+            .collapse("hide");
+        }
+      });
+      // lifecycling the vue attribute used for the chevron along with bootstrap
+      window
+        .$(`#harness-vue-bootstrap-checkbox-collapse-${this.filter.key}`)
+        .on("hide.bs.collapse", () => {
+          this.collapsed = true;
+        });
+      window
+        .$(`#harness-vue-bootstrap-checkbox-collapse-${this.filter.key}`)
+        .on("show.bs.collapse", () => {
+          this.collapsed = false;
+        });
+    }
   },
 };
 </script>
