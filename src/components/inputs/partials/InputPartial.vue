@@ -3,7 +3,7 @@
     <component
       :is="prependComponent"
       v-if="prependComponent"
-      v-bind="{ ...$props, ...$attrs, strictError }"
+      v-bind="{ ...$props, ...$attrs }"
     />
     <div class="input-group-prepend" v-else-if="prependHTML">
       <span class="input-group-text" v-html="prependHTML" />
@@ -12,7 +12,7 @@
       :type="type"
       :class="`form-control harness-vue-bootstrap-${type}-input ${
         isFilterDirty(filter.key) ? 'dirty-filter-input' : ''
-      } ${strictError ? 'typeahead-strict-error' : ''}`"
+      }`"
       :placeholder="placeholder"
       v-model="boundValue"
       :id="`${filter.key}-${type}-input`"
@@ -24,7 +24,7 @@
     <component
       :is="appendComponent"
       v-if="appendComponent"
-      v-bind="{ ...$props, ...$attrs, strictError }"
+      v-bind="{ ...$props, ...$attrs }"
     />
     <div class="input-group-append" v-else-if="appendHTML || inputClearButton">
       <span class="input-group-text" v-html="appendHTML" v-if="appendHTML" />
