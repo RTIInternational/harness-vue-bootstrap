@@ -49,10 +49,6 @@ export default {
       required: true,
       type: String,
     },
-    strictError: {
-      type: Boolean,
-      required: true,
-    },
     prependComponent: {
       required: false,
       type: Object,

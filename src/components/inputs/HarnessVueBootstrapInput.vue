@@ -31,7 +31,7 @@
             (isFilterDirty(filter.key) ? 'dirty-filter-input-wrapper' : '')
           "
         >
-          <InputPartial v-bind="{ ...$props, ...$attrs, strictError }" />
+          <InputPartial v-bind="{ ...$props, ...$attrs }" />
           <small
             v-if="helperText"
             v-html="helperText"
@@ -56,7 +56,7 @@
         :id="filter.key + '-label'"
         v-html="filter.label"
       />
-      <InputPartial v-bind="{ ...$props, ...$attrs, strictError }" />
+      <InputPartial v-bind="{ ...$props, ...$attrs }" />
       <small
         v-if="helperText"
         v-html="helperText"
@@ -73,7 +73,7 @@
         (isFilterDirty(filter.key) ? 'dirty-filter-wrapper' : '')
       "
     >
-      <InputPartial v-bind="{ ...$props, ...$attrs, strictError }" />
+      <InputPartial v-bind="{ ...$props, ...$attrs }" />
       <small
         v-if="helperText"
         v-html="helperText"
