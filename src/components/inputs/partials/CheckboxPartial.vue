@@ -5,6 +5,7 @@
     :name="filter.key + option.key"
     :id="filter.key + option.key"
     :value="option.key"
+    :disabled="option.disabled"
     v-model="boundValue"
     :aria-labelledby="filter.key + option.key + '-label'"
   />
