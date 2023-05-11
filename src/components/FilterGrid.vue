@@ -69,7 +69,6 @@ export default {
     synchronous: {
       type: Boolean,
       required: false,
-      default: false,
     },
     clearButton: {
       type: Boolean,
