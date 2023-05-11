@@ -112,7 +112,6 @@ export default {
 
       filterOverrides.forEach((key) => {
         if (filter.props && Object.keys(filter.props).includes(key)) {
-          console.log(key, filter.key, filter.props[key]);
           props[key] = filter.props[key];
         }
       });
