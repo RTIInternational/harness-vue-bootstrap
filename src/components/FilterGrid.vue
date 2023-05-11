@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="rows(filters)">
     <div
       :class="'row harness-vue-bootstrap-filtergrid-row ' + rowClass"
       v-for="(row, idx) in rows(filters)"
@@ -18,7 +18,7 @@
       >
         <component
           :is="filter.component"
-          v-bind="{ filter, ...filter.props, ...$props, ...$attrs }"
+          v-bind="generateFilterProps(filter)"
           :key="pageDefinition.key + '-filtergrid-' + filter.key"
           :class="componentClass"
         />
@@ -94,6 +94,36 @@ export default {
       if (!this.synchronous && this.pageDefinition.loadData) {
         this.loadData();
       }
+    },
+    generateFilterProps(filter) {
+      // sometimes we need to know which to defer to, the grid props or the filter props
+      // so far the only behavior that this has had issues with is "synchronous"
+      // this is written so that we always defer to the grid, except where specified otherwise
+      // but you can use either override
+      const filterOverrides = ["synchronous"];
+      const gridOverrides = [];
+
+      let props = {
+        filter,
+        ...filter.props,
+        ...this.$props,
+        ...this.$attrs,
+      };
+
+      filterOverrides.forEach((key) => {
+        if (filter.props && Object.keys(filter.props).includes(key)) {
+          console.log(key, filter.key, filter.props[key]);
+          props[key] = filter.props[key];
+        }
+      });
+
+      gridOverrides.forEach((key) => {
+        const combo = { ...this.$props, ...this.$attrs };
+        if (Object.keys(combo).includes(key)) {
+          props[key] = combo[key];
+        }
+      });
+      return props;
     },
   },
 };
