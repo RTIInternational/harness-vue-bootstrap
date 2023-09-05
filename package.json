@@ -27,10 +27,8 @@
     "docs:serve": "vitepress serve docs"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.6",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^5.3.1",
     "bootstrap-icons": "^1.9.1",
-    "jquery": "^3.6.1",
     "vue": "^3.2.38"
   },
   "devDependencies": {
