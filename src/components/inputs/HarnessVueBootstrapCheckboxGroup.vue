@@ -4,7 +4,7 @@
       <legend
         class="col-form-label harness-vue-bootstrap-checkboxgroup-legend"
         :for="filter.key"
-        :data-toggle="collapse ? 'collapse' : ''"
+        :data-bs-toggle="collapse ? 'collapse' : ''"
         :href="
           collapse
             ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
@@ -15,7 +15,7 @@
         <span v-html="filter.label" />
         <button
           class="harness-vue-bootstrap-collapse-toggle-button"
-          :data-toggle="collapse ? 'collapse' : ''"
+          :data-bs-toggle="collapse ? 'collapse' : ''"
           :href="
             collapse
               ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
@@ -32,7 +32,7 @@
       </legend>
       <div
         v-if="collapse"
-        data-toggle="collapse"
+        data-bs-toggle="collapse"
         :href="
           collapse
             ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
@@ -93,7 +93,7 @@
         <div :class="'col-' + labelColumnSize">
           <legend
             class="col-form-label harness-vue-bootstrap-checkboxgroup-legend"
-            :data-toggle="collapse ? 'collapse' : ''"
+            :data-bs-toggle="collapse ? 'collapse' : ''"
             :href="
               collapse
                 ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
@@ -105,7 +105,7 @@
             <span v-html="filter.label" />
             <button
               class="harness-vue-bootstrap-collapse-toggle-button"
-              :data-toggle="collapse ? 'collapse' : ''"
+              :data-bs-toggle="collapse ? 'collapse' : ''"
               :href="
                 collapse
                   ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
@@ -125,7 +125,7 @@
           <div
             v-if="collapse"
             class="col-form-label harness-vue-bootstrap-checkboxgroup-collapse-label"
-            data-toggle="collapse"
+            data-bs-toggle="collapse"
             :href="'#harness-vue-bootstrap-checkbox-collapse-' + filter.key"
             role="button"
           >
@@ -208,6 +208,8 @@
 import inputProps from "../mixins/inputProps";
 import inputFilter from "../mixins/inputFilter";
 import CheckboxPartial from "./partials/CheckboxPartial.vue";
+import { Collapse } from "bootstrap";
+
 export default {
   name: "harness-vue-bootstrap-checkboxgroup",
   mixins: [inputProps, inputFilter],
@@ -234,20 +236,26 @@ export default {
       // when clicking anywhere but the checkboxes themselves
       document.addEventListener("click", (e) => {
         if (!e.target.id.includes(this.filter.key)) {
-          window
-            .$(`#harness-vue-bootstrap-checkbox-collapse-${this.filter.key}`)
-            .collapse("hide");
+          const el = document.querySelector(
+            `#harness-vue-bootstrap-checkbox-collapse-${this.filter.key}`,
+          );
+          const bsEl = Collapse.getInstance(el);
+          bsEl.hide();
         }
       });
       // lifecycling the vue attribute used for the chevron along with bootstrap
-      window
-        .$(`#harness-vue-bootstrap-checkbox-collapse-${this.filter.key}`)
-        .on("hide.bs.collapse", () => {
+      document
+        .querySelector(
+          `#harness-vue-bootstrap-checkbox-collapse-${this.filter.key}`,
+        )
+        .addEventListener("hide.bs.collapse", () => {
           this.collapsed = true;
         });
-      window
-        .$(`#harness-vue-bootstrap-checkbox-collapse-${this.filter.key}`)
-        .on("show.bs.collapse", () => {
+      document
+        .querySelector(
+          `#harness-vue-bootstrap-checkbox-collapse-${this.filter.key}`,
+        )
+        .addEventListener("show.bs.collapse", () => {
           this.collapsed = false;
         });
     }

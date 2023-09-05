@@ -15,7 +15,7 @@
                 <button
                   v-if="collapsible"
                   id="collapseButton"
-                  data-toggle="collapse"
+                  data-bs-toggle="collapse"
                   aria-expanded="false"
                   :aria-controls="
                     chart.key + 'ChartTableBody' + ' ' + chart.key + 'Buttons'

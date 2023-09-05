@@ -11,7 +11,7 @@
           class="card-header"
           :id="filterType + '-heading'"
           @click="toggle"
-          data-toggle="collapse"
+          data-bs-toggle="collapse"
           :data-target="'#collapse-' + filterType"
         >
           <h2 class="mb-0">
