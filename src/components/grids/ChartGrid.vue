@@ -12,7 +12,7 @@
       >
         <component
           :is="chart.component"
-          v-bind="{ chart, ...chart.props, ...$props, ...$attrs }"
+          v-bind="{ chart, ...chart.props, ...props, ...$attrs }"
           :key="pageDefinition.key + '-chartgrid-' + chart.key"
           :class="componentClass"
         />
@@ -21,15 +21,13 @@
   </div>
 </template>
 
-<script>
-import rows from "./mixins/rows";
-export default {
-  name: "ChartGrid",
-  mixins: [rows],
-  computed: {
-    chartRows() {
-      return this.rows(this.charts);
-    },
-  },
-};
+<script setup>
+import { rows, colSize, gridProps } from "./gridUtils";
+import { computed, defineProps } from "vue";
+import { useHarnessComposable } from "../../../../harness-vue/src/harness";
+
+const props = defineProps(gridProps);
+const harness = useHarnessComposable();
+
+const chartRows = computed(() => rows(harness.charts));
 </script>

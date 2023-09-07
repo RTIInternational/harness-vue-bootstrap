@@ -1,0 +1,108 @@
+<template>
+  <div>
+    <div
+      :class="'row harness-vue-bootstrap-filtergrid-row ' + props.rowClass"
+      v-for="(row, idx) in rows(harness.filters)"
+      :key="idx"
+    >
+      <div
+        :class="
+          'harness-vue-bootstrap-filtergrid-col col-sm-' +
+          12 / props.columns +
+          ' ' +
+          props.colClass
+        "
+        v-for="(filter, filterKey) in row"
+        :key="harness.pageDefinition.key + '-' + filterKey"
+        :id="filter.key + '-col'"
+      >
+        <component
+          :is="filter.component"
+          v-bind="{ filter, ...filter.props, ...props, ...$attrs }"
+          :key="pageDefinition.key + '-filtergrid-' + filter.key"
+          :class="componentClass"
+        />
+      </div>
+    </div>
+    <div
+      class="row button-row harness-vue-bootstrap-filtergrid-row harness-vue-bootstrap-filtergrid-buttonrow"
+      v-if="
+        (props.synchronous || props.clearButton) &&
+        props.buttonPosition !== 'none'
+      "
+    >
+      <div :class="'col-md-12 text-' + props.buttonPosition">
+        <button
+          v-if="props.synchronous"
+          class="btn btn-primary btn-sm harness-vue-bootstrap-filtergrid-applybutton"
+          @click="harness.loadData"
+          role="button"
+        >
+          Apply Filters
+        </button>
+        &nbsp;
+        <button
+          v-if="props.clearButton"
+          role="button"
+          class="btn btn-primary btn-sm harness-vue-bootstrap-filtergrid-clearbutton"
+          @click="initializeDefaultsLoadData"
+        >
+          Clear Filters
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { subset, rows, gridProps } from "./gridUtils";
+import sharedInputProps from "../inputs/sharedInputProps";
+import { defineProps } from "vue";
+import { useHarnessComposable } from "../../../../harness-vue/src/harness";
+
+const props = defineProps({
+  ...gridProps,
+  ...sharedInputProps,
+  labelPosition: {
+    type: String,
+    required: false,
+    default: "horizontal",
+    validator: function (value) {
+      return ["horizontal", "vertical", "none"].includes(value);
+    },
+  },
+  synchronous: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  clearButton: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  buttonPosition: {
+    type: String,
+    required: false,
+    default: "center",
+    validator: function (value) {
+      return ["left", "center", "right", "none"].includes(value);
+    },
+  },
+});
+const harness = useHarnessComposable();
+
+function initializeDefaultsLoadData() {
+  harness.initializeDefaults(
+    subset(harness.filters) ? Object.keys(subset(harness.filters)) : null,
+  );
+  if (!harness.synchronous && harness.pageDefinition.loadData) {
+    harness.loadData();
+  }
+}
+</script>
+<style scoped>
+.button-row {
+  margin-top: 10px;
+}
+</style>

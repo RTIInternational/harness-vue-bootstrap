@@ -279,7 +279,7 @@ export default {
       ) {
         ret.tableColumns = this.getChartProps(this.chart.key).tableColumns;
         ret.tableColumnLabels = this.getChartProps(
-          this.chart.key
+          this.chart.key,
         ).tableColumnLabels;
       }
       return ret;
