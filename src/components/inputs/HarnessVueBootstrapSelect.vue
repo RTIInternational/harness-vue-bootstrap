@@ -1,9 +1,9 @@
 <script setup>
-import sharedInputProps from "./sharedInputProps";
+import sharedInputProps from "./utils/sharedInputProps";
 import { defineProps, computed } from "vue";
 import { useHarnessComposable } from "../../../../harness-vue/src/harness";
-import useBoundValue from "../composables/useBoundValue";
-import inputWrapper from "./inputWrapper.vue";
+import useBoundValue from "./utils/useBoundValue";
+import formControlWrapper from "./formControlWrapper.vue";
 
 const harness = useHarnessComposable();
 
@@ -42,7 +42,7 @@ const getInputClassString = computed(() => {
 });
 </script>
 <template>
-  <inputWrapper :labelClassList="getLabelClassList" v-bind="{ ...props }">
+  <formControlWrapper :labelClassList="getLabelClassList" v-bind="{ ...props }">
     <template v-slot:input>
       <div class="input-group">
         <!-- Prepended Component or text -->
@@ -101,5 +101,7 @@ const getInputClassString = computed(() => {
         :class="`form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-input-helper-text ${props.helperTextClass}`"
       />
     </template>
-  </inputWrapper>
+  </formControlWrapper>
 </template>
+./utils/sharedInputProps
+./utils/useBoundValue

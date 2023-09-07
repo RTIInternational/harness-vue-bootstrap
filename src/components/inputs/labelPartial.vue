@@ -1,6 +1,6 @@
 <script setup>
 import { computed, defineProps } from "vue";
-import sharedInputProps from "./sharedInputProps";
+import sharedInputProps from "./utils/sharedInputProps";
 import { useHarnessComposable } from "../../../../harness-vue/src/harness";
 
 const props = defineProps({
@@ -27,3 +27,4 @@ const labelClassString = computed(() => {
     v-html="props.filter.label"
   />
 </template>
+./utils/sharedInputProps
