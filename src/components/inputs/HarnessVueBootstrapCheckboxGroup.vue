@@ -1,271 +1,111 @@
+<script setup>
+import sharedInputProps from "./sharedInputProps";
+import { defineProps, computed } from "vue";
+import { useHarnessComposable } from "../../../../harness-vue/src/harness";
+import useBoundValue from "../composables/useBoundValue";
+import inputWrapper from "./inputWrapper.vue";
+
+const harness = useHarnessComposable();
+
+const props = defineProps({
+  ...sharedInputProps,
+  type: {
+    required: false,
+    type: String,
+    default: "check",
+    validator: function (value) {
+      let validOptions = ["checkbox", "radio", "switch"];
+      return validOptions.includes(value);
+    },
+  },
+  inline: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+});
+
+const boundValue = useBoundValue(props, harness);
+
+const getLabelClassList = computed(() => {
+  let labelClassList = [
+    `form-label`,
+    "harness-vue-bootstrap-input-label",
+    `harness-vue-bootstrap-${props.type}-label`,
+    `harness-vue-bootstrap-${props.labelPosition}-label`,
+  ];
+  return labelClassList;
+});
+const getInputClassString = computed(() => {
+  let inputClassList = [
+    `form-check-input`,
+    `harness-vue-bootstrap-checkboxgroup-input`,
+  ];
+  if (props.type.toLowerCase() === "radio") {
+    inputClassList.push(`harness-vue-bootstrap-radio`);
+  }
+
+  if (harness.isFilterDirty(props.filter.key)) {
+    inputClassList.push(`dirty-filter-input`);
+  }
+  return inputClassList.join(" ");
+});
+
+const getOptionLabelClassString = computed(() => {
+  let optionLabelClassList = [
+    `form-check-label`,
+    `harness-vue-bootstrap-checkboxgroup-label`,
+  ];
+  if (props.type.toLowerCase() === "radio") {
+    optionLabelClassList.push(`harness-vue-bootstrap-radio-label`);
+  }
+  return optionLabelClassList.join(" ");
+});
+
+const getWrapperClassString = computed(() => {
+  let wrapperClassList = ["form-check"];
+  if (props.type === "switch") {
+    wrapperClassList.push("form-switch");
+  }
+  if (props.inline) {
+    wrapperClassList.push("form-check-inline");
+  }
+  return wrapperClassList.join(" ");
+});
+</script>
 <template>
-  <div>
-    <fieldset v-if="labelPosition === 'vertical'">
-      <legend
-        class="col-form-label harness-vue-bootstrap-checkboxgroup-legend"
-        :for="filter.key"
-        :data-bs-toggle="collapse ? 'collapse' : ''"
-        :href="
-          collapse
-            ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
-            : ''
-        "
-        :role="collapse ? 'button' : ''"
-      >
-        <span v-html="filter.label" />
-        <button
-          class="harness-vue-bootstrap-collapse-toggle-button"
-          :data-bs-toggle="collapse ? 'collapse' : ''"
-          :href="
-            collapse
-              ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
-              : ''
-          "
-          :role="collapse ? 'button' : ''"
-          v-if="collapse"
-          aria-expanded="false"
-          aria-label="Collapse Toggle"
-        >
-          <i class="bi-chevron-down" v-if="collapse && collapsed"></i>
-          <i class="bi-chevron-up" v-if="collapse && !collapsed"></i>
-        </button>
-      </legend>
+  <inputWrapper :labelClassList="getLabelClassList" v-bind="{ ...props }">
+    <template v-slot:input>
+      <!-- Input -->
       <div
-        v-if="collapse"
-        data-bs-toggle="collapse"
-        :href="
-          collapse
-            ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
-            : ''
-        "
-        role="button"
-        class="harness-vue-bootstrap-checkboxgroup-collapse-label"
+        :class="getWrapperClassString"
+        v-for="(option, idx) in harness.getOptionsForFilter(props.filter.key)"
+        :key="option + idx"
       >
-        <span
-          v-if="
-            collapse &&
-            getFilter(filter.key).length ===
-              getOptionsForFilter(filter.key).length
-          "
-        >
-          (All Selected)
-        </span>
-        <span v-else-if="collapse">
-          ({{ getFilter(filter.key).length }} of
-          {{ getOptionsForFilter(filter.key).length }} selected)
-        </span>
-      </div>
-      <div
-        :class="collapse ? 'collapse' : ''"
-        :id="
-          collapse
-            ? 'harness-vue-bootstrap-checkbox-collapse-' + filter.key
-            : ''
-        "
-      >
-        <div
-          :class="'form-check' + (inline ? ' form-check-inline' : '')"
-          v-for="(option, idx) in getOptionsForFilter(filter.key)"
-          :key="idx"
-        >
-          <CheckboxPartial
-            v-bind="{ ...$props, ...$attrs, collapsed, option }"
-          />
-          <label
-            class="form-check-label harness-vue-bootstrap-checkboxgroup-label"
-            :id="filter.key + option.key + '-label'"
-            :for="filter.key + option.key"
-            v-html="option.label"
-          />
-        </div>
-        <small
-          v-if="helperText"
-          v-html="helperText"
-          :class="
-            'form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-checkboxgroup-helper-text ' +
-            helperTextClass
-          "
-        ></small>
-      </div>
-    </fieldset>
-    <fieldset v-if="labelPosition === 'horizontal'">
-      <div class="row form-row">
-        <div :class="'col-' + labelColumnSize">
-          <legend
-            class="col-form-label harness-vue-bootstrap-checkboxgroup-legend"
-            :data-bs-toggle="collapse ? 'collapse' : ''"
-            :href="
-              collapse
-                ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
-                : ''
-            "
-            :role="collapse ? 'button' : ''"
-            :for="filter.key"
-          >
-            <span v-html="filter.label" />
-            <button
-              class="harness-vue-bootstrap-collapse-toggle-button"
-              :data-bs-toggle="collapse ? 'collapse' : ''"
-              :href="
-                collapse
-                  ? '#harness-vue-bootstrap-checkbox-collapse-' + filter.key
-                  : ''
-              "
-              :role="collapse ? 'button' : ''"
-              v-if="collapse"
-              aria-expanded="false"
-              aria-label="Collapse Toggle"
-            >
-              <i class="bi-chevron-down" v-if="collapse && collapsed"></i>
-              <i class="bi-chevron-up" v-if="collapse && !collapsed"></i>
-            </button>
-          </legend>
-        </div>
-        <div :class="'col-' + (12 - labelColumnSize)">
-          <div
-            v-if="collapse"
-            class="col-form-label harness-vue-bootstrap-checkboxgroup-collapse-label"
-            data-bs-toggle="collapse"
-            :href="'#harness-vue-bootstrap-checkbox-collapse-' + filter.key"
-            role="button"
-          >
-            <span
-              v-if="
-                collapse &&
-                getFilter(filter.key).length ===
-                  getOptionsForFilter(filter.key).length
-              "
-            >
-              (All Selected)
-            </span>
-            <span v-else-if="collapse">
-              ({{ getFilter(filter.key).length }} of
-              {{ getOptionsForFilter(filter.key).length }} selected)
-            </span>
-          </div>
-          <div
-            :class="collapse ? 'collapse' : ''"
-            :id="
-              collapse
-                ? 'harness-vue-bootstrap-checkbox-collapse-' + filter.key
-                : ''
-            "
-          >
-            <div
-              :class="'form-check' + (inline ? ' form-check-inline' : '')"
-              v-for="(option, idx) in getOptionsForFilter(filter.key)"
-              :key="idx"
-            >
-              <CheckboxPartial
-                v-bind="{ ...$props, ...$attrs, collapsed, option }"
-              />
-              <label
-                class="form-check-label harness-vue-bootstrap-checkboxgroup-label"
-                :id="filter.key + option.key + '-label'"
-                :for="filter.key + option.key"
-                v-html="option.label"
-              />
-            </div>
-            <small
-              v-if="helperText"
-              v-html="helperText"
-              :class="
-                'form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-checkboxgroup-helper-text ' +
-                helperTextClass
-              "
-            ></small>
-          </div>
-        </div>
-      </div>
-    </fieldset>
-    <fieldset v-if="labelPosition === 'none'">
-      <div
-        :class="'form-check' + (inline ? ' form-check-inline' : '')"
-        v-for="(option, idx) in getOptionsForFilter(filter.key)"
-        :key="idx"
-      >
-        <CheckboxPartial v-bind="{ ...$props, ...$attrs, collapsed, option }" />
+        <input
+          :class="getInputClassString"
+          :type="props.type === 'radio' ? 'radio' : 'checkbox'"
+          :name="props.filter.key + option.key"
+          :id="props.filter.key + option.key"
+          :value="option.key"
+          :disabled="option.disabled"
+          v-model="boundValue"
+          :aria-labelledby="props.filter.key + option.key + '-label'"
+          :aria-label="props.filter.label"
+        />
         <label
-          class="form-check-label harness-vue-bootstrap-checkboxgroup-label"
-          :id="filter.key + option.key + '-label'"
-          :for="filter.key + option.key"
+          v-if="option.label"
+          :id="props.filter.key + option.key + '-label'"
+          :for="props.filter.key + option.key"
+          :class="getOptionLabelClassString"
           v-html="option.label"
         />
       </div>
       <small
-        v-if="helperText"
-        v-html="helperText"
-        :class="
-          'form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-checkboxgroup-helper-text ' +
-          helperTextClass
-        "
-      ></small>
-    </fieldset>
-  </div>
+        v-if="props.helperText"
+        v-html="props.helperText"
+        :class="`form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-checkbox-helper-text ${props.helperTextClass}`"
+      />
+    </template>
+  </inputWrapper>
 </template>
-
-<script>
-import inputProps from "../mixins/inputProps";
-import inputFilter from "../mixins/inputFilter";
-import CheckboxPartial from "./partials/CheckboxPartial.vue";
-import { Collapse } from "bootstrap";
-
-export default {
-  name: "harness-vue-bootstrap-checkboxgroup",
-  mixins: [inputProps, inputFilter],
-  components: { CheckboxPartial },
-  data: () => {
-    return { collapsed: true };
-  },
-  props: {
-    inline: {
-      type: Boolean,
-      docstring: "asdasdasd",
-      required: false,
-      default: false,
-    },
-    collapse: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-  },
-  mounted() {
-    if (this.collapse) {
-      // adding event listener that closes the collapse
-      // when clicking anywhere but the checkboxes themselves
-      document.addEventListener("click", (e) => {
-        if (!e.target.id.includes(this.filter.key)) {
-          const el = document.querySelector(
-            `#harness-vue-bootstrap-checkbox-collapse-${this.filter.key}`,
-          );
-          const bsEl = Collapse.getInstance(el);
-          bsEl.hide();
-        }
-      });
-      // lifecycling the vue attribute used for the chevron along with bootstrap
-      document
-        .querySelector(
-          `#harness-vue-bootstrap-checkbox-collapse-${this.filter.key}`,
-        )
-        .addEventListener("hide.bs.collapse", () => {
-          this.collapsed = true;
-        });
-      document
-        .querySelector(
-          `#harness-vue-bootstrap-checkbox-collapse-${this.filter.key}`,
-        )
-        .addEventListener("show.bs.collapse", () => {
-          this.collapsed = false;
-        });
-    }
-  },
-};
-</script>
-<style>
-.harness-vue-bootstrap-collapse-toggle-button {
-  background-color: transparent;
-  border: 0px solid transparent;
-  box-shadow: none;
-}
-</style>

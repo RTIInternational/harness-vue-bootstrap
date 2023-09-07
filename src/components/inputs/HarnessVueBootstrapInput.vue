@@ -37,22 +37,6 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  prependComponent: {
-    required: false,
-    type: Object,
-  },
-  prependHTML: {
-    required: false,
-    type: String,
-  },
-  appendComponent: {
-    required: false,
-    type: Object,
-  },
-  appendHTML: {
-    required: false,
-    type: String,
-  },
   min: {
     required: false,
     type: Number,
