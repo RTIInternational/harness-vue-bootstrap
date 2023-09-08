@@ -1,29 +1,35 @@
 <template>
   <div
-    :id="chart.key + '_container'"
-    :class="(card ? 'card' : '') + ' harness-vue-bootstrap-chartwithtable'"
+    :id="props.chart.key + '_container'"
+    :class="
+      (props.card ? 'card' : '') + ' harness-vue-bootstrap-chartwithtable'
+    "
   >
-    <div :class="card ? 'card-header' : ''">
+    <div :class="props.card ? 'card-header' : ''">
       <div class="row">
-        <div :class="buttonPosition === 'top' ? 'col-md-6' : 'col-md-12'">
-          <h3 :class="card ? 'card-title' : ''">
+        <div :class="props.buttonPosition === 'top' ? 'col-md-6' : 'col-md-12'">
+          <h3 :class="props.card ? 'card-title' : ''">
             <div class="harness-vue-bootstrap-chartwithtable-title">
               <div>
                 <slot name="title">
-                  {{ chart.title }}
+                  {{ props.chart.title }}
                 </slot>
                 <button
-                  v-if="collapsible"
+                  v-if="props.collapsible"
                   id="collapseButton"
                   data-bs-toggle="collapse"
                   aria-expanded="false"
                   :aria-controls="
-                    chart.key + 'ChartTableBody' + ' ' + chart.key + 'Buttons'
+                    props.chart.key +
+                    'ChartTableBody' +
+                    ' ' +
+                    props.chart.key +
+                    'Buttons'
                   "
                   @click="toggleCollapse"
                   aria-label="Toggle Chart"
                 >
-                  {{ collapsed ? "+" : "-" }}
+                  {{ props.collapsed ? "+" : "-" }}
                 </button>
               </div>
               <div class="harness-vue-bootstrap-chartwithtable-subtitle">
@@ -32,46 +38,58 @@
             </div>
           </h3>
         </div>
-        <div v-if="buttonPosition === 'top'" class="col-md-6">
+        <div v-if="props.buttonPosition === 'top'" class="col-md-6">
           <h3
             :class="
               'harness-vue-bootstrap-chartwithtable-buttonrow' +
-              (card ? ' card-title' : '')
+              (props.card ? ' card-title' : '')
             "
           >
             <span id="button-container" class="float-right">
               <!-- dynamically change button to better enforce aria-labels -->
               <button
-                v-if="tableDisplay == 'toggle' && view == 'chart'"
+                v-if="props.tableDisplay == 'toggle' && view == 'chart'"
                 role="button"
-                :aria-label="'Show Table: ' + (chart.title || chart.key)"
+                :aria-label="
+                  'Show Table: ' + (props.chart.title || props.chart.key)
+                "
                 @click="toggleView"
                 class="btn btn-sm btn-primary harness-vue-bootstrap-togglebutton"
               >
-                <span v-html="showTableButtonText" />
+                <span v-html="props.showTableButtonText" />
               </button>
               <button
-                v-if="tableDisplay == 'toggle' && view == 'table'"
+                v-if="props.tableDisplay == 'toggle' && view == 'table'"
                 role="button"
-                :aria-label="'Show Chart: ' + (chart.title || chart.key)"
+                :aria-label="
+                  'Show Chart: ' + (props.chart.title || props.chart.key)
+                "
                 @click="toggleView"
                 class="btn btn-sm btn-primary harness-vue-bootstrap-togglebutton"
               >
-                <span v-html="showChartButtonText" />
+                <span v-html="props.showChartButtonText" />
               </button>
               <button
-                v-if="downloadable && getChartData(chart.key)"
+                v-if="
+                  props.downloadable && harness.getChartData(props.chart.key)
+                "
                 role="button"
-                :aria-label="'Download Table: ' + (chart.title || chart.key)"
-                @click="downloadCSV(chart.key)"
+                :aria-label="
+                  'Download Table: ' + (props.chart.title || props.chart.key)
+                "
+                @click="harness.downloadCSV(props.chart.key)"
                 class="btn btn-sm btn-primary harness-vue-bootstrap-downloadbutton"
               >
                 Download CSV
               </button>
               <button
-                v-if="saveImageButton && getChartData(chart.key)"
+                v-if="
+                  props.saveImageButton && harness.getChartData(props.chart.key)
+                "
                 role="button"
-                :aria-label="'Download Table: ' + (chart.title || chart.key)"
+                :aria-label="
+                  'Download Table: ' + (props.chart.title || props.chart.key)
+                "
                 @click="saveImageButton()"
                 class="btn btn-sm btn-primary harness-vue-bootstrap-downloadbutton"
               >
@@ -84,11 +102,11 @@
       </div>
     </div>
     <div
-      :id="chart.key + 'ChartTableBody'"
+      :id="props.chart.key + 'ChartTableBody'"
       :class="
         'card-body harness-vue-bootstrap-chartwithtable-body' +
-        (collapsible ? ' ' + chart.key + '-multi-collapse' : '') +
-        (collapsed ? ' collapse' : ' show')
+        (props.collapsible ? ' ' + props.chart.key + '-multi-collapse' : '') +
+        (props.collapsed ? ' collapse' : ' show')
       "
     >
       <div class="harness-vue-bootstrap-chartwithtable-abovechart">
@@ -96,67 +114,71 @@
       </div>
 
       <component
-        :is="chartComponent"
-        v-bind="{ chart, ...chart.props, ...$attrs }"
-        v-show="tableDisplay != 'toggle' || view == 'chart'"
-        :key="'chartwithtable' + chart.key + 'chart'"
+        :is="props.chartComponent"
+        v-bind="{ chart: props.chart, ...props.chart.props, ...$attrs }"
+        v-show="props.tableDisplay != 'toggle' || view == 'chart'"
+        :key="'chartwithtable' + props.chart.key + 'chart'"
       />
       <br />
       <div class="harness-vue-bootstrap-chartwithtable-belowchart">
         <slot name="below-chart"></slot>
       </div>
-      <DataTable508
-        v-bind="{ chart, ...chart.props, ...$attrs }"
-        v-show="tableDisplay != 'toggle' || view == 'table'"
-        :key="'chartwithtable' + chart.key + 'table'"
-        :style="scroll"
+      <BasicTable
+        v-bind="{ chart: props.chart, ...chart.props, ...$attrs }"
+        v-show="props.tableDisplay != 'toggle' || view == 'table'"
+        :key="'chartwithtable' + props.chart.key + 'table'"
+        :style="props.scroll"
       />
     </div>
     <h3
-      :id="chart.key + 'Buttons'"
+      :id="props.chart.key + 'Buttons'"
       :class="
         'harness-vue-bootstrap-chartwithtable-buttonrow' +
-        (collapsible ? ' ' + chart.key + '-multi-collapse' : '') +
+        (props.collapsible ? ' ' + props.chart.key + '-multi-collapse' : '') +
         (collapsed ? ' collapse' : ' show') +
-        (card ? ' card-title' : '')
+        (props.card ? ' card-title' : '')
       "
       v-if="buttonPosition === 'bottom'"
     >
       <span id="button-container" class="float-right">
         <!-- dynamically change button to better enforce aria-labels -->
         <button
-          v-if="tableDisplay == 'toggle' && view == 'chart'"
+          v-if="props.tableDisplay == 'toggle' && view == 'chart'"
           role="button"
-          :aria-label="'Show Table: ' + (chart.title || chart.key)"
+          :aria-label="'Show Table: ' + (props.chart.title || props.chart.key)"
           @click="toggleView"
           class="btn btn-sm btn-primary harness-vue-bootstrap-togglebutton"
         >
-          <span v-html="showTableButtonText" />
+          <span v-html="props.showTableButtonText" />
         </button>
         <button
-          v-if="tableDisplay == 'toggle' && view == 'table'"
+          v-if="props.tableDisplay == 'toggle' && view == 'table'"
           role="button"
-          :aria-label="'Show Chart: ' + (chart.title || chart.key)"
+          :aria-label="'Show Chart: ' + (props.chart.title || props.chart.key)"
           @click="toggleView"
           class="btn btn-sm btn-primary harness-vue-bootstrap-togglebutton"
         >
-          <span v-html="showChartButtonText" />
+          <span v-html="props.showChartButtonText" />
         </button>
-        <span v-if="downloadable && getChartData(chart.key)">
+        <span v-if="props.downloadable && getChartData(props.chart.key)">
           <button
             role="button"
-            :aria-label="'Download Table: ' + (chart.title || chart.key)"
-            @click="downloadCSV(chart.key, labels || null)"
+            :aria-label="
+              'Download Table: ' + (props.chart.title || props.chart.key)
+            "
+            @click="harness.downloadCSV(props.chart.key, props.labels || null)"
             class="btn btn-sm btn-primary harness-vue-bootstrap-downloadbutton"
           >
             Download CSV
           </button>
         </span>
-        <span v-if="saveImageButton && getChartData(chart.key)">
+        <span v-if="saveImageButton && harness.getChartData(props.chart.key)">
           <button
-            v-if="saveImageButton"
+            v-if="props.saveImageButton"
             role="button"
-            :aria-label="'Download Image: ' + (chart.title || chart.key)"
+            :aria-label="
+              'Download Image: ' + (props.chart.title || props.chart.key)
+            "
             @click="saveImageButton()"
             class="btn btn-sm btn-primary harness-vue-bootstrap-downloadbutton"
           >
@@ -169,134 +191,133 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "ChartWithTable",
-  props: {
-    chart: {
-      type: Object,
-      required: true,
-    },
-    chartComponent: {
-      type: [Object, Function],
-      required: true,
-    },
-    tableDisplay: {
-      type: String,
-      required: false,
-      default: "toggle",
-      // validator: function (value) {
-      //   return value in ['toggle', 'bottom']
-      // }
-    },
-    scrollable: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    downloadable: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-    card: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-    buttonPosition: {
-      type: String,
-      required: false,
-      default: "top",
-      // validator: function (value) {
-      //   return value in ['top', 'bottom']
-      // }
-    },
-    saveImageButton: {
-      type: Function,
-      required: false,
-    },
-    collapsible: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    collapsibleFunc: {
-      type: Function,
-      required: false,
-      default: () => true,
-    },
-    startCollapsed: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    showTableButtonText: {
-      type: String,
-      required: false,
-      default: "Show Table",
-    },
-    showChartButtonText: {
-      type: String,
-      required: false,
-      default: "Show Chart",
-    },
+<script setup>
+import { computed, defineProps, ref, useAttrs } from "vue";
+import { useHarnessComposable } from "../../../../harness-vue/src/harness";
+
+const harness = useHarnessComposable();
+const attrs = useAttrs();
+const props = defineProps({
+  chart: {
+    type: Object,
+    required: true,
   },
-  data: function () {
-    return {
-      view: "chart",
-      chartReady: false,
-      collapsed: this.startCollapsed,
-    };
+  chartComponent: {
+    type: [Object, Function],
+    required: true,
   },
-  methods: {
-    toggleView() {
-      switch (this.view) {
-        case "chart":
-          this.view = "table";
-          break;
-        case "table":
-          this.view = "chart";
-          break;
-      }
-      this.$emit("view", this.view);
-    },
-    toggleCollapse() {
-      this.collapsed = !this.collapsed;
-      this.$emit("collapsed", this.collapsed);
-      this.collapsibleFunc();
-    },
+  tableDisplay: {
+    type: String,
+    required: false,
+    default: "toggle",
+    // validator: function (value) {
+    //   return value in ['toggle', 'bottom']
+    // }
   },
-  computed: {
-    labels() {
-      let ret = {};
-      if (this.$attrs.tableColumns && this.$attrs.tableColumnLabels) {
-        ret.tableColumns = this.$attrs.tableColumns;
-        ret.tableColumnLabels = this.$attrs.tableColumnLabels;
-      } else if (
-        this.getChartProps(this.chart.key).tableColumns &&
-        this.getChartProps(this.chart.key).tableColumnLabels
-      ) {
-        ret.tableColumns = this.getChartProps(this.chart.key).tableColumns;
-        ret.tableColumnLabels = this.getChartProps(
-          this.chart.key,
-        ).tableColumnLabels;
-      }
-      return ret;
-    },
-    scroll() {
-      if (this.scrollable) {
-        return (
-          "height:" +
-          this.getChartProps(this.chart.key).height +
-          "px;overflow-y:auto;"
-        );
-      }
-      return "";
-    },
+  scrollable: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
-};
+  downloadable: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  card: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  buttonPosition: {
+    type: String,
+    required: false,
+    default: "top",
+    // validator: function (value) {
+    //   return value in ['top', 'bottom']
+    // }
+  },
+  saveImageButton: {
+    type: Function,
+    required: false,
+  },
+  collapsible: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  collapsibleFunc: {
+    type: Function,
+    required: false,
+    default: () => true,
+  },
+  startCollapsed: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  showTableButtonText: {
+    type: String,
+    required: false,
+    default: "Show Table",
+  },
+  showChartButtonText: {
+    type: String,
+    required: false,
+    default: "Show Chart",
+  },
+});
+
+const view = ref("chart");
+
+const collapsed = ref(false);
+function toggleView() {
+  switch (view.value) {
+    case "chart":
+      view.value = "table";
+      break;
+    case "table":
+      view.value = "chart";
+      break;
+  }
+  // props.$emit("view", props.view);
+}
+
+function toggleCollapse() {
+  collapsed.value = !collapsed.value;
+  // props.$emit("collapsed", props.collapsed);
+  props.collapsibleFunc();
+}
+
+const labels = computed(() => {
+  let ret = {};
+  if (attrs.tableColumns && attrs.tableColumnLabels) {
+    ret.tableColumns = attrs.tableColumns;
+    ret.tableColumnLabels = attrs.tableColumnLabels;
+  } else if (
+    harness.getChartProps(props.chart.key).tableColumns &&
+    harness.getChartProps(props.chart.key).tableColumnLabels
+  ) {
+    ret.tableColumns = harness.getChartProps(props.chart.key).tableColumns;
+    ret.tableColumnLabels = harness.getChartProps(
+      props.chart.key,
+    ).tableColumnLabels;
+  }
+  return ret;
+});
+
+const scroll = computed(() => {
+  if (props.scrollable) {
+    return (
+      "height:" +
+      harness.getChartProps(props.chart.key).height +
+      "px;overflow-y:auto;"
+    );
+  }
+  return "";
+});
 </script>
+
 <style scoped>
 .btn {
   margin-left: 1em;

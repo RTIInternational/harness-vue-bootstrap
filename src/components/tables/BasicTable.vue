@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="validatedChartData && validatedChartData.length"
-    :id="chart.key + '_data_table'"
+    :id="props.chart.key + '_data_table'"
     class="harness-vue-bootstrap-datatable"
   >
     <table :class="'harness-vue-bootstrap-table table ' + tableClass">
@@ -91,6 +91,14 @@ const chartData = computed(() => {
   if (chartData) {
     if (tableAdapter) {
       try {
+        console.log(
+          tableAdapter(
+            props.chart,
+            props.filters,
+            chartData,
+            harness.pageStore,
+          ),
+        );
         return tableAdapter(
           props.chart,
           props.filters,
@@ -108,9 +116,12 @@ const chartData = computed(() => {
   return chartData;
 });
 
-const validatedChartData = computed(() =>
-  harness.validateChartData(chartData, props.chart.key),
-);
+const validatedChartData = computed(() => {
+  if (chartData.value) {
+    return harness.validateChartData(chartData.value, props.chart.key);
+  }
+  return [];
+});
 
 const columnHeaders = computed(() => {
   return validatedChartData.value
