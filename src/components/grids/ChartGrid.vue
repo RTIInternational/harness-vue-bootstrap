@@ -29,5 +29,5 @@ import { useHarnessComposable } from "../../../../harness-vue/src/harness";
 const props = defineProps(gridProps);
 const harness = useHarnessComposable();
 
-const chartRows = computed(() => rows(harness.charts));
+const chartRows = computed(() => rows(props, harness.charts));
 </script>

@@ -2,7 +2,7 @@
   <div>
     <div
       :class="'row harness-vue-bootstrap-filtergrid-row ' + props.rowClass"
-      v-for="(row, idx) in rows(harness.filters)"
+      v-for="(row, idx) in rows(props, harness.filters)"
       :key="idx"
     >
       <div
@@ -18,7 +18,7 @@
       >
         <component
           :is="filter.component"
-          v-bind="{ filter, ...filter.props, ...props, ...$attrs }"
+          v-bind="{ ...props, ...$attrs, filter, ...filter.props }"
           :key="pageDefinition.key + '-filtergrid-' + filter.key"
           :class="componentClass"
         />
@@ -56,13 +56,13 @@
 
 <script setup>
 import { subset, rows, gridProps } from "./gridUtils";
-import sharedInputProps from "../inputs/sharedInputProps";
+import sharedInputProps from "../inputs/utils/sharedInputProps";
 import { defineProps } from "vue";
 import { useHarnessComposable } from "../../../../harness-vue/src/harness";
 
 const props = defineProps({
-  ...gridProps,
   ...sharedInputProps,
+  ...gridProps,
   labelPosition: {
     type: String,
     required: false,
@@ -91,7 +91,6 @@ const props = defineProps({
   },
 });
 const harness = useHarnessComposable();
-
 function initializeDefaultsLoadData() {
   harness.initializeDefaults(
     subset(harness.filters) ? Object.keys(subset(harness.filters)) : null,
