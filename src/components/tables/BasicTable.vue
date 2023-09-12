@@ -91,14 +91,6 @@ const chartData = computed(() => {
   if (chartData) {
     if (tableAdapter) {
       try {
-        console.log(
-          tableAdapter(
-            props.chart,
-            props.filters,
-            chartData,
-            harness.pageStore,
-          ),
-        );
         return tableAdapter(
           props.chart,
           props.filters,

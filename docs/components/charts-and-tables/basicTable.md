@@ -1,4 +1,4 @@
-# Data Table 508
+# Basic Table
 [[toc]]
 ## Basic Example
 A basic `<BasicTable>` element using [Bootstrap 5](https://getbootstrap.com/docs/5.3/content/tables/) for styling. This component takes an array of objects and renders an accessible (508 compliant) data table where each key/value pair corresponds to a column header/value. If the data is not in this format, you can include a `tableAdapter` function that accepts your data and transforms it into the necessary format. For more information on Harness-Vue `tableAdapter` functions see the [section on Structured Data and Tables](https://next.harnessjs.org/usage/charts.html#structured-data-and-tables) in the Harness-Vue documentation.
@@ -36,7 +36,7 @@ A string appended to the class of the table, for applying [bootstrap table optio
 * **Default**: null
 
 #### Example table-hover
-<BasicTable :chart="{ key: 'exampleTable' }" class="table-hover"/>
+<BasicTable :chart="{ key: 'exampleTable' }" :tableClass="'table-hover'"/>
 
 ```html
 <BasicTable class="table-hover" />

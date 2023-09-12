@@ -33,7 +33,7 @@ export default {
                 text: 'Charts and Tables',
                 collapsible: true,
                 items: [
-                    {text: 'Datatable 508', link: '/components/charts-and-tables/dataTable508'},
+                    {text: 'Basic Table', link: '/components/charts-and-tables/basicTable'},
                     {text: 'Chart with Table', link: '/components/charts-and-tables/chartWithTable'}
                 ]
             }
