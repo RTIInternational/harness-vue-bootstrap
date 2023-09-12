@@ -7,7 +7,7 @@
     >
       <div
         :class="
-          'harness-vue-bootstrap-filtergrid-col col-sm-' +
+          'harness-vue-bootstrap-filtergrid-col col-' +
           12 / props.columns +
           ' ' +
           props.colClass
@@ -31,10 +31,10 @@
         props.buttonPosition !== 'none'
       "
     >
-      <div :class="'col-md-12 text-' + props.buttonPosition">
+      <div :class="'col-12 text-' + props.buttonPosition">
         <button
           v-if="props.synchronous"
-          class="btn btn-primary btn-sm harness-vue-bootstrap-filtergrid-applybutton"
+          class="btn btn-primary btn harness-vue-bootstrap-filtergrid-applybutton"
           @click="harness.loadData"
           role="button"
         >
@@ -44,7 +44,7 @@
         <button
           v-if="props.clearButton"
           role="button"
-          class="btn btn-primary btn-sm harness-vue-bootstrap-filtergrid-clearbutton"
+          class="btn btn-primary btn harness-vue-bootstrap-filtergrid-clearbutton"
           @click="initializeDefaultsLoadData"
         >
           Clear Filters
@@ -86,7 +86,7 @@ const props = defineProps({
     required: false,
     default: "center",
     validator: function (value) {
-      return ["left", "center", "right", "none"].includes(value);
+      return ["start", "center", "end", "none"].includes(value);
     },
   },
 });

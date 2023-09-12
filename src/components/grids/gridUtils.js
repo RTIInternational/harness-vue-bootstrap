@@ -98,4 +98,17 @@ export const gridProps = {
     required: false,
     default: null,
   },
+  only: {
+    type: Array,
+    required: false,
+  },
+  except: {
+    type: Array,
+    required: false,
+  },
+  orderByOnly: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 };
