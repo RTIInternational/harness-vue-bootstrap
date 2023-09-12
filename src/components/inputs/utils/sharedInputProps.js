@@ -4,7 +4,7 @@ export const sharedFilterProps = {
     required: false,
     default: "horizontal",
     validator: function (value) {
-      return ["horizontal", "vertical", "none"].includes(value);
+      return ["horizontal", "vertical", "floating", "none"].includes(value);
     },
   },
   labelColumnSize: {

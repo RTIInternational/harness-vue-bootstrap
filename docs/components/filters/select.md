@@ -82,6 +82,15 @@ Controls the position of the label in respect to the input.
 ```html
 <harness-vue-bootstrap-select :labelPosition="'vertical'" />
 ```
+
+#### Floating Example
+<harness-vue-bootstrap-select :filter="{'key': 'exampleSelect12', 'label': 'Example Select'}"  :labelPosition="'floating'"/>
+***
+```html
+<harness-vue-bootstrap-select :labelPosition="'floating'" />
+```
+Note: Floating labels take precendence over append/prepend behavior, which is incompatible with floating labels.
+
 #### None Example
 <br />
 <harness-vue-bootstrap-select :filter="{'key': 'exampleSelect2', 'label': 'Example Select'}"  :labelPosition="'none'"/>

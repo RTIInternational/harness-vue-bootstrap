@@ -50,7 +50,10 @@ const getWrapperClass = computed(() => {
 });
 </script>
 <template>
-  <div :class="getWrapperClass">
+  <div
+    :class="getWrapperClass"
+    v-if="labelPosition.toLowerCase() !== 'floating'"
+  >
     <div :class="getLabelWrapperClass">
       <labelPartial
         :labelClass="props.labelClassList"
@@ -64,6 +67,11 @@ const getWrapperClass = computed(() => {
     <div :class="getInputWrapperClass">
       <slot name="input"></slot>
     </div>
+  </div>
+
+  <div :class="getWrapperClass" v-else>
+    <slot name="input"></slot>
+    <labelPartial :labelClass="props.labelClassList" v-bind="{ ...props }" />
   </div>
 </template>
 ./utils/sharedInputProps

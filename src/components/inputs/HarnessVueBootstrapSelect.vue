@@ -45,7 +45,10 @@ const getInputClassString = computed(() => {
 <template>
   <formControlWrapper :labelClassList="getLabelClassList" v-bind="{ ...props }">
     <template v-slot:input>
-      <div class="input-group">
+      <div
+        class="input-group"
+        v-if="labelPosition.toLowerCase() !== 'floating'"
+      >
         <!-- Prepended Component or text -->
         <component
           :is="props.prependComponent"
@@ -96,6 +99,25 @@ const getInputClassString = computed(() => {
           <i class="bi bi-x"></i>
         </button>
       </div>
+      <select
+        v-else
+        :multiple="props.multiple"
+        :class="getInputClassString"
+        v-model="boundValue"
+        :id="`${props.filter.key}-select`"
+        :aria-labelledby="`${props.filter.key}-label`"
+        :aria-label="props.filter.label"
+      >
+        <option
+          v-for="option in harness.getOptionsForFilter(props.filter.key)"
+          :key="option.key"
+          :value="option.key"
+          :disabled="option.disabled"
+          :hidden="option.hidden"
+          :title="option.label"
+          v-html="option.label"
+        />
+      </select>
       <small
         v-if="props.helperText"
         v-html="props.helperText"

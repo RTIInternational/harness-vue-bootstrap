@@ -122,6 +122,7 @@ Controls the position of the label in respect to the input.
     * `'horizontal'`
     * `'vertical'`
     * `'none'`
+    * `'floating'`
 * **Default**: `'horizontal'`
 
 #### Horizontal Example
@@ -135,6 +136,14 @@ Controls the position of the label in respect to the input.
 ***
 ```html
 <harness-vue-bootstrap-input :labelPosition="'vertical'" />
+```
+
+#### Floating Example
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput10')" :labelPosition="'floating'" />
+Note: Floating labels take precendence over append/prepend behavior, which is incompatible with floating labels.
+***
+```html
+<harness-vue-bootstrap-input :labelPosition="'floating'" />
 ```
 #### None Example
 <harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput2')" :labelPosition="'none'" />

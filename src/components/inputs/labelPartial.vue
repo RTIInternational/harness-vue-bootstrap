@@ -28,4 +28,3 @@ const labelClassString = computed(() => {
     v-html="props.filter.label"
   />
 </template>
-./utils/sharedInputProps

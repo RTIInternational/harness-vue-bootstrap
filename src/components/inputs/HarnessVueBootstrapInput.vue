@@ -77,7 +77,7 @@ const getInputClassString = computed(() => {
 <template>
   <formControlWrapper :labelClassList="getLabelClassList" v-bind="{ ...props }">
     <template v-slot:input>
-      <div class="input-group">
+      <div class="input-group" v-if="props.labelPosition !== 'floating'">
         <!-- Prepended Component or text -->
         <component
           :is="props.prependComponent"
@@ -95,7 +95,7 @@ const getInputClassString = computed(() => {
           :class="getInputClassString"
           :placeholder="props.placeholder"
           v-model="boundValue"
-          :id="`${props.filter.key}-${props.type}-input`"
+          :id="props.filter.key"
           :aria-labelledby="`${props.filter.key}-label`"
           :aria-label="`${props.filter.label}`"
           :min="props.min"
@@ -122,6 +122,19 @@ const getInputClassString = computed(() => {
           <i class="bi bi-x"></i>
         </button>
       </div>
+      <input
+        v-else
+        :type="props.type"
+        :class="getInputClassString"
+        :placeholder="props.placeholder"
+        v-model="boundValue"
+        :id="props.filter.key"
+        :aria-labelledby="`${props.filter.key}-label`"
+        :aria-label="`${props.filter.label}`"
+        :min="props.min"
+        :max="props.max"
+        :step="props.step"
+      />
       <small
         v-if="props.helperText"
         v-html="props.helperText"
