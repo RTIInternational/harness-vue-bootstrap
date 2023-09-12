@@ -64,7 +64,12 @@ function initializeDefaultsLoadData() {
       >
         <component
           :is="filter.component"
-          v-bind="{ ...props, ...$attrs, filter, ...filter.props }"
+          v-bind="{
+            ...props,
+            ...$attrs,
+            filter: { key: filter.key, ...filter },
+            ...filter.props,
+          }"
           :key="pageDefinition.key + '-filtergrid-' + filter.key"
           :class="componentClass"
         />

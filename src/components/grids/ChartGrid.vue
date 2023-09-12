@@ -23,7 +23,12 @@ const chartRows = computed(() => rows(props, harness.charts));
       >
         <component
           :is="chart.component"
-          v-bind="{ chart, ...chart.props, ...props, ...$attrs }"
+          v-bind="{
+            ...props,
+            ...$attrs,
+            chart: { key: chart.key, ...chart },
+            ...chart.props,
+          }"
           :key="pageDefinition.key + '-chartgrid-' + chart.key"
           :class="componentClass"
         />
