@@ -1,7 +1,7 @@
 <script setup>
 import { sharedFilterProps, isFilterProp } from "./utils/sharedInputProps";
 import { defineProps, computed } from "vue";
-import { useHarnessComposable } from "../../../../harness-vue/src/harness";
+import { useHarnessComposable } from "@rtidatascience/harness-vue";
 import useBoundValue from "./utils/useBoundValue";
 import formControlWrapper from "./formControlWrapper.vue";
 

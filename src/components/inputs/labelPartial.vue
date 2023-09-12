@@ -1,7 +1,7 @@
 <script setup>
 import { computed, defineProps } from "vue";
 import { sharedFilterProps, isFilterProp } from "./utils/sharedInputProps";
-import { useHarnessComposable } from "../../../../harness-vue/src/harness";
+import { useHarnessComposable } from "@rtidatascience/harness-vue";
 
 const props = defineProps({
   ...sharedFilterProps,

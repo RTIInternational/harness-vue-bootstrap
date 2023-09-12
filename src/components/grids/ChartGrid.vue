@@ -1,3 +1,14 @@
+<script setup>
+import { rows, colSize, gridProps } from "./gridUtils";
+import { computed, defineProps } from "vue";
+import { useHarnessComposable } from "@rtidatascience/harness-vue";
+
+const props = defineProps(gridProps);
+const harness = useHarnessComposable();
+
+const chartRows = computed(() => rows(props, harness.charts));
+</script>
+
 <template>
   <div>
     <div
@@ -20,14 +31,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { rows, colSize, gridProps } from "./gridUtils";
-import { computed, defineProps } from "vue";
-import { useHarnessComposable } from "../../../../harness-vue/src/harness";
-
-const props = defineProps(gridProps);
-const harness = useHarnessComposable();
-
-const chartRows = computed(() => rows(props, harness.charts));
-</script>

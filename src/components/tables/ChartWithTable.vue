@@ -1,3 +1,129 @@
+<script setup>
+import { computed, defineProps, ref, useAttrs } from "vue";
+import { useHarnessComposable } from "@rtidatascience/harness-vue";
+
+const harness = useHarnessComposable();
+const attrs = useAttrs();
+const props = defineProps({
+  chart: {
+    type: Object,
+    required: true,
+  },
+  chartComponent: {
+    type: [Object, Function],
+    required: true,
+  },
+  tableDisplay: {
+    type: String,
+    required: false,
+    default: "toggle",
+    // validator: function (value) {
+    //   return value in ['toggle', 'bottom']
+    // }
+  },
+  scrollable: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  downloadable: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  card: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  buttonPosition: {
+    type: String,
+    required: false,
+    default: "top",
+    // validator: function (value) {
+    //   return value in ['top', 'bottom']
+    // }
+  },
+  saveImageButton: {
+    type: Function,
+    required: false,
+  },
+  collapsible: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  collapsibleFunc: {
+    type: Function,
+    required: false,
+    default: () => true,
+  },
+  startCollapsed: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  showTableButtonText: {
+    type: String,
+    required: false,
+    default: "Show Table",
+  },
+  showChartButtonText: {
+    type: String,
+    required: false,
+    default: "Show Chart",
+  },
+});
+
+const view = ref("chart");
+
+const collapsed = ref(false);
+function toggleView() {
+  switch (view.value) {
+    case "chart":
+      view.value = "table";
+      break;
+    case "table":
+      view.value = "chart";
+      break;
+  }
+  // props.$emit("view", props.view);
+}
+
+function toggleCollapse() {
+  collapsed.value = !collapsed.value;
+  // props.$emit("collapsed", props.collapsed);
+  props.collapsibleFunc();
+}
+
+const labels = computed(() => {
+  let ret = {};
+  if (attrs.tableColumns && attrs.tableColumnLabels) {
+    ret.tableColumns = attrs.tableColumns;
+    ret.tableColumnLabels = attrs.tableColumnLabels;
+  } else if (
+    harness.getChartProps(props.chart.key).tableColumns &&
+    harness.getChartProps(props.chart.key).tableColumnLabels
+  ) {
+    ret.tableColumns = harness.getChartProps(props.chart.key).tableColumns;
+    ret.tableColumnLabels = harness.getChartProps(
+      props.chart.key,
+    ).tableColumnLabels;
+  }
+  return ret;
+});
+
+const scroll = computed(() => {
+  if (props.scrollable) {
+    return (
+      "height:" +
+      harness.getChartProps(props.chart.key).height +
+      "px;overflow-y:auto;"
+    );
+  }
+  return "";
+});
+</script>
 <template>
   <div
     :id="props.chart.key + '_container'"
@@ -190,133 +316,6 @@
     </h3>
   </div>
 </template>
-
-<script setup>
-import { computed, defineProps, ref, useAttrs } from "vue";
-import { useHarnessComposable } from "../../../../harness-vue/src/harness";
-
-const harness = useHarnessComposable();
-const attrs = useAttrs();
-const props = defineProps({
-  chart: {
-    type: Object,
-    required: true,
-  },
-  chartComponent: {
-    type: [Object, Function],
-    required: true,
-  },
-  tableDisplay: {
-    type: String,
-    required: false,
-    default: "toggle",
-    // validator: function (value) {
-    //   return value in ['toggle', 'bottom']
-    // }
-  },
-  scrollable: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  downloadable: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
-  card: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
-  buttonPosition: {
-    type: String,
-    required: false,
-    default: "top",
-    // validator: function (value) {
-    //   return value in ['top', 'bottom']
-    // }
-  },
-  saveImageButton: {
-    type: Function,
-    required: false,
-  },
-  collapsible: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  collapsibleFunc: {
-    type: Function,
-    required: false,
-    default: () => true,
-  },
-  startCollapsed: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  showTableButtonText: {
-    type: String,
-    required: false,
-    default: "Show Table",
-  },
-  showChartButtonText: {
-    type: String,
-    required: false,
-    default: "Show Chart",
-  },
-});
-
-const view = ref("chart");
-
-const collapsed = ref(false);
-function toggleView() {
-  switch (view.value) {
-    case "chart":
-      view.value = "table";
-      break;
-    case "table":
-      view.value = "chart";
-      break;
-  }
-  // props.$emit("view", props.view);
-}
-
-function toggleCollapse() {
-  collapsed.value = !collapsed.value;
-  // props.$emit("collapsed", props.collapsed);
-  props.collapsibleFunc();
-}
-
-const labels = computed(() => {
-  let ret = {};
-  if (attrs.tableColumns && attrs.tableColumnLabels) {
-    ret.tableColumns = attrs.tableColumns;
-    ret.tableColumnLabels = attrs.tableColumnLabels;
-  } else if (
-    harness.getChartProps(props.chart.key).tableColumns &&
-    harness.getChartProps(props.chart.key).tableColumnLabels
-  ) {
-    ret.tableColumns = harness.getChartProps(props.chart.key).tableColumns;
-    ret.tableColumnLabels = harness.getChartProps(
-      props.chart.key,
-    ).tableColumnLabels;
-  }
-  return ret;
-});
-
-const scroll = computed(() => {
-  if (props.scrollable) {
-    return (
-      "height:" +
-      harness.getChartProps(props.chart.key).height +
-      "px;overflow-y:auto;"
-    );
-  }
-  return "";
-});
-</script>
 
 <style scoped>
 .btn {

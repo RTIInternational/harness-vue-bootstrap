@@ -1,50 +1,6 @@
-<template>
-  <div
-    v-if="validatedChartData && validatedChartData.length"
-    :id="props.chart.key + '_data_table'"
-    class="harness-vue-bootstrap-datatable"
-  >
-    <table :class="'harness-vue-bootstrap-table table ' + tableClass">
-      <thead :class="headerClass">
-        <tr>
-          <th
-            v-for="(column, idx) in columnHeaders"
-            scope="col"
-            :key="idx"
-            :class="labelClass"
-            v-html="column"
-          />
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="(row, idx) in validatedChartData"
-          :key="idx"
-          :class="rowClass"
-        >
-          <template v-for="(column, idx2) in columnHeaders">
-            <th
-              v-if="idx2 === 0 && rowHeaderCol"
-              :key="idx2"
-              :class="cellClass"
-              v-html="row[column]"
-              scope="row"
-            />
-            <td
-              v-else
-              :key="`${idx2}-else`"
-              :class="cellClass"
-              v-html="row[column]"
-            />
-          </template>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</template>
 <script setup>
 import { computed, defineProps } from "vue";
-import { useHarnessComposable } from "../../../../harness-vue/src/harness";
+import { useHarnessComposable } from "@rtidatascience/harness-vue";
 
 const harness = useHarnessComposable();
 const props = defineProps({
@@ -121,6 +77,51 @@ const columnHeaders = computed(() => {
     : [];
 });
 </script>
+<template>
+  <div
+    v-if="validatedChartData && validatedChartData.length"
+    :id="props.chart.key + '_data_table'"
+    class="harness-vue-bootstrap-datatable"
+  >
+    <table :class="'harness-vue-bootstrap-table table ' + tableClass">
+      <thead :class="headerClass">
+        <tr>
+          <th
+            v-for="(column, idx) in columnHeaders"
+            scope="col"
+            :key="idx"
+            :class="labelClass"
+            v-html="column"
+          />
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="(row, idx) in validatedChartData"
+          :key="idx"
+          :class="rowClass"
+        >
+          <template v-for="(column, idx2) in columnHeaders">
+            <th
+              v-if="idx2 === 0 && rowHeaderCol"
+              :key="idx2"
+              :class="cellClass"
+              v-html="row[column]"
+              scope="row"
+            />
+            <td
+              v-else
+              :key="`${idx2}-else`"
+              :class="cellClass"
+              v-html="row[column]"
+            />
+          </template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
 <style scoped>
 .row {
   margin-top: 10px;

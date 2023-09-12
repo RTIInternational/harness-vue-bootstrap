@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps, computed } from "vue";
-import { useHarnessComposable } from "../../../../harness-vue/src/harness";
+import { useHarnessComposable } from "@rtidatascience/harness-vue";
 import { sharedFilterProps, isFilterProp } from "./utils/sharedInputProps";
 import labelPartial from "./labelPartial.vue";
 
