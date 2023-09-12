@@ -181,24 +181,6 @@ export default class ExamplePage {
           },
         ],
       },
-      exampleRadioGroup: {
-        key: "exampleRadioGroup",
-        label: "Example Radio Group",
-        component: "HarnessVueBootstrapRadioGroup",
-        props: {
-          filterType: "Radio Group",
-        },
-        options: [
-          {
-            key: "exampleOption",
-            label: "Example Option",
-          },
-          {
-            key: "exampleOption2",
-            label: "Example Option2",
-          },
-        ],
-      },
       exampleCheckboxGroup: {
         key: "exampleCheckboxGroup",
         label: "Example Checkbox Group",
@@ -233,8 +215,8 @@ export default class ExamplePage {
       },
     };
     range.forEach((num) => {
-      generatedFilters[`exampleCheckboxGroup-${num}`] = {
-        key: `exampleCheckboxGroup-${num}`,
+      generatedFilters[`exampleCheckboxGroup${num}`] = {
+        key: `exampleCheckboxGroup${num}`,
         label: "Example Checkbox Group",
         component: "HarnessVueBootstrapCheckboxGroup",
         props: {
@@ -256,8 +238,8 @@ export default class ExamplePage {
           },
         ],
       };
-      generatedFilters[`exampleInput-${num}`] = {
-        key: `exampleInput-${num}`,
+      generatedFilters[`exampleInput${num}`] = {
+        key: `exampleInput${num}`,
         label: "Example Input",
         component: "HarnessVueBootstrapInput",
         props: {
@@ -299,8 +281,8 @@ export default class ExamplePage {
         },
       };
 
-      generatedFilters[`exampleRadioGroup-${num}`] = {
-        key: `exampleRadioGroup-${num}`,
+      generatedFilters[`exampleRadioGroup${num}`] = {
+        key: `exampleRadioGroup${num}`,
         label: "Example Radio Group",
         component: "HarnessVueBootstrapRadioGroup",
         props: {
@@ -317,8 +299,8 @@ export default class ExamplePage {
           },
         ],
       };
-      generatedFilters[`exampleSelect-${num}`] = {
-        key: `exampleSelect-${num}`,
+      generatedFilters[`exampleSelect${num}`] = {
+        key: `exampleSelect${num}`,
         label: "Example Select",
         component: "HarnessVueBootstrapSelect",
         props: {
@@ -340,8 +322,8 @@ export default class ExamplePage {
           },
         ],
       };
-      generatedFilters[`exampleMultiSelect-${num}`] = {
-        key: `exampleMultiSelect-${num}`,
+      generatedFilters[`exampleMultiSelect${num}`] = {
+        key: `exampleMultiSelect${num}`,
         label: "Example Multiselect",
         component: "HarnessVueBootstrapSelect",
         props: {
@@ -373,7 +355,7 @@ export default class ExamplePage {
     let range = [...Array(5).keys()];
     let generatedCharts = {};
     range.forEach((num) => {
-      generatedCharts[`barChart-${num}`] = {
+      generatedCharts[`barChart${num}`] = {
         title: "",
         component: "ChartWithTable",
         props: {
@@ -397,7 +379,7 @@ export default class ExamplePage {
             });
             return newData;
           },
-          refName: `barChart-${num}`,
+          refName: `barChart${num}`,
         },
       };
     });

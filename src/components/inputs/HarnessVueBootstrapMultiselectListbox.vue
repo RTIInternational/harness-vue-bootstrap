@@ -105,22 +105,26 @@ const rightBoxOptions = computed(() => {
 });
 
 const unselectedOptions = computed(() => {
-  return this.getOptionsForFilter(props.filter.key).filter(
-    (f) => !harness.getFilter(props.filter.key).includes(f.key),
-  );
+  return harness
+    .getOptionsForFilter(props.filter.key)
+    .filter((f) => !harness.getFilter(props.filter.key).includes(f.key));
 });
+
+function setFilterLoadData(newVal) {
+  harness.setFilter(props.filter.key, newVal);
+  if (!harness.pageDefinition.synchronous && harness.pageDefinition.loadData) {
+    harness.loadData();
+  }
+}
 
 function leftToRight() {
   const newVal = harness.getFilter(props.filter.key).concat(leftBox);
-  this.setFilterLoadData(props.filter.key, newVal);
+  setFilterLoadData(newVal);
 }
 function rightToLeft() {
   const newVal = harness
     .getFilter(props.filter.key)
     .filter((f) => !rightBox.value.includes(f));
-  harness.setFilter(props.filter.key, newVal);
-  if (!harness.pageDefinition.synchronous && harness.pageDefinition.loadData) {
-    harness.loadData();
-  }
+  setFilterLoadData(newVal);
 }
 </script>

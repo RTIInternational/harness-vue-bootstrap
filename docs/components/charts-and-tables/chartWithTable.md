@@ -1,7 +1,7 @@
 # Chart With Table
 [[toc]]
 ## Basic Example
-A basic `<ChartWithTable>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/forms/) for styling. This component renders both a chart and a [508-compliant table](/components/charts-and-tables/dataTable508), and additionally adds a function to download the source data as CSV. It is worth noting that this accepts the chart component as a prop, so in your page definition you would choose this component as your chart's `component` value, then include the actual chart you'd like to render as a prop called `chartComponent`.
+A basic `<ChartWithTable>` element using [Bootstrap 5]https://getbootstrap.com/docs/5.3/content/tables/) for styling. This component renders both a chart and a [basicTable component](/components/charts-and-tables/basicTable), and additionally adds a function to download the source data as CSV. It is worth noting that this accepts the chart component as a prop, so in your page definition you would choose this component as your chart's `component` value, then include the actual chart you'd like to render as a prop called `chartComponent`.
 
 <ChartGrid :only="['exampleChartWithTable']" />
 

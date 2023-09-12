@@ -12,7 +12,7 @@ const props = defineProps({
   type: {
     required: false,
     type: String,
-    default: "check",
+    default: "checkbox",
     validator: function (value) {
       let validOptions = ["checkbox", "radio", "switch"];
       return validOptions.includes(value);

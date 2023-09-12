@@ -127,7 +127,7 @@
         v-bind="{ chart: props.chart, ...chart.props, ...$attrs }"
         v-show="props.tableDisplay != 'toggle' || view == 'table'"
         :key="'chartwithtable' + props.chart.key + 'table'"
-        :style="props.scroll"
+        :style="scroll"
       />
     </div>
     <h3
@@ -166,7 +166,7 @@
             :aria-label="
               'Download Table: ' + (props.chart.title || props.chart.key)
             "
-            @click="harness.downloadCSV(props.chart.key, props.labels || null)"
+            @click="harness.downloadCSV(props.chart.key, labels || null)"
             class="btn btn-sm btn-primary harness-vue-bootstrap-downloadbutton"
           >
             Download CSV

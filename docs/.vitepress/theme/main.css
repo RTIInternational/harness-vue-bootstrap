@@ -5,3 +5,12 @@
     --vp-c-brand-dark: #646cff;
   }
   
+/* Overriding some conflicts between bootstrap and vitepress */
+
+p {
+  margin-bottom: 0px;
+}
+
+a {
+  text-decoration: none;
+}
