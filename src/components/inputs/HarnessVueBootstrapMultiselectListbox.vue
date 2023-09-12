@@ -70,12 +70,13 @@
   </div>
 </template>
 <script setup>
-import sharedInputProps from "./utils/sharedInputProps";
+import { sharedFilterProps, isFilterProp } from "./utils/sharedInputProps";
 import { computed, defineProps, ref } from "vue";
 import { useHarnessComposable } from "../../../../harness-vue/src/harness";
 
 const props = defineProps({
-  ...sharedInputProps,
+  ...sharedFilterProps,
+  ...isFilterProp,
   searchable: {
     type: Boolean,
     required: false,

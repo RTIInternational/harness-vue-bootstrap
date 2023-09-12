@@ -1,5 +1,5 @@
 <script setup>
-import sharedInputProps from "./utils/sharedInputProps";
+import { sharedFilterProps, isFilterProp } from "./utils/sharedInputProps";
 import { defineProps, computed } from "vue";
 import { useHarnessComposable } from "../../../../harness-vue/src/harness";
 import useBoundValue from "./utils/useBoundValue";
@@ -8,7 +8,8 @@ import formControlWrapper from "./formControlWrapper.vue";
 const harness = useHarnessComposable();
 
 const props = defineProps({
-  ...sharedInputProps,
+  ...sharedFilterProps,
+  ...isFilterProp,
   multiple: {
     type: Boolean,
     required: false,

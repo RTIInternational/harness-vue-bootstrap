@@ -1,3 +1,49 @@
+<script setup>
+import { subset, rows, gridProps } from "./gridUtils";
+import { sharedFilterProps } from "../inputs/utils/sharedInputProps";
+import { defineProps } from "vue";
+import { useHarnessComposable } from "../../../../harness-vue/src/harness";
+
+const props = defineProps({
+  ...sharedFilterProps,
+  ...gridProps,
+  labelPosition: {
+    type: String,
+    required: false,
+    default: "horizontal",
+    validator: function (value) {
+      return ["horizontal", "vertical", "none"].includes(value);
+    },
+  },
+  synchronous: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  clearButton: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  buttonPosition: {
+    type: String,
+    required: false,
+    default: "center",
+    validator: function (value) {
+      return ["start", "center", "end", "none"].includes(value);
+    },
+  },
+});
+const harness = useHarnessComposable();
+function initializeDefaultsLoadData() {
+  harness.initializeDefaults(
+    subset(harness.filters) ? Object.keys(subset(harness.filters)) : null,
+  );
+  if (!harness.synchronous && harness.pageDefinition.loadData) {
+    harness.loadData();
+  }
+}
+</script>
 <template>
   <div>
     <div
@@ -54,52 +100,6 @@
   </div>
 </template>
 
-<script setup>
-import { subset, rows, gridProps } from "./gridUtils";
-import sharedInputProps from "../inputs/utils/sharedInputProps";
-import { defineProps } from "vue";
-import { useHarnessComposable } from "../../../../harness-vue/src/harness";
-
-const props = defineProps({
-  ...sharedInputProps,
-  ...gridProps,
-  labelPosition: {
-    type: String,
-    required: false,
-    default: "horizontal",
-    validator: function (value) {
-      return ["horizontal", "vertical", "none"].includes(value);
-    },
-  },
-  synchronous: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  clearButton: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
-  buttonPosition: {
-    type: String,
-    required: false,
-    default: "center",
-    validator: function (value) {
-      return ["start", "center", "end", "none"].includes(value);
-    },
-  },
-});
-const harness = useHarnessComposable();
-function initializeDefaultsLoadData() {
-  harness.initializeDefaults(
-    subset(harness.filters) ? Object.keys(subset(harness.filters)) : null,
-  );
-  if (!harness.synchronous && harness.pageDefinition.loadData) {
-    harness.loadData();
-  }
-}
-</script>
 <style scoped>
 .button-row {
   margin-top: 10px;

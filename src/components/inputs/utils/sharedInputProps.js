@@ -1,11 +1,4 @@
-const sharedInputProps = {
-  filter: {
-    type: Object,
-    required: true,
-    validator: function (value) {
-      return Object.keys(value).includes("key");
-    },
-  },
+export const sharedFilterProps = {
   labelPosition: {
     type: String,
     required: false,
@@ -55,4 +48,14 @@ const sharedInputProps = {
   },
 };
 
-export default sharedInputProps;
+export const isFilterProp = {
+  filter: {
+    type: Object,
+    required: true,
+    validator: function (value) {
+      return Object.keys(value).includes("key");
+    },
+  },
+};
+
+export default { sharedFilterProps, isFilterProp };

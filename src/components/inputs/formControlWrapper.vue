@@ -1,11 +1,12 @@
 <script setup>
 import { defineProps, computed } from "vue";
 import { useHarnessComposable } from "../../../../harness-vue/src/harness";
-import sharedInputProps from "./utils/sharedInputProps";
+import { sharedFilterProps, isFilterProp } from "./utils/sharedInputProps";
 import labelPartial from "./labelPartial.vue";
 
 const props = defineProps({
-  ...sharedInputProps,
+  ...sharedFilterProps,
+  ...isFilterProp,
   labelClassList: {
     type: Array,
     required: true,
