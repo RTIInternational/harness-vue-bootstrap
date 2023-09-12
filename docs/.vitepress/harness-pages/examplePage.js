@@ -141,6 +141,11 @@ export default class ExamplePage {
         },
         options: [],
       },
+      exampleInputDatalist: {
+        label: "Example Input With Datalist",
+        component: "HarnessVueBootstrapInput",
+        options: [{key: "", value: ""}, ...searchableOptions],
+      },
       exampleInputMinMaxStep: {
         key: "exampleInputMinMaxStep",
         label: "Example Input",

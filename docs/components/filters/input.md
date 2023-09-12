@@ -71,6 +71,21 @@ Specify a component to be appended to the input using a [bootstrap input group](
     />
 ```
 ***
+
+### datalist
+Use the [datalist](https://getbootstrap.com/docs/5.3/forms/form-control/#datalists) feature from Bootstrap to autocomplete based on the harness-vue options.
+* **Type**: `Boolean`
+* **Required**: No
+* **Default**: `false`
+
+#### Example
+<harness-vue-bootstrap-input :filter="{key: 'exampleInputDatalist', label: 'Input With Datalist'}" :datalist="true" :helperText="`Click this input to see autocomplete options.`"/>
+
+```html
+<harness-vue-bootstrap-input :datalist="true"/>
+```
+
+***
 ### helperText
 This property allows a developer to specify helper text to be rendered as [Bootstrap help text](https://getbootstrap.com/docs/4.6/components/forms/#help-text).
 * **Type**: `String`
@@ -139,7 +154,7 @@ Controls the position of the label in respect to the input.
 ```
 
 #### Floating Example
-<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput10')" :labelPosition="'floating'" />
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput14')" :labelPosition="'floating'" />
 Note: Floating labels take precendence over append/prepend behavior, which is incompatible with floating labels.
 ***
 ```html

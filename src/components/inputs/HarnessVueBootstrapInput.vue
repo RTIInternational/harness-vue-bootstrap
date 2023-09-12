@@ -33,6 +33,11 @@ const props = defineProps({
       return validOptions.includes(value);
     },
   },
+  datalist: {
+    required: false,
+    type: Boolean,
+    default: false,
+  },
   placeholder: {
     required: false,
     type: String,
@@ -101,7 +106,15 @@ const getInputClassString = computed(() => {
           :min="props.min"
           :max="props.max"
           :step="props.step"
+          :list="props.datalist ? `${props.filter.key}-datalist` : false"
         />
+        <datalist v-if="props.datalist" :id="`${props.filter.key}-datalist`">
+          <option
+            v-for="option in harness.getOptionsForFilter(props.filter.key)"
+            :key="option.key"
+            :value="option.label"
+          />
+        </datalist>
         <!-- Appended component or text -->
         <component
           :is="props.appendComponent"
