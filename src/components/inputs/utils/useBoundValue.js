@@ -18,10 +18,7 @@ export default function useBoundValue(props, harness) {
     },
     set(value) {
       harness.setFilter(props.filter.key, value);
-      if (
-        !harness.pageDefinition.synchronous &&
-        harness.pageDefinition.loadData
-      ) {
+      if (!props.synchronous && harness.pageDefinition.loadData) {
         harness.loadData();
       }
     },
