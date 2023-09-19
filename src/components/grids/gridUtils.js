@@ -61,9 +61,9 @@ export function rows(props, set) {
  * @param {Int} row
  * @returns {Int} column size
  */
-export function colSize(row) {
-  let colSize = 12 / this.columns;
-  if (row.length < this.columns && this.spread) {
+export function colSize(row, props) {
+  let colSize = 12 / props.columns;
+  if (row.length < props.columns && props.spread) {
     colSize = Math.floor(12 / row.length);
   }
   return colSize;

@@ -17,7 +17,7 @@ const chartRows = computed(() => rows(props, harness.charts));
       :key="rowidx"
     >
       <div
-        :class="'col-md-' + colSize(row) + ' ' + colClass"
+        :class="'col-md-' + colSize(row, props) + ' ' + colClass"
         v-for="(chart, colidx) in row"
         :key="colidx"
       >
