@@ -98,6 +98,7 @@ const getInputClassString = computed(() => {
         <input
           :type="props.type"
           :class="getInputClassString"
+          :disabled="props.disabled"
           :placeholder="props.placeholder"
           v-model="boundValue"
           :id="props.filter.key"
@@ -140,6 +141,7 @@ const getInputClassString = computed(() => {
         :type="props.type"
         :class="getInputClassString"
         :placeholder="props.placeholder"
+        :disabled="props.disabled"
         v-model="boundValue"
         :id="props.filter.key"
         :aria-labelledby="`${props.filter.key}-label`"

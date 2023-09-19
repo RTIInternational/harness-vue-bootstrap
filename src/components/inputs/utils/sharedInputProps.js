@@ -1,4 +1,9 @@
 export const sharedFilterProps = {
+  disabled: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   labelPosition: {
     type: String,
     required: false,

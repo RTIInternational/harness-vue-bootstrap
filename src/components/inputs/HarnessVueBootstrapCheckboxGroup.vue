@@ -89,7 +89,7 @@ const getWrapperClassString = computed(() => {
           :name="props.filter.key + option.key"
           :id="props.filter.key + option.key"
           :value="option.key"
-          :disabled="option.disabled"
+          :disabled="option.disabled || props.disabled"
           v-model="boundValue"
           :aria-labelledby="props.filter.key + option.key + '-label'"
           :aria-label="props.filter.label"

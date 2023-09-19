@@ -64,6 +64,7 @@ const getInputClassString = computed(() => {
         <select
           :multiple="props.multiple"
           :class="getInputClassString"
+          :disabled="props.disabled"
           v-model="boundValue"
           :id="`${props.filter.key}-select`"
           :aria-labelledby="`${props.filter.key}-label`"
@@ -103,6 +104,7 @@ const getInputClassString = computed(() => {
         v-else
         :multiple="props.multiple"
         :class="getInputClassString"
+        :disabled="props.disabled"
         v-model="boundValue"
         :id="`${props.filter.key}-select`"
         :aria-labelledby="`${props.filter.key}-label`"
