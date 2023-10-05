@@ -1,7 +1,7 @@
 # Chart With Table
 [[toc]]
 ## Basic Example
-A basic `<ChartWithTable>` element using [Bootstrap 5]https://getbootstrap.com/docs/5.3/content/tables/) for styling. This component renders both a chart and a [basicTable component](/components/charts-and-tables/basicTable), and additionally adds a function to download the source data as CSV. It is worth noting that this accepts the chart component as a prop, so in your page definition you would choose this component as your chart's `component` value, then include the actual chart you'd like to render as a prop called `chartComponent`.
+A basic `<ChartWithTable>` element using [Bootstrap 5](https://getbootstrap.com/docs/5.3/content/tables/) for styling. This component renders both a chart and a [basicTable component](/components/charts-and-tables/basicTable), and additionally adds a function to download the source data as CSV. It is worth noting that this accepts the chart component as a prop, so in your page definition you would choose this component as your chart's `component` value, then include the actual chart you'd like to render as a prop called `chartComponent`.
 
 <ChartGrid :only="['exampleChartWithTable']" />
 
@@ -20,9 +20,18 @@ import { components } from '@rtidatascience/harness-vue-bootstrap'
 components['ChartWithTable'] // array syntax
 components.ChartWithTable // object syntax
 ```
-### Component File
+### Page Definition Example
 ```js
-import barChart from 'components/barChart.vue'
+// in a page definition's charts section
+{
+    chartKey: {
+        title: "chart title",
+        component: "HarnessVueBootstrapChartWithTable",
+        props: {
+            chartComponent: yourChartComponentHere
+        }
+    }
+}
 ```
 ## Props
 
@@ -36,120 +45,104 @@ The component you would like to be rendered for the chart portion of this compon
 * **Type**: `[Object, Function]`
 * **Required**: Yes
 ***
-### tableDisplay
-Toggle shows the chart, and allows the user to toggle between the chart and table. `'bottom'` displays the table below the chart.
-* **Type**: `String`
-* **Required**: No
-* **Options:**
-    * `'toggle'`
-    * `'bottom'`
-* **Default**: `'toggle'`
-
-#### Example tableDisplay bottom
-<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'table-display-bottom-example'" :tableDisplay="'bottom'"/>
-
-```html
-<ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :tableDisplay="'bottom'"/>
-```
-***
-### downloadable
+### showDownloadButton
 Adds a download button that downloads a CSV representation of the chart data.
 * **Type**: `Boolean`
 * **Required**: No
 * **Default**: `true`
 
 #### Example downloadable false
-<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'downloadable-false-example'" :downloadable="false"/>
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'downloadable-false-example'" :showDownloadButton="false"/>
 
 ```html
 <ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :downloadable="false"/>
 ```
 ***
-### card
-Renders this component as a [bootstrap card](https://getbootstrap.com/docs/4.0/components/card/).
-* **Type**: `Boolean`
-* **Required**: No
-* **Default**: `true`
 
-#### Example card false
-
-<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'card-false-example'" :card="false"/>
-
-```html
-<ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :card="false"/>
-```
-***
 ### buttonPosition
-Puts buttons as part of the header or footer.
+Directs butttons to be in the card header or footer.
 * **Type**: `String`
 * **Required**: No
 * **Options:**
-    * `'top'`
-    * `'bottom'`
-* **Default**: `'top'`
+    * `'header'`
+    * `'footer'`
+* **Default**: `'header'`
 
 #### Example button bottom
-<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'button-bottom-example'" :buttonPosition="'bottom'"/>
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'button-bottom-example'" :buttonPosition="'footer'"/>
 
 ```html
 <ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :buttonPosition="'bottom'"/>
 ```
 ***
-### saveImageButton
-If this exists, a "save image" button will render in the button row that calls this function.
-* **Type**: `Function`
-* **Required**: No
-***
-### collapsible
-Renders a button to the right of the title that will collapse the chart and table body when clicked.
-* **Type**: `Boolean`
-* **Required**: No
-* **Default**: `false`
 
-#### Example collapsible true
-<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'collapsible-example'" :collapsible="true"/>
+### showTableButtonText
+Allows a user-specified label for the toggle button to show the table component.
+* **Type**: `String`
+* **Required**: No
+* **Default**: `'Show Table'`
+
+### showChartButtonText
+Allows a user-specified label for the toggle button to show the chart component.
+* **Type**: `String`
+* **Required**: No
+* **Default**: `'Show Chart'`
+
+### downloadButtonText
+Allows a user-specified label for the download button.
+* **Type**: `String`
+* **Required**: No
+* **Default**: `'Download as CSV'`
+
+#### Example with custom button labels
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'downloadable-false-example'" :showChartButtonText="'Show Me The Chart'" :showTableButtonText="'Show Me The Table'" :downloadButtonText="'Give Me The CSV'"/>
 
 ```html
-<ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :collapsible="true"/>
+<ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :showChartButtonText="'Show Me The Chart'" :showTableButtonText="'Show Me The Table'" :downloadButtonText="'Give Me The CSV'"/>
 ```
 ***
-### collapsibleFunc
-If this exists, the function will run each time the collapse button is clicked. Useful if you need to dispose of a chart on collapse. Intended to be used when `collapsible` is set to `true`.
-* **Type**: `Function`
-* **Required**: No
-* **Default**: `() => true`
+## Slots
 
-#### Example collapsibleFunc alert
-<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'collapse-func-example'" :collapsible="true" :collapsibleFunc="() => alert('Chart has been collapsed')"/>
+This component also has [named slots](https://vuejs.org/guide/components/slots.html#named-slots) for adding additional content such as buttons and text elements.
+
+### Additional Buttons
 
 ```html
-<ChartWithTable
-    :chart="{ key: 'exampleChartWithTable' }"
-    :chartComponent="barChart"
-    :collapsible="true"
-    :collapsibleFunc="() => alert('Chart has been collapsed')"
-/>
+<chart-with-table>
+    <template v-slot:additional-buttons>
+        <button class="btn btn-sm">Custom Button</button>
+    </template>
+</chart-with-table>
 ```
-***
-### startCollapsed
- If `true`, chart will appear as collapsed when first rendered. Intended to be used when `collapsible` is set to `true`.
-* **Type**: `Boolean`
-* **Required**: No
-* **Default**: `false`
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'downloadable-false-example'" :showChartButtonText="'Show Me The Chart'" :showTableButtonText="'Show Me The Table'" :downloadButtonText="'Give Me The CSV'">
+    <template v-slot:additional-buttons>
+        <button class="btn btn-sm">Custom Button</button>
+    </template>
+</chart-with-table>
 
-#### Example startCollapsed true
-<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'"
-    :refName="'start-collapsed-example'"
-    :collapsible="true"
-    :startCollapsed="true"
-/>
 
+### Above and Below Chart Options
 ```html
-<ChartWithTable
-    :chart="{ key: 'exampleChartWithTable' }"
-    :chartComponent="barChart"
-    :collapsible="true"
-    :startCollapsed="true"
-/>
+<chart-with-table>
+    <template v-slot:above-chart>
+        <p class="lead">This is some additional data about the chart.</p>
+    </template>
+    <template v-slot:below-chart>
+        <h3>References</h3>
+        <ul>
+            <li>Reference 1</li>
+            <li>Reference 2</li>
+        </ul>
+    </template>
+</chart-with-table>
 ```
-***
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'downloadable-false-example'" :showChartButtonText="'Show Me The Chart'" :showTableButtonText="'Show Me The Table'" :downloadButtonText="'Give Me The CSV'">
+    <template v-slot:above-chart>
+        <p class="lead text-center">This is some additional data about the chart.</p>
+    </template>
+    <template v-slot:below-chart>
+        <p class="small d-flex justify-content-end align-items-center">
+        Here are some chart notes.
+        </p>
+    </template>
+</chart-with-table>
