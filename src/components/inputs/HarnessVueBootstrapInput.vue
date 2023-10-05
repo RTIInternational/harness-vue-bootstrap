@@ -23,6 +23,7 @@ const props = defineProps({
         "month",
         "number",
         "password",
+        "range",
         "search",
         "tel",
         "text",
@@ -69,12 +70,15 @@ const getLabelClassList = computed(() => {
   return labelClassList;
 });
 const getInputClassString = computed(() => {
-  let inputClassList = [
-    `form-control`,
-    `harness-vue-bootstrap-${props.type}-input`,
-  ];
+  let inputClassList = [`harness-vue-bootstrap-${props.type}-input`];
   if (harness.isFilterDirty(props.filter.key)) {
     inputClassList.push(`dirty-filter-input`);
+  }
+
+  if (props.type === "range") {
+    inputClassList.push("form-range");
+  } else {
+    inputClassList.push(`form-control`);
   }
   return inputClassList.join(" ");
 });

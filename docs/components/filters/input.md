@@ -236,13 +236,23 @@ You may specify the type of input the harness-vue-bootstrap-input accepts with t
 * **Default**: `text`
 
 #### Example
-<!-- Password type looks no different? Looks just like a text input-->
 
 <harness-vue-bootstrap-input :filter="getFilterDefinition('examplePasswordInput')" :type="'password'"/>
 
 ```html
 <harness-vue-bootstrap-input 
     :type="password"
+    />
+```
+
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput11')" :type="'range'" :min="1" :max="10" :step="2"/>
+
+```html
+<harness-vue-bootstrap-input 
+    :type="range"
+    :min="1"
+    :max="10"
+    :step="2"
     />
 ```
 
