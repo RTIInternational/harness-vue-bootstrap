@@ -172,13 +172,13 @@ const getInputClassString = computed(() => {
         <div
           class="valid-feedback"
           :id="`${props.filter.key}-valid-feedback`"
-          v-if="props.validFeedback"
+          v-if="props.validFeedback && props.allowValidation"
           v-html="props.validFeedback"
         ></div>
         <div
           class="invalid-feedback"
           :id="`${props.filter.key}-invalid-feedback`"
-          v-if="props.invalidFeedback"
+          v-if="props.invalidFeedback && props.allowValidation"
           v-html="props.invalidFeedback"
         ></div>
       </div>
@@ -210,13 +210,13 @@ const getInputClassString = computed(() => {
       <div
         class="valid-feedback"
         :id="`${props.filter.key}-valid-feedback`"
-        v-if="props.validFeedback"
+        v-if="props.validFeedback && props.allowValidation"
         v-html="props.validFeedback"
       ></div>
       <div
         class="invalid-feedback"
         :id="`${props.filter.key}-invalid-feedback`"
-        v-if="props.invalidFeedback"
+        v-if="props.invalidFeedback && props.allowValidation"
         v-html="props.invalidFeedback"
       ></div>
     </template>
