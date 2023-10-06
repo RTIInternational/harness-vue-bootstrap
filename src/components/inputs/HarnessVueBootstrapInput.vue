@@ -3,6 +3,7 @@ import { sharedFilterProps, isFilterProp } from "./utils/sharedInputProps";
 import { defineProps, computed } from "vue";
 import { useHarnessComposable } from "@rtidatascience/harness-vue";
 import useBoundValue from "./utils/useBoundValue";
+import useIsValid from "./utils/useIsValid";
 import formControlWrapper from "./formControlWrapper.vue";
 
 const harness = useHarnessComposable();
@@ -59,6 +60,7 @@ const props = defineProps({
 });
 
 const boundValue = useBoundValue(props, harness);
+const isValid = useIsValid(props, harness);
 
 const getLabelClassList = computed(() => {
   let labelClassList = [
@@ -88,13 +90,6 @@ const getInputClassString = computed(() => {
   }
 
   return inputClassList.join(" ");
-});
-
-const isValid = computed(() => {
-  if (props.allowValidation && harness.isFilterDirty(props.filter.key)) {
-    return harness.isFilterValid(props.filter.key);
-  }
-  return null;
 });
 </script>
 <template>
