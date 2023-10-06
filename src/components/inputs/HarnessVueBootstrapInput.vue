@@ -80,13 +80,30 @@ const getInputClassString = computed(() => {
   } else {
     inputClassList.push(`form-control`);
   }
+
+  if (props.allowValidation && harness.isFilterDirty(props.filter.key)) {
+    inputClassList.push(
+      harness.isFilterValid(props.filter.key) ? "is-valid" : "is-invalid",
+    );
+  }
+
   return inputClassList.join(" ");
+});
+
+const isValid = computed(() => {
+  if (props.allowValidation && harness.isFilterDirty(props.filter.key)) {
+    return harness.isFilterValid(props.filter.key);
+  }
+  return null;
 });
 </script>
 <template>
   <formControlWrapper :labelClassList="getLabelClassList" v-bind="{ ...props }">
     <template v-slot:input>
-      <div class="input-group" v-if="props.labelPosition !== 'floating'">
+      <div
+        :class="`input-group ${props.allowValidation ? 'has-validation' : ''}`"
+        v-if="props.labelPosition !== 'floating'"
+      >
         <!-- Prepended Component or text -->
         <component
           :is="props.prependComponent"
@@ -139,6 +156,17 @@ const getInputClassString = computed(() => {
         >
           <i class="bi bi-x"></i>
         </button>
+        <!-- Validity Messages -->
+        <div
+          class="valid-feedback"
+          v-if="props.validFeedback"
+          v-html="props.validFeedback"
+        ></div>
+        <div
+          class="invalid-feedback"
+          v-if="props.invalidFeedback"
+          v-html="props.invalidFeedback"
+        ></div>
       </div>
       <input
         v-else
@@ -153,13 +181,26 @@ const getInputClassString = computed(() => {
         :min="props.min"
         :max="props.max"
         :step="props.step"
+        :valid="isValid"
+        :invalid="!isValid"
+        :required="props.required"
       />
       <small
         v-if="props.helperText"
         v-html="props.helperText"
         :class="`form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-input-helper-text ${props.helperTextClass}`"
       />
+      <!-- Validity Messages -->
+      <div
+        class="valid-feedback"
+        v-if="props.validFeedback"
+        v-html="props.validFeedback"
+      ></div>
+      <div
+        class="invalid-feedback"
+        v-if="props.invalidFeedback"
+        v-html="props.invalidFeedback"
+      ></div>
     </template>
   </formControlWrapper>
 </template>
-./utils/sharedInputProps./utils/useBoundValue
