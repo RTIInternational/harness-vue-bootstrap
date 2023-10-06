@@ -4,6 +4,7 @@ import { defineProps, computed } from "vue";
 import { useHarnessComposable } from "@rtidatascience/harness-vue";
 import useBoundValue from "./utils/useBoundValue";
 import useIsValid from "./utils/useIsValid";
+import useDescribedBy from "./utils/useDescribedBy";
 import formControlWrapper from "./formControlWrapper.vue";
 
 const harness = useHarnessComposable();
@@ -57,10 +58,16 @@ const props = defineProps({
     required: false,
     type: Number,
   },
+  inputClearButton: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 });
 
 const boundValue = useBoundValue(props, harness);
 const isValid = useIsValid(props, harness);
+const describedBy = useDescribedBy(props);
 
 const getLabelClassList = computed(() => {
   let labelClassList = [
@@ -104,11 +111,13 @@ const getInputClassString = computed(() => {
           :is="props.prependComponent"
           v-if="props.prependComponent"
           v-bind="{ ...props, ...$attrs }"
+          :id="`${props.filter.key}-prepended-component`"
         />
         <span
           class="input-group-text"
           v-else-if="props.prependHTML"
           v-html="props.prependHTML"
+          :id="`${props.filter.key}-prepended-html`"
         />
         <!-- Input -->
         <input
@@ -120,10 +129,14 @@ const getInputClassString = computed(() => {
           :id="props.filter.key"
           :aria-labelledby="`${props.filter.key}-label`"
           :aria-label="`${props.filter.label}`"
+          :aria-describedby="describedBy"
           :min="props.min"
           :max="props.max"
           :step="props.step"
           :list="props.datalist ? `${props.filter.key}-datalist` : false"
+          :valid="isValid"
+          :invalid="!isValid"
+          :required="props.required"
         />
         <datalist v-if="props.datalist" :id="`${props.filter.key}-datalist`">
           <option
@@ -137,15 +150,19 @@ const getInputClassString = computed(() => {
           :is="props.appendComponent"
           v-if="props.appendComponent"
           v-bind="{ ...props, ...$attrs }"
+          :id="`${props.filter.key}-appended-component`"
         />
         <span
           class="input-group-text"
           v-html="props.appendHTML"
           v-if="props.appendHTML"
+          :id="`${props.filter.key}-appended-html`"
         />
         <!-- clear button -->
         <button
           v-if="props.inputClearButton"
+          :id="`${props.filter.key}-clear-button`"
+          role="button"
           class="btn btn-outline-secondary harness-vue-bootstrap-input-group-clear-button"
           @click="harness.initDefault(props.filter.key)"
         >
@@ -154,11 +171,13 @@ const getInputClassString = computed(() => {
         <!-- Validity Messages -->
         <div
           class="valid-feedback"
+          :id="`${props.filter.key}-valid-feedback`"
           v-if="props.validFeedback"
           v-html="props.validFeedback"
         ></div>
         <div
           class="invalid-feedback"
+          :id="`${props.filter.key}-invalid-feedback`"
           v-if="props.invalidFeedback"
           v-html="props.invalidFeedback"
         ></div>
@@ -173,6 +192,7 @@ const getInputClassString = computed(() => {
         :id="props.filter.key"
         :aria-labelledby="`${props.filter.key}-label`"
         :aria-label="`${props.filter.label}`"
+        :aria-describedby="describedBy"
         :min="props.min"
         :max="props.max"
         :step="props.step"
@@ -184,15 +204,18 @@ const getInputClassString = computed(() => {
         v-if="props.helperText"
         v-html="props.helperText"
         :class="`form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-input-helper-text ${props.helperTextClass}`"
+        :id="`${props.filter.key}-helper-text`"
       />
       <!-- Validity Messages -->
       <div
         class="valid-feedback"
+        :id="`${props.filter.key}-valid-feedback`"
         v-if="props.validFeedback"
         v-html="props.validFeedback"
       ></div>
       <div
         class="invalid-feedback"
+        :id="`${props.filter.key}-invalid-feedback`"
         v-if="props.invalidFeedback"
         v-html="props.invalidFeedback"
       ></div>

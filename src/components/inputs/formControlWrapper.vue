@@ -74,4 +74,3 @@ const getWrapperClass = computed(() => {
     <labelPartial :labelClass="props.labelClassList" v-bind="{ ...props }" />
   </div>
 </template>
-./utils/sharedInputProps
