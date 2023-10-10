@@ -34,6 +34,6 @@ export default function useDescribedBy(props) {
       describedByClassList.push(`${props.filter.key}-helper-text`);
     }
 
-    if (props.clearB) return describedByClassList.join(" ");
+    return describedByClassList.join(" ");
   });
 }
