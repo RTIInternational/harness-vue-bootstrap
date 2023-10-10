@@ -15,7 +15,7 @@ export default {
     refName: {
       type: String,
       require: false,
-      default: "barChart-amcharts",
+      default: "barChartamcharts",
     },
   },
   data() {

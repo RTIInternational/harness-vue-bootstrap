@@ -1,22 +1,20 @@
-# About Harness Vue Bootstrap
+# About Harness-Vue-Bootstrap
 
-Harness Vue Bootstrap is a Bootstrap 4.x component library for building web dashboards with Harness Vue. This library includes robust, configurable and accessible HTML inputs of various types that are pre-configured for use with the Harness Vue library. Additionally, this library includes flexible filter/chart grid layouts that use Harness Vue to render components, as well as accessible tables for use with the Harness Vue tableAdapter functionality.
+Harness-Vue-Bootstrap is a Bootstrap 5.x component library for building web dashboards with Harness Vue. This library includes robust, configurable and accessible HTML inputs of various types that are pre-configured for use with the Harness Vue library. Additionally, this library includes flexible filter/chart grid layouts that use Harness Vue to render components, as well as accessible tables for use with the Harness Vue tableAdapter functionality.
 
 ## Prerequisites and Dependencies
-This library requires your Vue 3.x application to use [Harness Vue](https://next.harnessjs.org). Additionally, this library uses [Bootstrap 4.6.x](https://getbootstrap.com/docs/4.6/getting-started/introduction/) and [Bootstrap Icons 1.x](https://icons.getbootstrap.com/).
+This library requires your Vue 3.x application to use [Harness-Vue](https://www.harnessjs.org). Additionally, this library uses [Bootstrap 5.3.x](https://getbootstrap.com/) and [Bootstrap Icons 1.x](https://icons.getbootstrap.com/).
 
 ## Installation
 
-Download Harness Vue Bootstrap with your package manager of choice:
+Download Harness-Vue-Bootstrap with your package manager of choice:
 
 ```sh
 npm install -S @rtidatascience/harness-vue-bootstrap
-# or with yarn
-yarn add @rtidatascience/harness-vue-bootstrap
 ```
 
 ## Plugin Installation
-The Harness Vue Bootstrap package exports a Vue plugin and a component manifest. Installing the plugin will globally register all Harness Vue Bootstrap components:
+The Harness-Vue-Bootstrap package exports a Vue plugin and a component manifest. Installing the plugin will globally register all Harness-Vue-Bootstrap components:
 
 ```js
 import { createApp } from "vue";
@@ -29,33 +27,17 @@ const app = createApp(App);
 app.use(harnessVueBootstrap)
 ```
 
-If you would not like to globally register components, you can access the component manifest at any time by importing `components` from `@rtidatascience/harness-vue-bootstrap`. This manifest includes each component by key. For example, if you'd like to use `HarnessVueBootstrapSelect` without installing all components globally, you can access it this way: 
-
-```js
-import { components } from "@rtidatascience/harness-vue-bootstrap"
-
-const select = components["HarnessVueBootstrapSelect"]
-```
-
 ## Styles and Interactivity
-This library includes component styles that require importing. These components additionally depend on bootstrap and bootstrap-icons. You can import these stylesheets as well as the library's stylesheets like so:
+This library requires bootstrap's styles and icons to be included in your application. We recommend importing Bootstrap's stylesheets in your main sass file, though you can install it directly through your main.js file as well.
 
 ```js
 // in your main.js file
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/scss/bootstrap.scss';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 ```
 
 ```scss
 // in sass
-@import 'bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap/scss/bootstrap.scss';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
-```
-
-Additionally, if using any features that rely on bootstrap interactivity such as `ChartWithTable` or the `collapse` functionality in the `HarnessVueCheckboxGroup` or `HarnessVueInput`, make sure that you import bootstrap's Javascript and add the jquery instance to the window. This allows us to make use of Bootstrap 4's native jquery functionality without running into circular jquery import issues.
-
-```js
-import $ from 'bootstrap'
-import 'bootstrap'
-window.$ = $
 ```

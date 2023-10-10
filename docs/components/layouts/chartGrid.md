@@ -36,7 +36,7 @@ Pairs with `order` prop to order `ChartGrid` based on the order of filters in `o
 * **Default**: `false`
 
 #### orderByOnly ['exampleTable', 'exampleChartWithTable'] Example
-<ChartGrid :only="['exampleTable', 'barChart-0']" :order-by-only="true"/>
+<ChartGrid :only="['exampleTable', 'barChart0']" :order-by-only="true"/>
 
 ```html
 <ChartGrid :only="['exampleTable', 'exampleChartWithTable']" :order-by-only="true"/>
@@ -55,7 +55,7 @@ Only filters with keys not in this array will be rendered. Filters will be rende
 ```
 ***
 ### columns
-The number of columns to use in each row of the grid. Must be a divisor of 12, as this uses the [Bootstrap Grid](https://getbootstrap.com/docs/4.0/layout/grid/). Default is 1.
+The number of columns to use in each row of the grid. Must be a divisor of 12, as this uses the [Bootstrap Grid](https://getbootstrap.com/docs/5.2/forms/layout/). Default is 1.
 * **Type**: `Number`
 * **Required**: No
 * **Options:**
@@ -63,7 +63,7 @@ The number of columns to use in each row of the grid. Must be a divisor of 12, a
 * **Default**: `1`
 
 #### columns 2 Example
-<ChartGrid :only="['exampleTable', 'barChart-1']" :columns="2"/>
+<ChartGrid :only="['exampleTable', 'barChart1']" :columns="2"/>
 
 ```html
 <ChartGrid :columns="2"/>
@@ -76,7 +76,7 @@ A string appended to the class of each row `div` element, for applying [bootstra
 * **Default**: `null`
 
 #### rowClass align-items-end Example
-<ChartGrid :only="['exampleTable', 'barChart-2']" :columns="2" :row-class="'align-items-end'"/>
+<ChartGrid :only="['exampleTable', 'barChart2']" :columns="2" :row-class="'align-items-end'"/>
 
 ```html
 <ChartGrid :columns="2" :row-class="'align-items-end'"/>
@@ -89,7 +89,7 @@ A string appended to the class of each col `div` element, for applying [bootstra
 * **Default**: `null`
 
 #### colClass align-self-end Example
-<ChartGrid :only="['exampleTable', 'barChart-3']" :columns="2" :col-class="'align-self-end'"/>
+<ChartGrid :only="['exampleTable', 'barChart3']" :columns="2" :col-class="'align-self-end'"/>
 
 ```html
 <ChartGrid :columns="2" :col-class="'align-self-end'"/>
@@ -102,7 +102,7 @@ A string appended to the class of each component element, for applying [bootstra
 * **Default**: `null`
 
 #### componentClass alert-success Example
-<ChartGrid :only="['exampleTable', 'barChart-4']" :component-class="'alert-success'"/>
+<ChartGrid :only="['exampleTable', 'barChart4']" :component-class="'alert-success'"/>
 
 ```html
 <ChartGrid :component-class="'alert-success'"/>

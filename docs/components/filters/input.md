@@ -5,7 +5,7 @@ Error in render: "TypeError: Cannot read property '_modulesNamespaceMap' of unde
 -->
 
 ## Basic Example
-A basic `<input>` element using [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/forms/) for styling. This component binds the input to a Harness-Vue filter. The harness-vue-bootstrap-input component is flexible and can accept various HTML5 `<input>` types.
+A basic `<input>` element using [Bootstrap 5](https://getbootstrap.com/docs/5.3/forms/input-group/) for styling. This component binds the input to a Harness-Vue filter. The harness-vue-bootstrap-input component is flexible and can accept various HTML5 `<input>` types.
 
 <harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput')" />
 
@@ -52,7 +52,7 @@ Specify text to be appended to the input using a bootstrap input group.
 <!-- Password type looks no different? Looks just like a text input-->
 
 
-<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput-8')" :appendHTML="'@rti.org'"/>
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput8')" :appendHTML="'@rti.org'"/>
 
 ```html
 <harness-vue-bootstrap-input 
@@ -61,7 +61,7 @@ Specify text to be appended to the input using a bootstrap input group.
 ```
 ***
 ### appendComponent
-Specify a component to be appended to the input using a [bootstrap input group](https://getbootstrap.com/docs/4.1/components/input-group/). The component must be a div with class `input-group-append`.
+Specify a component to be appended to the input using a [bootstrap input group](https://getbootstrap.com/docs/5.3/forms/input-group/). The component must be a div with class `input-group-append`.
 * **Type**: `String`
 * **Required**: No
 * **Default**: ``
@@ -71,6 +71,21 @@ Specify a component to be appended to the input using a [bootstrap input group](
     />
 ```
 ***
+
+### datalist
+Use the [datalist](https://getbootstrap.com/docs/5.3/forms/form-control/#datalists) feature from Bootstrap to autocomplete based on the harness-vue options.
+* **Type**: `Boolean`
+* **Required**: No
+* **Default**: `false`
+
+#### Example
+<harness-vue-bootstrap-input :filter="{key: 'exampleInputDatalist', label: 'Input With Datalist'}" :datalist="true" :helperText="`Click this input to see autocomplete options.`"/>
+
+```html
+<harness-vue-bootstrap-input :datalist="true"/>
+```
+
+***
 ### helperText
 This property allows a developer to specify helper text to be rendered as [Bootstrap help text](https://getbootstrap.com/docs/4.6/components/forms/#help-text).
 * **Type**: `String`
@@ -78,7 +93,7 @@ This property allows a developer to specify helper text to be rendered as [Boots
 * **Default**: `''`
 ***
 #### Example
-<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput-5')" :helperText="'Helper text with contextual information'"/>
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput5')" :helperText="'Helper text with contextual information'"/>
 
 ```html
 <harness-vue-bootstrap-input 
@@ -93,12 +108,12 @@ This property allows a developer to specify a class to be appended to their `hel
 * **Default**: `''`
 
 #### Example
-<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput-6')" :helperText="'Helper text with contextual information, styled as alert'" :helperTextClass="'alert alert-warning'" />
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput6')" :helperText="'Helper text with contextual information, styled as text-success'" :helperTextClass="'text-success'" />
 
 ```html
 <harness-vue-bootstrap-input 
-    :helperText="'Helper text with contextual information, styled as alert'"
-    :helperTextClass="'alert alert-warning'"
+    :helperText="'Helper text with contextual information, styled as text-success'"
+    :helperTextClass="'text-success'"
     />
 ```
 ***
@@ -109,7 +124,7 @@ Adds a clear button to the end of the input group.
 * **Default**: `False`
 
 #### Example
-<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput-9')" :inputClearButton="true"/>
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput9')" :inputClearButton="true"/>
 ```html
 <harness-vue-bootstrap-input :inputClearButton="true" />
 ```
@@ -122,29 +137,38 @@ Controls the position of the label in respect to the input.
     * `'horizontal'`
     * `'vertical'`
     * `'none'`
+    * `'floating'`
 * **Default**: `'horizontal'`
 
 #### Horizontal Example
-<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput-0')" />
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput0')" />
 ```html
 <harness-vue-bootstrap-input :labelPosition="'horizontal'" />
 ```
 ***
 #### Vertical Example
-<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput-1')" :labelPosition="'vertical'" />
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput1')" :labelPosition="'vertical'" />
 ***
 ```html
 <harness-vue-bootstrap-input :labelPosition="'vertical'" />
 ```
+
+#### Floating Example
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput14')" :labelPosition="'floating'" />
+Note: Floating labels take precendence over append/prepend behavior, which is incompatible with floating labels.
+***
+```html
+<harness-vue-bootstrap-input :labelPosition="'floating'" />
+```
 #### None Example
-<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput-2')" :labelPosition="'none'" />
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput2')" :labelPosition="'none'" />
 
 ```html
 <harness-vue-bootstrap-input :labelPosition="'none'" />
 ```
 ***
 ### labelColumnSize
-When used with `:labelPosition="'horizontal'"`, this controls the width of the label in respect to the input. Horizontal layouts use the [Bootstrap Grid](https://getbootstrap.com/docs/4.0/layout/grid/), which functions on subdivisions of 12. The number given to this property will be the subdivision of 12 used to control the label portion of the row - for example, a `labelColumnSize="4"` would use `col-4` for the label and `col-8` for the input.
+When used with `:labelPosition="'horizontal'"`, this controls the width of the label in respect to the input. Horizontal layouts use the [Bootstrap Grid](https://getbootstrap.com/docs/5.2/forms/layout/), which functions on subdivisions of 12. The number given to this property will be the subdivision of 12 used to control the label portion of the row - for example, a `labelColumnSize="4"` would use `col-4` for the label and `col-8` for the input.
 * **Type**: `Number`
 * **Required**: No
 * **Default**: 6
@@ -163,7 +187,7 @@ Allows HTML input placeholder text.
 * **Default**: ``
 
 #### Example
-<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput-10')" :placeholder="'Your Input Here'" />
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput10')" :placeholder="'Your Input Here'" />
 ```html
 <harness-vue-bootstrap-input 
     :inputClearButton="'Your Input Here'"
@@ -179,7 +203,7 @@ Specify text to be prepended to the input using a bootstrap input group.
 #### Example
 <!-- Password type looks no different? Looks just like a text input-->
 
-<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput-7')" :prependHTML="'@'"/>
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput7')" :prependHTML="'@'"/>
 ```html
 <harness-vue-bootstrap-input 
     :prependHTML="'@'"
@@ -187,7 +211,7 @@ Specify text to be prepended to the input using a bootstrap input group.
 ```
 ***
 ### prependComponent
-Specify a component to be prepended to the input using a [bootstrap input group](https://getbootstrap.com/docs/4.1/components/input-group/). The component must be a div with class `input-group-prepend`.
+Specify a component to be prepended to the input using a [bootstrap input group](https://getbootstrap.com/docs/5.3/forms/input-group/). The component must be a div with class `input-group-prepend`.
 * **Type**: `String`
 * **Required**: No
 * **Default**: ``
@@ -212,13 +236,23 @@ You may specify the type of input the harness-vue-bootstrap-input accepts with t
 * **Default**: `text`
 
 #### Example
-<!-- Password type looks no different? Looks just like a text input-->
 
 <harness-vue-bootstrap-input :filter="getFilterDefinition('examplePasswordInput')" :type="'password'"/>
 
 ```html
 <harness-vue-bootstrap-input 
     :type="password"
+    />
+```
+
+<harness-vue-bootstrap-input :filter="getFilterDefinition('exampleInput11')" :type="'range'" :min="1" :max="10" :step="2"/>
+
+```html
+<harness-vue-bootstrap-input 
+    :type="range"
+    :min="1"
+    :max="10"
+    :step="2"
     />
 ```
 
