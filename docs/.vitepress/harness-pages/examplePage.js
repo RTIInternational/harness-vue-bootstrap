@@ -218,6 +218,43 @@ export default class ExamplePage {
         component: {},
         options: [],
       },
+      exampleInputWithRange: {
+        label: "Example Input With Validation",
+        component: "HarnessVueBootstrapInput",
+        valueType: "number",
+        valueValidator: (harness, value) => value >= 40 && value <= 50,
+        props: {
+          type: "number",
+          min: 40,
+          max: 50,
+          step: 1,
+          helperText: "Range: 40-50",
+          allowValidation: true,
+          invalidFeedback: "Please choose a number between 40 and 50"
+        }
+      },
+      exampleCheckPickTwo: {
+        label: "Example Checkbox With Validation",
+        component: "HarnessVueBootstrapCheckboxGroup",
+        valueType: "array",
+        valueValidator: (harness, value) => value.length >= 2,
+        props: {
+          
+          helperText: "Choose at least two",
+          allowValidation: true,
+          showValid: true,
+          showInvalid: true,
+          invalidFeedback: "Please choose at least two",
+          validFeedback: "Well done!",
+          multiple: true
+        },
+        options: [
+          {key: "foo", label: "foo"},
+          {key: "bar", label: "bar"},
+          {key: "foobar", label: "foobar"},
+          {key: "barfoo", label: "barfoo"},
+        ]
+      },
     };
     range.forEach((num) => {
       generatedFilters[`exampleCheckboxGroup${num}`] = {

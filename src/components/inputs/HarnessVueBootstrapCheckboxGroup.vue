@@ -51,13 +51,19 @@ const getInputClassString = computed(() => {
   }
 
   if (harness.isFilterDirty(props.filter.key)) {
-    inputClassList.push(`dirty-filter-input`);
+    inputClassList.push(`dirty-filter-checkbox-group`);
   }
 
   if (props.allowValidation && harness.isFilterDirty(props.filter.key)) {
-    inputClassList.push(
-      harness.isFilterValid(props.filter.key) ? "is-valid" : "is-invalid",
-    );
+    if (harness.isFilterValid(props.filter.key)) {
+      if (props.showValid) {
+        inputClassList.push("is-valid");
+      }
+    } else {
+      if (props.showInvalid) {
+        inputClassList.push("is-invalid");
+      }
+    }
   }
 
   return inputClassList.join(" ");
@@ -116,6 +122,28 @@ const getWrapperClassString = computed(() => {
           :class="getOptionLabelClassString"
           v-html="option.label"
         />
+        <div
+          class="valid-feedback"
+          :id="`${props.filter.key}-valid-feedback`"
+          v-if="
+            props.validFeedback &&
+            props.allowValidation &&
+            props.showValid &&
+            idx + 1 === harness.getOptionsForFilter(props.filter.key).length
+          "
+          v-html="props.validFeedback"
+        ></div>
+        <div
+          class="invalid-feedback"
+          :id="`${props.filter.key}-invalid-feedback`"
+          v-if="
+            props.invalidFeedback &&
+            props.allowValidation &&
+            props.showInvalid &&
+            idx + 1 === harness.getOptionsForFilter(props.filter.key).length
+          "
+          v-html="props.invalidFeedback"
+        ></div>
       </div>
       <small
         v-if="props.helperText"
@@ -124,18 +152,6 @@ const getWrapperClassString = computed(() => {
         :class="`form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-checkbox-helper-text ${props.helperTextClass}`"
       />
       <!-- Validity Messages -->
-      <div
-        class="valid-feedback"
-        :id="`${props.filter.key}-valid-feedback`"
-        v-if="props.validFeedback"
-        v-html="props.validFeedback"
-      ></div>
-      <div
-        class="invalid-feedback"
-        :id="`${props.filter.key}-invalid-feedback`"
-        v-if="props.invalidFeedback"
-        v-html="props.invalidFeedback"
-      ></div>
     </template>
   </formControlWrapper>
 </template>

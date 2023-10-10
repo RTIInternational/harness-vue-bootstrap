@@ -71,6 +71,16 @@ export const sharedFilterProps = {
     type: String,
     default: "",
   },
+  showValid: {
+    required: false,
+    type: Boolean,
+    default: false,
+  },
+  showInvalid: {
+    required: false,
+    type: Boolean,
+    default: true,
+  },
 };
 
 export const isFilterProp = {

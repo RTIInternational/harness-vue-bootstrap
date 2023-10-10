@@ -50,9 +50,15 @@ const getInputClassString = computed(() => {
   }
 
   if (props.allowValidation && harness.isFilterDirty(props.filter.key)) {
-    inputClassList.push(
-      harness.isFilterValid(props.filter.key) ? "is-valid" : "is-invalid",
-    );
+    if (harness.isFilterValid(props.filter.key)) {
+      if (props.showValid) {
+        inputClassList.push("is-valid");
+      }
+    } else {
+      if (props.showInvalid) {
+        inputClassList.push("is-invalid");
+      }
+    }
   }
 
   return inputClassList.join(" ");
@@ -128,13 +134,15 @@ const getInputClassString = computed(() => {
         <div
           class="valid-feedback"
           :id="`${props.filter.key}-valid-feedback`"
-          v-if="props.validFeedback && props.allowValidation"
+          v-if="props.validFeedback && props.allowValidation && props.showValid"
           v-html="props.validFeedback"
         ></div>
         <div
           class="invalid-feedback"
           :id="`${props.filter.key}-invalid-feedback`"
-          v-if="props.invalidFeedback && props.allowValidation"
+          v-if="
+            props.invalidFeedback && props.allowValidation && props.showInvalid
+          "
           v-html="props.invalidFeedback"
         ></div>
       </div>
@@ -172,13 +180,15 @@ const getInputClassString = computed(() => {
       <div
         class="valid-feedback"
         :id="`${props.filter.key}-valid-feedback`"
-        v-if="props.validFeedback && props.allowValidation"
+        v-if="props.validFeedback && props.allowValidation && props.showValid"
         v-html="props.validFeedback"
       ></div>
       <div
         class="invalid-feedback"
         :id="`${props.filter.key}-invalid-feedback`"
-        v-if="props.invalidFeedback && props.allowValidation"
+        v-if="
+          props.invalidFeedback && props.allowValidation && props.showInvalid
+        "
         v-html="props.invalidFeedback"
       ></div>
     </template>

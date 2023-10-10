@@ -27,6 +27,7 @@ export default {
                     {text: 'Select', link: '/components/filters/select'},
                     {text: 'Checkbox Group', link: '/components/filters/checkboxGroup'},
                     {text: 'Multi-Select Listbox', link: '/components/filters/multiselectListbox'},
+                    {text: 'Validation, Styling, Accessibility', link: '/components/filters/validationAndStyling'},
                 ]
             },
             {
