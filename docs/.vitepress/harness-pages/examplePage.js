@@ -1,5 +1,3 @@
-import { compileScript } from "vue/compiler-sfc";
-
 export default class ExamplePage {
   title = "Example Page";
   key = "examplePage";
