@@ -140,8 +140,8 @@ const getInputClassString = computed(() => {
           :max="props.max"
           :step="props.step"
           :list="props.datalist ? `${props.filter.key}-datalist` : false"
-          :valid="isValid"
-          :invalid="!isValid"
+          :valid="isValid === 'valid'"
+          :invalid="isValid === 'invalid'"
           :required="props.required"
         />
         <datalist v-if="props.datalist" :id="`${props.filter.key}-datalist`">
@@ -204,8 +204,8 @@ const getInputClassString = computed(() => {
         :min="props.min"
         :max="props.max"
         :step="props.step"
-        :valid="isValid"
-        :invalid="!isValid"
+        :valid="isValid === 'valid'"
+        :invalid="isValid === 'invalid'"
         :required="props.required"
       />
       <small

@@ -111,8 +111,8 @@ const getWrapperClassString = computed(() => {
           :aria-labelledby="props.filter.key + option.key + '-label'"
           :aria-label="props.filter.label"
           :aria-describedby="describedBy"
-          :valid="isValid"
-          :invalid="!isValid"
+          :valid="isValid === 'valid'"
+          :invalid="isValid === 'invalid'"
           :required="props.required"
         />
         <label

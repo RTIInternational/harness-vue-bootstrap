@@ -7,8 +7,14 @@ import { computed } from "vue";
  */
 export default function useIsValid(props, harness) {
   return computed(() => {
-    if (props.allowValidation && harness.isFilterDirty(props.filter.key)) {
-      return harness.isFilterValid(props.filter.key);
+    if (props.allowValidation) {
+      if (props.showValid && harness.isFilterValid(props.filter.key)) {
+        return "valid";
+      }
+
+      if (props.showInvalid && !harness.isFilterValid(props.filter.key)) {
+        return "invalid";
+      }
     }
     return null;
   });

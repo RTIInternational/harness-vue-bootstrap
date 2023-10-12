@@ -94,8 +94,8 @@ const getInputClassString = computed(() => {
           :aria-labelledby="`${props.filter.key}-label`"
           :aria-label="props.filter.label"
           :aria-describedby="describedBy"
-          :valid="isValid"
-          :invalid="!isValid"
+          :valid="isValid === 'valid'"
+          :invalid="isValid === 'invalid'"
           :required="props.required"
         >
           <option
@@ -156,8 +156,8 @@ const getInputClassString = computed(() => {
         :aria-labelledby="`${props.filter.key}-label`"
         :aria-label="props.filter.label"
         :aria-describedby="describedBy"
-        :valid="isValid"
-        :invalid="!isValid"
+        :valid="isValid === 'valid'"
+        :invalid="isValid === 'invalid'"
         :required="props.required"
       >
         <option
