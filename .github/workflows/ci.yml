@@ -23,7 +23,6 @@ jobs:
       - name: Build and deploy
         if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'workflow_dispatch'
         run: |
-           npm run docs:generate
            npm run docs:build
            aws s3 rm s3://harness-vue-bootstrap-docs --recursive
            aws s3 sync docs/.vitepress/dist s3://harness-vue-bootstrap-docs
