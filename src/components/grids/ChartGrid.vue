@@ -29,7 +29,7 @@ const chartRows = computed(() => rows(props, harness.charts));
             chart: { key: chart.key, ...chart },
             ...chart.props,
           }"
-          :key="pageDefinition.key + '-chartgrid-' + chart.key"
+          :key="harness.pageDefinition.key + '-chartgrid-' + chart.key"
           :class="componentClass"
         />
       </div>
