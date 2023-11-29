@@ -70,7 +70,7 @@ function initializeDefaultsLoadData() {
             filter: { key: filter.key, ...filter },
             ...filter.props,
           }"
-          :key="pageDefinition.key + '-filtergrid-' + filter.key"
+          :key="harness.pageDefinition.key + '-filtergrid-' + filter.key"
           :class="componentClass"
         />
       </div>
