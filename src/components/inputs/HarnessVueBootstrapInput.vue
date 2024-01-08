@@ -209,9 +209,9 @@ const getInputClassString = computed(() => {
         :required="props.required"
       />
       <small
-        v-if="props.helperText"
+        v-if="props.helperText && props.helperTextPosition == 'input'"
         v-html="props.helperText"
-        :class="`form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-input-helper-text ${props.helperTextClass}`"
+        :class="`form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-helper-text-input harness-vue-bootstrap-input-helper-text ${props.helperTextClass}`"
         :id="`${props.filter.key}-helper-text`"
       />
       <!-- Validity Messages -->

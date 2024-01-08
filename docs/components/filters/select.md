@@ -150,6 +150,20 @@ This property allows a developer to specify a class to be appended to their `hel
 <harness-vue-bootstrap-select :helperText="'Helper text with contextual information, styled as text-success'" :helperTextClass="'text-success'"/>
 ```
 
+### helperTextPosition
+This property allows a developer to specify that the helper text is rendered below the label or below the input.
+* **Type**: `String`
+* **Required**: No
+* **Default**: `'input'`
+
+```html
+<harness-vue-bootstrap-select :helperText="'Helper text with contextual information below label'" :helperTextPosition="'label'"/>
+```
+#### Example
+<harness-vue-bootstrap-select :filter="{'key': 'exampleSelect', 'label': 'Example Input'}"  :helperText="'Helper text with contextual information below label'" :helperTextPosition="'label'"/>
+
+***
+
 ### multiple
 If harness-vue-bootstrap-select is given the `multiple` prop, it will be treated as a multi-select filter. Please note that it is required that this prop is set in your harness page definition - this is what informs harness to treat the contents of this filter as an `Array` instead of a `String`. 
 * **Type**: `Booolean`

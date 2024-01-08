@@ -35,6 +35,11 @@ export const sharedFilterProps = {
     required: false,
     default: "",
   },
+  helperTextPosition: {
+    type: String,
+    required: false,
+    default: "input",
+  },
   prependComponent: {
     required: false,
     type: Object,

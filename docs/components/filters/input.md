@@ -116,6 +116,18 @@ This property allows a developer to specify a class to be appended to their `hel
     :helperTextClass="'text-success'"
     />
 ```
+### helperTextPosition
+This property allows a developer to specify that the helper text is rendered below the label or below the input.
+* **Type**: `String`
+* **Required**: No
+* **Default**: `'input'`
+
+```html
+<harness-vue-bootstrap-input :helperText="'Helper text with contextual information below label'" :helperTextPosition="'label'"/>
+```
+#### Example
+<harness-vue-bootstrap-input :filter="{'key': 'exampleInput', 'label': 'Example Input'}"  :helperText="'Helper text with contextual information below label'" :helperTextPosition="'label'"/>
+
 ***
 ### inputClearButton
 Adds a clear button to the end of the input group.

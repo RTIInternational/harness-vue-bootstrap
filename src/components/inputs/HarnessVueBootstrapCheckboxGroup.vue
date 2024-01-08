@@ -146,10 +146,10 @@ const getWrapperClassString = computed(() => {
         ></div>
       </div>
       <small
-        v-if="props.helperText"
+        v-if="props.helperText && props.helperTextPosition == 'input'"
         v-html="props.helperText"
         :id="`${props.filter.key}-helper-text`"
-        :class="`form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-checkbox-helper-text ${props.helperTextClass}`"
+        :class="`form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-helper-text-input harness-vue-bootstrap-checkbox-helper-text ${props.helperTextClass}`"
       />
       <!-- Validity Messages -->
     </template>
