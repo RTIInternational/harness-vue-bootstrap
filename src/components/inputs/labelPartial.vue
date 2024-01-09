@@ -27,4 +27,10 @@ const labelClassString = computed(() => {
     :class="labelClassString"
     v-html="props.filter.label"
   />
+  <p
+    v-if="props.helperTextPosition == 'label' && props.helperText"
+    :id="`${props.filter.key}-helper-text`"
+    :class="`form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-helper-text-label ${props.helperTextClass}`"
+    v-html="props.helperText"
+  />
 </template>

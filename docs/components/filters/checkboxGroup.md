@@ -134,6 +134,18 @@ This property allows a developer to specify a class to be appended to their `hel
 <harness-vue-bootstrap-checkbox-group :helperText="'Helper text with contextual information, styled as text-success'" :helperTextClass="'text-success'"/>
 ```
 
+### helperTextPosition
+This property allows a developer to specify that the helper text is rendered below the label or below the input.
+* **Type**: `String`
+* **Required**: No
+* **Default**: `'input'`
+
+```html
+<harness-vue-bootstrap-checkbox-group :helperText="'Helper text with contextual information below label'" :helperTextPosition="'label'"/>
+```
+#### Example
+<harness-vue-bootstrap-checkbox-group :filter="{'key': 'exampleCheckboxGroup5', 'label': 'Example Checkbox Group'}"  :helperText="'Helper text with contextual information below label'" :helperTextPosition="'label'"/>
+
 ### inline
 If harness-vue-bootstrap-checkbox-group is given the `inline` prop, the checkbox options will be placed inline instead of stacked. 
 * **Type**: `Booolean`
