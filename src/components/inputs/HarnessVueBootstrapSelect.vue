@@ -90,7 +90,7 @@ const getInputClassString = computed(() => {
           :class="getInputClassString"
           :disabled="props.disabled"
           v-model="boundValue"
-          :id="`${props.filter.key}-select`"
+          :id="`${props.filter.key}`"
           :aria-labelledby="`${props.filter.key}-label`"
           :aria-label="props.filter.label"
           :aria-describedby="describedBy"
@@ -101,6 +101,7 @@ const getInputClassString = computed(() => {
           <option
             v-for="option in harness.getOptionsForFilter(props.filter.key)"
             :key="option.key"
+            :id="`${props.filter.key}-${option.key}`"
             :value="option.key"
             :disabled="option.disabled"
             :hidden="option.hidden"
@@ -152,7 +153,7 @@ const getInputClassString = computed(() => {
         :class="getInputClassString"
         :disabled="props.disabled"
         v-model="boundValue"
-        :id="`${props.filter.key}-select`"
+        :id="`${props.filter.key}`"
         :aria-labelledby="`${props.filter.key}-label`"
         :aria-label="props.filter.label"
         :aria-describedby="describedBy"
@@ -163,6 +164,7 @@ const getInputClassString = computed(() => {
         <option
           v-for="option in harness.getOptionsForFilter(props.filter.key)"
           :key="option.key"
+          :id="`${props.filter.key}-${option.key}`"
           :value="option.key"
           :disabled="option.disabled"
           :hidden="option.hidden"
