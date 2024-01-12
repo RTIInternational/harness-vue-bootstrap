@@ -30,6 +30,12 @@ components.harnessVueBootstrapSelect // object syntax
 ```
 ## Props
 
+### additionalDescribedByIds
+An array of IDs included in the [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) attribute of the form control. Used when developers have additional elements that describe the given input.
+* **Type**: `Array`
+* **Required**: No
+* **Default**: []
+
 ### appendHTML
 Specify text to be appended to the input using a bootstrap input group.
 * **Type**: `String`
