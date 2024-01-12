@@ -26,6 +26,7 @@ const labelClassString = computed(() => {
     :for="props.filter.key"
     :class="labelClassString"
     v-html="props.filter.label"
+    :id="`${props.filter.key}-label`"
   />
   <p
     v-if="props.helperTextPosition == 'label' && props.helperText"

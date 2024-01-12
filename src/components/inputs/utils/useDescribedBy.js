@@ -34,6 +34,10 @@ export default function useDescribedBy(props) {
       describedByClassList.push(`${props.filter.key}-helper-text`);
     }
 
+    if (props.additionalDescribedByIds) {
+      describedByClassList.push(...props.additionalDescribedByIds);
+    }
+
     return describedByClassList.join(" ");
   });
 }

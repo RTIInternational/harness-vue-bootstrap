@@ -86,6 +86,11 @@ export const sharedFilterProps = {
     type: Boolean,
     default: true,
   },
+  additionalDescribedByIds: {
+    required: false,
+    type: Array,
+    default: [],
+  },
 };
 
 export const isFilterProp = {
