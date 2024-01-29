@@ -63,6 +63,12 @@ const getWrapperClass = computed(() => {
           props.labelPosition.toLowerCase() !== 'floating'
         "
       />
+      <p
+        v-if="props.helperTextPosition == 'label' && props.helperText"
+        :id="`${props.filter.key}-helper-text`"
+        :class="`form-text harness-vue-bootstrap-helper-text harness-vue-bootstrap-helper-text-label ${props.helperTextClass}`"
+        v-html="props.helperText"
+      />
     </div>
     <div :class="getInputWrapperClass">
       <slot name="input"></slot>
