@@ -49,7 +49,7 @@ const chartData = computed(() => {
       try {
         return tableAdapter(
           props.chart,
-          props.filters,
+          harness.getFilters,
           chartData,
           harness.pageStore,
         );
