@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref } from "vue";
+import { defineProps, ref, computed } from "vue";
 import { useHarnessComposable } from "@rtidatascience/harness-vue";
 
 const harness = useHarnessComposable();
@@ -40,9 +40,21 @@ const props = defineProps({
     required: false,
     default: "Download as CSV",
   },
+  showTitleForViews: {
+    type: Array,
+    required: false,
+    default: () => ["chart", "table"],
+    validator: function (value) {
+      return value.every((v) => ["chart", "table"].includes(v));
+    },
+  },
 });
 
 const view = ref("chart");
+
+const showTitle = computed(
+  () => props.showTitleForViews.includes(view.value) && props.chart.title,
+);
 
 function toggleView() {
   switch (view.value) {
@@ -63,9 +75,10 @@ function toggleView() {
           ? 'justify-content-between'
           : 'justify-content-start'
       }`"
-      v-if="props.chart.title || props.buttonPosition === 'header'"
+      v-if="showTitle || props.buttonPosition === 'header'"
     >
-      {{ props.chart.title }}
+      <span v-if="showTitle">{{ props.chart.title }}</span>
+      <span v-else></span>
       <span
         class="harness-vue-bootstrap-chartwithtable-header-buttons"
         v-if="props.buttonPosition === 'header'"
