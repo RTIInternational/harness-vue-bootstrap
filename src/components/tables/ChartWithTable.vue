@@ -40,21 +40,22 @@ const props = defineProps({
     required: false,
     default: "Download as CSV",
   },
-  showTitleForViews: {
-    type: Array,
+  titleOnlyFor: {
+    type: String,
     required: false,
-    default: () => ["chart", "table"],
+    default: null,
     validator: function (value) {
-      return value.every((v) => ["chart", "table"].includes(v));
+      return ["chart", "table"].includes(value);
     },
   },
 });
 
 const view = ref("chart");
 
-const showTitle = computed(
-  () => props.showTitleForViews.includes(view.value) && props.chart.title,
-);
+const showTitle = computed(() => {
+  if (!props.titleOnlyFor) return !!props.chart.title;
+  return props.titleOnlyFor === view.value;
+});
 
 function toggleView() {
   switch (view.value) {

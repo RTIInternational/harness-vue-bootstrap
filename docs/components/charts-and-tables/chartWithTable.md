@@ -101,11 +101,14 @@ Allows a user-specified label for the download button.
 <ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :showChartButtonText="'Show Me The Chart'" :showTableButtonText="'Show Me The Table'" :downloadButtonText="'Give Me The CSV'"/>
 ```
 
-### showTitleForViews
-Allows user to specify when title is displayed.
-* **Type**: `Array`
+### titleOnlyFor
+Specifies when the title is displayed, based on the current view. Omitting this prop will display the title in both views.
+* **Type**: `String`
 * **Required**: No
-* **Default**: `["chart", "table"]`
+* **Options:**
+    * `'chart'`
+    * `'table'`
+* **Default**: null
 
 ***
 ## Slots
