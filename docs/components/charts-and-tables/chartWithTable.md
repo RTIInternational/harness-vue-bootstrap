@@ -52,7 +52,7 @@ Adds a download button that downloads a CSV representation of the chart data.
 * **Default**: `true`
 
 #### Example downloadable false
-<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'downloadable-false-example'" :showDownloadButton="false" :titleDisplayContext="'chart'"/>
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'downloadable-false-example'" :showDownloadButton="false"/>
 
 ```html
 <ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :downloadable="false"/>
@@ -68,7 +68,7 @@ Directs butttons to be in the card header or footer.
 * **Default**: `'header'`
 
 #### Example button bottom
-<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'button-bottom-example'" :buttonPosition="'footer'" :titleDisplayContext="'table'"/>
+<chart-with-table :chart="{key: 'exampleChartWithTable', title: 'Example Chart'}" :chartComponent="'barchart'" :refName="'button-bottom-example'" :buttonPosition="'footer'"/>
 
 ```html
 <ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :buttonPosition="'bottom'"/>
