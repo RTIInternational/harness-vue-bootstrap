@@ -58,6 +58,7 @@ Adds a download button that downloads a CSV representation of the chart data.
 <ChartWithTable :chart="{ key: 'exampleChartWithTable' }" :chartComponent="barChart" :downloadable="false"/>
 ```
 ***
+
 ### buttonPosition
 Directs butttons to be in the card header or footer.
 * **Type**: `String`
