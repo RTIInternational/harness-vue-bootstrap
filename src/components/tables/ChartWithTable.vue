@@ -40,7 +40,7 @@ const props = defineProps({
     required: false,
     default: "Download as CSV",
   },
-  titleOnlyFor: {
+  titleDisplayContext: {
     type: String,
     required: false,
     default: null,
@@ -53,8 +53,8 @@ const props = defineProps({
 const view = ref("chart");
 
 const showTitle = computed(() => {
-  if (!props.titleOnlyFor) return !!props.chart.title;
-  return props.titleOnlyFor === view.value;
+  if (!props.titleDisplayContext) return !!props.chart.title;
+  return props.titleDisplayContext === view.value;
 });
 
 function toggleView() {
