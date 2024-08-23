@@ -105,7 +105,7 @@ const getInputClassString = computed(() => {
             :value="option.key"
             :disabled="option.disabled"
             :hidden="option.hidden"
-            :title="option.label"
+            :title="`${option.description ? option.description : option.label}`"
             v-html="option.label"
           />
         </select>
@@ -168,7 +168,7 @@ const getInputClassString = computed(() => {
           :value="option.key"
           :disabled="option.disabled"
           :hidden="option.hidden"
-          :title="option.label"
+          :title="`${option.description ? option.description : option.label}`"
           v-html="option.label"
         />
       </select>
