@@ -210,4 +210,38 @@ Specify a component to be prepended to the select using a [bootstrap select grou
     :prependComponent="component"
     />
 ```
+
+## Additional Features
+### Overriding `title` attribute
+The `title` attribute of the select options can be overridden by providing a `description` attribute in the filter's options. When the `description` attribute is present, the select component will use its value as the `title` attribute for the options. This causes the tooltip that appears when hovering an option in the select menu to display the value of the `description` attribute. If no `description` attribute is provided, the default behavior sets the `title` attribute to the provided option label.
+#### Example Filter Definition
+```html
+exampleSelectLabel: {
+    key: "exampleSelectLabel",
+    label: "Example Select with Label",
+    component: "HarnessVueBootstrapSelect",
+    props: {
+        filterType: "internal",
+    },
+    options: [
+        {
+            key: "exampleOption",
+            label: "Example Option",
+            description: "This is a sample description replacing the title attribute",
+            default: true,
+        },
+        {
+            key: "exampleOption2",
+            label: "Example Option 2",
+        },
+        {
+            key: "exampleOption3",
+            label: "Example Option 3",
+            description: "This is a sample description for Example Option 3"
+        },
+    ],
+}
+```
+#### Example
+<harness-vue-bootstrap-select :filter="getFilterDefinition('exampleSelectLabel')"/>
 ***

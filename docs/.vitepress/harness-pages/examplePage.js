@@ -105,6 +105,31 @@ export default class ExamplePage {
           },
         ],
       },
+      exampleSelectLabel: {
+        key: "exampleSelectLabel",
+        label: "Example Select with Label",
+        component: "HarnessVueBootstrapSelect",
+        props: {
+          filterType: "internal",
+        },
+        options: [
+          {
+            key: "exampleOption",
+            label: "Example Option",
+            description: "This is a sample description replacing the title attribute",
+            default: true,
+          },
+          {
+            key: "exampleOption2",
+            label: "Example Option 2",
+          },
+          {
+            key: "exampleOption3",
+            label: "Example Option 3",
+            description: "This is a sample description for Example Option 3"
+          },
+        ],
+      },
       exampleMultiSelect: {
         key: "exampleMultiSelect",
         label: "Example Multiselect",
