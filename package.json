@@ -38,7 +38,7 @@
     "@vitejs/plugin-vue": "^4.6.2",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/test-utils": "^2.4.6",
-    "chart.js": "^4.4.3",
+    "chart.js": "^4.4.4",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.27.0",
     "jsdom": "^22.1.0",
