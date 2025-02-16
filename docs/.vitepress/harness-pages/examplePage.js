@@ -3,7 +3,7 @@ export default class ExamplePage {
   key = "examplePage";
   pageComponent = {};
   pageProps = {};
-  loadData = async (state, pageObject, hs) => {
+  loadData = async () => {
     return {
       exampleChartWithTable: {
         labels: Array(5)
@@ -116,7 +116,8 @@ export default class ExamplePage {
           {
             key: "exampleOption",
             label: "Example Option",
-            description: "This is a sample description replacing the title attribute",
+            description:
+              "This is a sample description replacing the title attribute",
             default: true,
           },
           {
@@ -126,7 +127,7 @@ export default class ExamplePage {
           {
             key: "exampleOption3",
             label: "Example Option 3",
-            description: "This is a sample description for Example Option 3"
+            description: "This is a sample description for Example Option 3",
           },
         ],
       },
@@ -167,20 +168,19 @@ export default class ExamplePage {
       exampleInputDatalist: {
         label: "Example Input With Datalist",
         component: "HarnessVueBootstrapInput",
-        options: [{key: "", value: ""}, ...searchableOptions],
+        options: [{ key: "", value: "" }, ...searchableOptions],
       },
       exampleInputMinMaxStep: {
         key: "exampleInputMinMaxStep",
         label: "Example Input",
         component: "HarnessVueBootstrapInput",
         props: {
-          type: 'number',
+          type: "number",
           min: 0.05,
           max: 0.24,
-          step: 0.001
+          step: 0.001,
         },
         options: [],
-
       },
       exampleOptionInput: {
         key: "exampleOptionInput",
@@ -253,8 +253,8 @@ export default class ExamplePage {
           step: 1,
           helperText: "Range: 40-50",
           allowValidation: true,
-          invalidFeedback: "Please choose a number between 40 and 50"
-        }
+          invalidFeedback: "Please choose a number between 40 and 50",
+        },
       },
       exampleCheckPickTwo: {
         label: "Example Checkbox With Validation",
@@ -262,21 +262,20 @@ export default class ExamplePage {
         valueType: "array",
         valueValidator: (harness, value) => value.length >= 2,
         props: {
-          
           helperText: "Choose at least two",
           allowValidation: true,
           showValid: true,
           showInvalid: true,
           invalidFeedback: "Please choose at least two",
           validFeedback: "Well done!",
-          multiple: true
+          multiple: true,
         },
         options: [
-          {key: "foo", label: "foo"},
-          {key: "bar", label: "bar"},
-          {key: "foobar", label: "foobar"},
-          {key: "barfoo", label: "barfoo"},
-        ]
+          { key: "foo", label: "foo" },
+          { key: "bar", label: "bar" },
+          { key: "foobar", label: "foobar" },
+          { key: "barfoo", label: "barfoo" },
+        ],
       },
     };
     range.forEach((num) => {
@@ -439,7 +438,7 @@ export default class ExamplePage {
                       ? datum[key].toUpperCase() + " TRANSFORMED UPPERCASE"
                       : datum[key].toLocaleString();
                   return acc;
-                }, {})
+                }, {}),
               );
             });
             return newData;
@@ -481,7 +480,7 @@ export default class ExamplePage {
                 acc[map[key]] =
                   datum[key].toUpperCase() + " TRANSFORMED UPPERCASE";
                 return acc;
-              }, {})
+              }, {}),
             );
           });
           return newData.length ? newData : [];
@@ -506,7 +505,7 @@ export default class ExamplePage {
                 acc[map[key]] =
                   datum[key].toUpperCase() + " TRANSFORMED UPPERCASE";
                 return acc;
-              }, {})
+              }, {}),
             );
           });
           return newData.length ? newData : [];

@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: '20.x'
       - run: npm ci
-      - run: npm run lint --no-fix --no-error-on-unmatched-patt
+      - run: npm run lint
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
