@@ -30,6 +30,7 @@
     "@rtidatascience/harness-vue": "^1.8.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "pinia": "^3.0.1",
     "sass-embedded": "^1.85.0",
     "vitepress": "^1.6.3",
     "vue": "^3.2.38"
