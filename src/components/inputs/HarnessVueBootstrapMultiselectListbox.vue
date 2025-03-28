@@ -119,9 +119,11 @@ function setFilterLoadData(newVal) {
 }
 
 function leftToRight() {
-  const newVal = harness.getFilter(props.filter.key).concat(leftBox);
+  const selected = harness.getFilter(props.filter.key);
+  const newVal = [...leftBox.value, ...selected];
   setFilterLoadData(newVal);
 }
+
 function rightToLeft() {
   const newVal = harness
     .getFilter(props.filter.key)
