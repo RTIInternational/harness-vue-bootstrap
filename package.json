@@ -2,7 +2,7 @@
   "name": "@rtidatascience/harness-vue-bootstrap",
   "author": "RTI CDS <alexharding@rti.org>",
   "private": false,
-  "version": "2.5.1",
+  "version": "2.6.0-0",
   "type": "module",
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
     "docs:serve": "vitepress serve docs"
   },
   "dependencies": {
-    "@rtidatascience/harness-vue": "^1.8.0",
+    "@rtidatascience/harness-vue": "^1.9.0-0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "pinia": "^3.0.1",
